@@ -1,15 +1,17 @@
 .word-card-container {
   height: 150px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
-  background: white
+  background: white;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .word-card {
   height: 100px;
   background: white;
-  margin: 16px;
+  margin-top: 16px;
   border-radius: 4px;
-  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -28,7 +30,7 @@
   word-wrap: break-word;
 }
 
-.show-word {
+#eye-icon {
   height: 50px;
   width: 15%;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
@@ -40,8 +42,16 @@
   flex: 0 0 15%;
 }
 
-.display-more-content {
+.display-content {
 display: flex;
 justify-content: space-around;
 align-items: center;
+}
+
+.displayed-content {
+  height: 100px;
+  background: white;
+  border-radius: 4px;
+  padding: 16px;
+  word-break: break-word;
 }

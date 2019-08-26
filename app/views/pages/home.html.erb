@@ -1,18 +1,19 @@
 <div class="word-card-container">
-  <div id="accordion">
-    <div class="word-card">
-      <p class="word-entry"> Mot connuuu</p>
-      <i class="fas fa-eye show-word"></i>
-      <p class="word-entry"> Mot traduit</p>
-    </div>
-      <div class="diaplay-more-content">
-        <i class="fas fa-arrow-circle-down display-more-content" data-toggle="collapse" data-target="#collapseOne"></i>
-      </div>
-    <div id="collapseOne" class="collapse show word-card" data-parent="#accordion">
-      word details
-    </div>
+
+  <div class="word-card">
+    <p class="word-entry"> Mot connuuu</p>
+    <i class="fas fa-eye" id="eye-icon"></i>
+    <p class="word-entry"> Mot traduit</p>
   </div>
 
+  <div id="accordion">
+      <div class="display-more-content">
+        <a href="#" class="fas fa-chevron-down display-content" data-toggle="collapse" data-target="#collapseOne" ></a>
+      </div>
+    <div id="collapseOne" class="collapse show displayed-content" data-parent="#accordion">
+      <p class="text-justify">Mot traduit (nature) : définition du mot traduit dans la langue de ce mot, avec d'autres détails si nécessaire.</p>
+    </div>
+  </div>
 </div>
 
 
