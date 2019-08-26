@@ -1,0 +1,47 @@
+.word-card-container {
+  height: 150px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  background: white
+}
+
+.word-card {
+  height: 100px;
+  background: white;
+  margin: 16px;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.word-entry {
+  height: 50px;
+  width: 30%;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 0 0 30%;
+  word-wrap: break-word;
+}
+
+.show-word {
+  height: 50px;
+  width: 15%;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin: 0px 0px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 0 0 15%;
+}
+
+.display-more-content {
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
