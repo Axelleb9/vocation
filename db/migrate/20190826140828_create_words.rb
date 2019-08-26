@@ -5,7 +5,7 @@ class CreateWords < ActiveRecord::Migration[5.2]
       t.string :translation
       t.text :definition
       t.text :example
-      t.string :type
+      t.string :nature
       t.integer :difficulty
       t.string :synonyms, array: true
 

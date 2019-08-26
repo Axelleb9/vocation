@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_141722) do
+ActiveRecord::Schema.define(version: 2019_08_26_145109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,11 +50,12 @@ ActiveRecord::Schema.define(version: 2019_08_26_141722) do
     t.string "translation"
     t.text "definition"
     t.text "example"
-    t.string "type"
+    t.string "nature"
     t.integer "difficulty"
     t.string "synonyms", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visible"
   end
 
   create_table "words_lists", force: :cascade do |t|
