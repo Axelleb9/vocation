@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_130415) do
+ActiveRecord::Schema.define(version: 2019_08_26_141722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "user_words", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_words_on_user_id"
+    t.index ["word_id"], name: "index_user_words_on_word_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +40,35 @@ ActiveRecord::Schema.define(version: 2019_08_26_130415) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "words", force: :cascade do |t|
+    t.string "entry"
+    t.string "translation"
+    t.text "definition"
+    t.text "example"
+    t.string "type"
+    t.integer "difficulty"
+    t.string "synonyms", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "words_lists", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_words_lists_on_list_id"
+    t.index ["word_id"], name: "index_words_lists_on_word_id"
+  end
+
+  add_foreign_key "lists", "users"
+  add_foreign_key "user_words", "users"
+  add_foreign_key "user_words", "words"
+  add_foreign_key "words_lists", "lists"
+  add_foreign_key "words_lists", "words"
 end
