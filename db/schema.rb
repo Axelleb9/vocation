@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_145109) do
   create_table "words", force: :cascade do |t|
     t.string "entry"
     t.string "translation"
-    t.text "definition"
+    t.text "definition", array: true
     t.text "example"
     t.string "nature"
     t.integer "difficulty"

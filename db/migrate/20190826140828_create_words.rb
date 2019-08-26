@@ -3,7 +3,7 @@ class CreateWords < ActiveRecord::Migration[5.2]
     create_table :words do |t|
       t.string :entry
       t.string :translation
-      t.text :definition
+      t.text :definition, array: true
       t.text :example
       t.string :nature
       t.integer :difficulty
