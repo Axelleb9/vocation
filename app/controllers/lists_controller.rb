@@ -1,6 +1,4 @@
 class ListsController < ApplicationController
-  authorize @list
-
   def index
     @lists = policy_scope(List).order(created_at: :desc)
   end
@@ -35,6 +33,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    authorize @list
     @list.destroy
     redirect_to lists_path
   end
