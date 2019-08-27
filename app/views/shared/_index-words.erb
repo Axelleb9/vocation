@@ -3,8 +3,12 @@
 
       <div class="word-card">
         <p id="word-entry"> <%= "#{word.entry}" %> </p>
-        <i class="fas fa-eye" id="eye-icon"></i>
-        <p id="word-result"> <%= "#{word.translation}" %></p>
+
+
+        <div class="hide-show">
+          <i class="fas fa-eye" id="eye-icon"></i>
+          <p id="word-result"> <%= "#{word.translation}" %></p>
+        </div>
       </div>
 
     <div id="accordion-<%= index %>">
