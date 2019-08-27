@@ -2,12 +2,12 @@
   <div class="word-card-container">
 
       <div class="word-card">
-        <p id="word-entry"> <%= "#{word.entry}" %> </p>
+        <p id="word-entry"> <%= @list.order ? word.entry : word.translation %> </p>
 
 
         <div class="hide-show">
           <i class="fas fa-eye" id="eye-icon"></i>
-          <p id="word-result"> <%= "#{word.translation}" %></p>
+          <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
         </div>
       </div>
 
@@ -18,8 +18,8 @@
 
       <div id="collapse-<%= index %>" class="collapse displayed-content">
         <i> (nature) </i>
-        <span id="definition"><%= "#{word.definition.first}" %></span>
-        <span id="example"> "<%= "#{word.example}" %>"</span>
+        <span id="definition"><%= word.definition.first %></span>
+        <span id="example"> "<%= word.example %>"</span>
         <span> Synonyms:</span>
         <% unless word.synonyms == [] %>
           <span id="synonyms"> <%= "#{word.synonyms.first.capitalize}, #{word.synonyms[1]}, #{word.synonyms[2]}" %> </span>

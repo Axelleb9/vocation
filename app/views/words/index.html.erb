@@ -22,7 +22,9 @@
 
 <div class="d-flex justify-content-between px-5 my-1 align-items-center">
   <%= @list.order ? "Français" : "Anglais" %>
-  <i class="fas fa-exchange-alt"></i>
+  <%= link_to list_order_path(@list), method: :put do %>
+    <i class="fas fa-exchange-alt"></i>
+  <% end %>
   <%= @list.order ? "Anglais" : "Français" %>
 </div>
 <div class="all-words">
