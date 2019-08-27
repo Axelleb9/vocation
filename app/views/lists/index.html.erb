@@ -1,11 +1,24 @@
-<% if policy(ListPolicy).create? %>
-  <%= link_to "New List", new_list_path %>
+<div class="container">	
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
 <% end %>
 
+<%= link_to "List of the week", "#", class: "btn btn-ghost" %>
 
-<% @lists.each do |list| %>
-  <% if policy(list).edit? %>
-    <%= link_to "Update", edit_list_path(list) %>
-  <% end %>
-<% end %>
+  <div class="content d-flex">
+  	<div class="card-container row">
+			<% @lists.each do |list| %>
+			  <div class="card-list col-5">
+			  <h6><%= link_to list.title, list_path(list) %></h6>
+			  <p><%= list.words.count %> words</p> 
+			  </div>
+			<% end %>  
+		</div>
+  </div>
+</div>
 
