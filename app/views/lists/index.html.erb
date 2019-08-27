@@ -14,8 +14,10 @@
   	<div class="card-container row">
 			<% @lists.each do |list| %>
 			  <div class="card-list col-5">
-			  <h6><%= link_to list.title, list_path(list) %></h6>
-			  <p><%= list.words.count %> words</p> 
+			  	<% if policy(list).show? %>
+			      <h6><%= link_to list.title, list_path(list) %></h6>
+			    <% end %>
+			    <p><%= list.words.count %> words</p> 
 			  </div>
 			<% end %>  
 		</div>

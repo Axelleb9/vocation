@@ -1,9 +1,12 @@
 class ListsController < ApplicationController
-  before_action :set_kitchen, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @lists = policy_scope(List)
+  end
+
+  def show
   end
 
   def new
@@ -48,7 +51,7 @@ class ListsController < ApplicationController
   end
 
   def set_list
-    @list = list.find(params[:id])
+    @list = List.find(params[:id])
     authorize @list
   end
 end
