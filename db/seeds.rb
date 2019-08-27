@@ -110,5 +110,3 @@ print `clear`
 
 puts "------------------ You can login to #{user.username}'s account with the following logs ------------------"
 puts "------------------------------ email: #{user.email} || password: #{user.password} ------------------------------"
-
-
