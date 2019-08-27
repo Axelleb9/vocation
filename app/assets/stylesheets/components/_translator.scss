@@ -17,3 +17,14 @@
   color: $brand;
   font-size: 14px;
 }
+
+#submit-translation {
+  transition: height .3s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.display-me {
+  height: 50px !important;
+  padding: 10px 0 !important;
+}

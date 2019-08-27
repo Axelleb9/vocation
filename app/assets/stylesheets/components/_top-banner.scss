@@ -6,5 +6,12 @@
 .top-banner {
   background-color: $brand;
   padding: 10px 0px;
+  height: 50px;
+  transition: height .5s ease !important;
   h5 {margin:0;}
+}
+
+.hide-me {
+  overflow: hidden;
+  height: 0;
 }
