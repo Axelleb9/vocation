@@ -1,17 +1,7 @@
 <%= render "shared/translator" %>
 
-<%= form_tag words_path, method: :get do %>
-  <%= text_field_tag :entry, "Enter text",  class: "translator-entry-input", data: {toggle: "collapse", target: "#search"}, aria: {expanded: "false"} %>
-  <div class="d-flex justify-content-between" id="submit-translation">
-    <h6>To do : add api for word proposition</h6>
-    <%= button_tag type: "submit" do %>
-      <i class="fas fa-arrow-circle-right"></i>
-    <% end %>
-  </div>
-<% end %>
-
 <% unless params[:entry].nil? %>
-  <div>
+  <div id="translation-answer">
     <p>word: <%= @entry %></p>
     <p>example: <%= @example %></p>
     <p>definition: <%= @meanings %></p>
@@ -21,17 +11,15 @@
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Add to List
       </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <% current_user.lists.each do |list| %>
-      <%= link_to list.title, words_path, class: "dropdown-item" %>
-    <% end %>
-  </div>
-</div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <% current_user.lists.each do |list| %>
+          <%= link_to list.title, words_path, class: "dropdown-item" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<!-- ------------------------------------------------------------------------------------------------- -->
 <div class="all-words">
   <%= render "shared/index-words" %>
 </div>
