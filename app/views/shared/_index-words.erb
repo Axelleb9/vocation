@@ -21,7 +21,11 @@
         <span id="definition"><%= "#{word.definition.first}" %></span>
         <span id="example"> "<%= "#{word.example}" %>"</span>
         <span> Synonyms:</span>
-        <span id="synonyms"> <%= "#{word.synonyms.first.capitalize}, #{word.synonyms[1]}, #{word.synonyms[2]}" %> </span>
+        <% unless word.synonyms == [] %>
+          <span id="synonyms"> <%= "#{word.synonyms.first.capitalize}, #{word.synonyms[1]}, #{word.synonyms[2]}" %> </span>
+        <% else %>
+          <span id="synonyms">no synonyms to display</span>
+        <% end %>
       </div>
     </div>
 
