@@ -1,6 +1,6 @@
 <div class="border-bottom">
   <div class="container-languages">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between activ-languages">
       <h6 class="text-center">Français</h6 class="text-center">
       <i class="fas fa-exchange-alt"></i>
       <h6 class="text-center">Anglais</h6 class="text-center">
@@ -8,19 +8,15 @@
   </div>
 </div>
 
-<div class="accordion">
   <%= form_tag words_path, method: :get do %>
     <%= text_field_tag :entry, "Enter text",  class: "translator-entry-input", data: {toggle: "collapse", target: "#search"}, aria: {expanded: "false"} %>
-  <div class="collapse" id="search">
-    <div class="d-flex justify-content-between py-3">
+    <div class="d-flex justify-content-between" id="submit-translation">
       <h6>To do : add api for word proposition</h6>
       <%= button_tag type: "submit" do %>
         <i class="fas fa-arrow-circle-right"></i>
       <% end %>
     </div>
-  </div>
   <% end %>
-</div>
 
 <% unless params[:entry].nil? %>
   <div>
