@@ -31,12 +31,12 @@ username: Faker::Name.first_name
 user.save!
 
 list = List.new(title: "List of the week", user: user)
-wl = WordsList.new(list: list)
-ww = UserWord.new(user: user)
 list.save!
 
 puts "calling the API"
 words.each_with_index do |word, index|
+  wl = WordsList.new(list: list)
+  ww = UserWord.new(user: user)
   puts "creating word n°#{index + 1}"
   callback = HTTP.get(set_url(info[0], word), :headers => headers )
   response = JSON.parse(callback)
@@ -68,10 +68,10 @@ words.each_with_index do |word, index|
   word.save!
   ww.word = word
   wl.word = word
+  ww.save!
+  wl.save!
 end
 
-ww.save!
-wl.save!
 
 puts "Using Faker to seed the DataBase"
 10.times do
@@ -82,10 +82,10 @@ puts "Using Faker to seed the DataBase"
   )
   list.save!
 
-  wl = WordsList.new(list: list)
-  ww = UserWord.new(user: user)
   puts "generating 15 random words for list #{list}"
   15.times do
+    wl = WordsList.new(list: list)
+    ww = UserWord.new(user: user)
     word = Word.new(
     entry: Faker::Creature::Cat.name,
     translation: Faker::Creature::Dog.name,
@@ -99,9 +99,9 @@ puts "Using Faker to seed the DataBase"
     word.save!
     ww.word = word
     wl.word = word
+    ww.save!
+    wl.save!
   end
-  wl.save!
-  ww.save!
   count += 1
 end
 
