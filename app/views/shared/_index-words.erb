@@ -12,11 +12,11 @@
       </div>
 
     <div id="accordion-<%= index %>">
-      <div class="display-more-content">
-        <a href="#" id="chevron-icon" class="fas fa-chevron-down display-content" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></a>
+      <div>
+        <i id="chevron-icon" class="fas fa-chevron-down display-content" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></i>
       </div>
 
-      <div id="collapse-<%= index %>" class="collapse displayed-content">
+      <div id="collapse-<%= index %>" class="collapse displayed-content" style="transition: height .8s ease">
         <i> (nature) </i>
         <span id="definition"><%= "#{word.definition.first}" %></span>
         <span id="example"> "<%= "#{word.example}" %>"</span>
