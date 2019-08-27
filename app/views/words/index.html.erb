@@ -6,9 +6,53 @@
       <h6 class="text-center">Anglais</h6 class="text-center">
     </div>
   </div>
+</div>
+
+<div class="accordion">
   <%= form_tag words_path, method: :get do %>
-    <%= text_field_tag :entry %>
+    <%= text_field_tag :entry, "Enter text",  class: "translator-entry-input", data: {toggle: "collapse", target: "#search"}, aria: {expanded: "false"} %>
+  <div class="collapse" id="search">
+    <div class="d-flex justify-content-between py-3">
+      <h6>To do : add api for word proposition</h6>
+      <%= button_tag type: "submit" do %>
+        <i class="fas fa-arrow-circle-right"></i>
+      <% end %>
+    </div>
+  </div>
   <% end %>
 </div>
 
+<% unless params[:entry].nil? %>
+  <div>
+    <p>word: <%= @entry %></p>
+    <p>example: <%= @example %></p>
+    <p>definition: <%= @meanings %></p>
+    <p>synonyms: <%= @synonyms %></p>
+    <p>difficulty: <%= @difficulty %>/10</p>
+  </div>
+<% end %>
+
 <!-- ------------------------------------------------------------------------------------------------- -->
+
+<% @words.each_with_index do |word, index| %>
+  <div class="word-card-container">
+
+      <div class="word-card">
+        <p class="word-entry"> <%= "#{word.entry}" %> </p>
+        <i class="fas fa-eye" id="eye-icon"></i>
+        <p class="word-entry"> <%= "#{word.translation}" %></p>
+      </div>
+
+    <div id="accordion-<%= index %>">
+      <div class="display-more-content">
+        <a href="#" id="chevron-icon" class="fas fa-chevron-down display-content" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></a>
+      </div>
+
+      <div id="collapse-<%= index %>" class="displayed-content collapse">
+        <h4 class="text-justify"> <%= "#{word.translation}"%></h4>
+        <p><%= "#{word.definition.first}" %></p>
+      </div>
+    </div>
+
+  </div>
+<% end %>
