@@ -12,3 +12,26 @@
 </div>
 
 <!-- ------------------------------------------------------------------------------------------------- -->
+
+<% @words.each_with_index do |word, index| %>
+  <div class="word-card-container">
+
+      <div class="word-card">
+        <p class="word-entry"> <%= "#{word.entry}" %> </p>
+        <i class="fas fa-eye" id="eye-icon"></i>
+        <p class="word-entry"> <%= "#{word.translation}" %></p>
+      </div>
+
+    <div id="accordion-<%= index %>">
+      <div class="display-more-content">
+        <a href="#" id="chevron-icon" class="fas fa-chevron-down display-content" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></a>
+      </div>
+
+      <div id="collapse-<%= index %>" class="displayed-content collapse">
+        <h4 class="text-justify"> <%= "#{word.translation}"%></h4>
+        <p><%= "#{word.definition.first}" %></p>
+      </div>
+    </div>
+
+  </div>
+<% end %>

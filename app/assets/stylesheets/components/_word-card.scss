@@ -41,6 +41,11 @@
   flex: 0 0 15%;
 }
 
+#chevron-icon {
+  text-decoration: none;
+  color: black;
+}
+
 .display-content {
 display: flex;
 justify-content: space-around;
@@ -50,10 +55,9 @@ padding-bottom: 2px;
 
 
 .displayed-content {
-  height: 100px;
   background: white;
   border-radius: 4px;
-  padding: 16px;
+  padding: 0px 16px 16px;
   word-break: break-word;
   font-size: 12px;
 }
