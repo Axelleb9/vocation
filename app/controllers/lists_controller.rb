@@ -6,6 +6,9 @@ class ListsController < ApplicationController
     @lists = policy_scope(List)
   end
 
+  def show
+  end
+
   def new
     @list = current_user.lists.new
     authorize @list
@@ -48,7 +51,7 @@ class ListsController < ApplicationController
   end
 
   def set_list
-    @list = list.find(params[:id])
+    @list = List.find(params[:id])
     authorize @list
   end
 end
