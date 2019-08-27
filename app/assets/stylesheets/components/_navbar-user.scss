@@ -1,16 +1,74 @@
 .navbar-user {
   background: white;
-  height: 40px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
-
-.go-home {
-
+  padding-top: 25px;
 }
 
 #home-icon {
   flex-grow: 0;
 }
+
+#home-title {
+  font-size: 10px;
+
+}
+
+#list-title {
+  font-size: 10px;
+  text-align: center;
+}
+
+#study-title {
+  font-size: 10px;
+}
+
+#chart-title {
+  font-size: 10px;
+}
+
+#user-title {
+  font-size: 10px;
+}
+
+.home-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+
+}
+
+.study-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.chart-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+
