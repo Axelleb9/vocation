@@ -1,5 +1,5 @@
 .word-card-container {
-  border-bottom: solid 1px grey;
+  border-bottom: solid 1px lightgrey;
   background: white;
   display: flex;
   flex-direction: column;
@@ -14,15 +14,16 @@
   align-items: center;
 }
 
+
 #word-entry {
   height: 24px;
   border-radius: 4px;
   text-align: center;
   color: $word-color;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
-  flex: 0 0 42%;
+  flex: 0 0 45%;
   word-break: break-word;
   word-wrap: break-word;
   font-size: 16px;
@@ -31,31 +32,37 @@
   margin: 0px;
 }
 
+.hide-show {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  padding: 2px;
+  align-items: center;
+  flex: 0 0 50%;
+}
+
 #word-result {
   height: 24px;
-  border-radius: 4px;
   text-align: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
-  flex: 0 0 42%;
   word-break: break-word;
   word-wrap: break-word;
   font-size: 16px;
   color: $word-color;
   font-weight: lighter;
-  padding: 4px;
   margin: 0px;
+  padding-left: 4px;
 }
 
 #eye-icon {
   height: 24px;
-  border-radius: 4px;
   display: flex;
   color: $word-color;
   justify-content: space-around;
   align-items: center;
-  flex: 0 0 8%;
+  padding-right: 8px;
 }
 
 #chevron-icon {
