@@ -1,4 +1,5 @@
 import "bootstrap";
-import { translate } from '../components/translate-word';
+// import { translate } from '../components/translate-word';
 
-translate()
+// translate()
+

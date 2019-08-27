@@ -1,11 +1,18 @@
 const infos = ["example/?", "difficulty/?", "definition/?", "reference/?"]
 const base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
 
+const host = "twinword-word-graph-dictionary.p.rapidapi.com"
+
+const headers = {
+  "x-rapidapi-host": host,
+  "twin_key": process.env.TWINKEY,
+  "RapidAPIProject": process.env.PROJECTID
+}
 
 
 const myInit = {
   method: 'GET',
-  headers: ENV,
+  headers: headers,
   mode: 'cors',
   cache: 'default'
 };
