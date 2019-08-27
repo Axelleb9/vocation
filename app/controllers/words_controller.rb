@@ -2,6 +2,7 @@ class WordsController < ApplicationController
 
   def index
     policy_scope(Word)
+    @words = current_user.lists.first.words
 
     unless params[:entry].nil?
 
@@ -18,7 +19,6 @@ class WordsController < ApplicationController
       }
 
       @entry = params[:entry]
-      @words = current_user.lists.first.words
 
       url = "#{base + info[0]}entry=#{@entry}"
       callback = HTTP.get(url, headers: headers)
