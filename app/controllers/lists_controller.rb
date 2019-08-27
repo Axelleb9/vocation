@@ -1,6 +1,9 @@
 class ListsController < ApplicationController
+  before_action :set_kitchen, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @lists = policy_scope(List).order(created_at: :desc)
+    @lists = policy_scope(List)
   end
 
   def new
