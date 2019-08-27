@@ -1,5 +1,4 @@
 .word-card-container {
-  height: 150px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   background: white;
   margin: 8px;
@@ -8,9 +7,8 @@
 }
 
 .word-card {
-  height: 100px;
+  height: 64px;
   background: white;
-  margin-top: 16px;
   border-radius: 4px;
   display: flex;
   justify-content: space-around;
@@ -19,23 +17,24 @@
 
 .word-entry {
   height: 50px;
-  width: 30%;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   border-radius: 4px;
   text-align: center;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex: 0 0 30%;
+  flex: 0 0 36%;
+  word-break: break-word;
   word-wrap: break-word;
+  font-size: 12px;
+  padding: 4px;
+  margin: 0px;
 }
 
 #eye-icon {
   height: 50px;
-  width: 15%;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   border-radius: 4px;
-  margin: 0px 0px 16px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -46,7 +45,9 @@
 display: flex;
 justify-content: space-around;
 align-items: center;
+padding-bottom: 2px;
 }
+
 
 .displayed-content {
   height: 100px;
@@ -54,4 +55,5 @@ align-items: center;
   border-radius: 4px;
   padding: 16px;
   word-break: break-word;
+  font-size: 12px;
 }
