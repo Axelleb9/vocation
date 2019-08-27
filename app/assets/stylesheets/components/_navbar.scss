@@ -1,16 +1,16 @@
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  background: #007AB3;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-
 .fa-globe {
   font-size: 28px;
-  color: #006192;
+  color: white;
 }
 
 .bcm-renter {
@@ -20,28 +20,37 @@
 }
 
 .fa-user-circle {
-  color: #484848;
-  font-size: 48px;
+  color: white;
+  font-size: 35px;
+   align-items: center;
+  justify-content: space-between;
 }
 
 .logo-title {
   display: flex;
   align-items: center;
+   justify-content: space-evenly;
 
+}
+
+.signin-menu {
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-brand-title {
   font-size: 29px;
   padding-right: 100px;
-  color: #007AB3;
+  color: white;
+
 }
 
 .logo-title h3 {
   font-family: 'Roboto';
-  color: #0078B6;
+  color: white;
   font-size: 22px;
   margin-right: 50px;
-}
+  }
 
 .nav-item {
   font-size: 20px;
@@ -64,4 +73,23 @@
   width: 100vw;
   top: 0px;
 }
+
+ .fa-bars {
+  color: white;
+  font-size: 25px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+#navbarSupportedContent a {
+  font-size: 15px;
+  color: white;
+}
+
+
+
+
+
 

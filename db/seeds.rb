@@ -99,8 +99,9 @@ puts "Using Faker to seed the DataBase"
     word.save!
     ww.word = word
     wl.word = word
-    wl.save!
     ww.save!
+    wl.save!
+
   end
   count += 1
 end
