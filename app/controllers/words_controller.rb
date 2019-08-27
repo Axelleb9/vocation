@@ -2,7 +2,7 @@ class WordsController < ApplicationController
 
   def index
     policy_scope(Word)
-    @words = current_user.lists.first.words
+    @list = current_user.lists.first
 
     return if params[:entry].nil?
 
