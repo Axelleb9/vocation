@@ -41,3 +41,13 @@
 .word-entry-area {
   position: relative;
 }
+
+#language-infos {
+  height: 68px;
+  transition: height .4s ease !important;
+}
+
+.hide-language {
+  height: 0px !important;
+  overflow: hidden;
+}

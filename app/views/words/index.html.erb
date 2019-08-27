@@ -1,32 +1,44 @@
-<%= render "shared/translator" %>
+<div class="fix-top">
+  <%= render "shared/translator" %>
 
-<% unless params[:entry].nil? %>
-  <div id="translation-answer">
-    <p>word: <%= @entry %></p>
-    <p>example: <%= @example %></p>
-    <p>definition: <%= @meanings %></p>
-    <p>synonyms: <%= @synonyms %></p>
-    <p>difficulty: <%= @difficulty %>/10</p>
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Add to List
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <% current_user.lists.each do |list| %>
-          <%= link_to list.title, words_path, class: "dropdown-item" %>
-        <% end %>
+  <% unless params[:entry].nil? %>
+    <div id="translation-answer">
+      <p>word: <%= @entry %></p>
+      <p>example: <%= @example %></p>
+      <p>definition: <%= @meanings %></p>
+      <p>synonyms: <%= @synonyms %></p>
+      <p>difficulty: <%= @difficulty %>/10</p>
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add to List
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <% current_user.lists.each do |list| %>
+            <%= link_to list.title, words_path, class: "dropdown-item" %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
-
-<div class="d-flex justify-content-between px-5 my-1 align-items-center">
-  <%= @list.order ? "Français" : "Anglais" %>
-  <%= link_to list_order_path(@list), method: :put do %>
-    <i class="fas fa-exchange-alt"></i>
   <% end %>
-  <%= @list.order ? "Anglais" : "Français" %>
+
+  <div id="language-infos">
+    <div class="d-flex justify-content-center my-3">
+      <div class="list-title">
+        <p><strong>List of the Week</strong></p>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between px-5 my-1 align-items-center">
+      <%= @list.order ? "Français" : "Anglais" %>
+      <%= link_to list_order_path(@list), method: :put do %>
+        <i class="fas fa-exchange-alt"></i>
+      <% end %>
+      <%= @list.order ? "Anglais" : "Français" %>
+    </div>
+
+  </div>
 </div>
+
 <div class="all-words">
   <%= render "shared/index-words" %>
 </div>
