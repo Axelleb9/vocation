@@ -1,3 +1,11 @@
+const example = document.getElementById("example");
+const synonyms = document.getElementById("synonyms");
+const nature = document.getElementById("nature");
+const definition = document.getElementById("definition");
+const translation = document.getElementById('translation');
+const entryArea = document.getElementById("word_entry");
+
+
 const initActionCable = () => {
   const action = document.getElementById('connect-actioncable');
   if (action) {
@@ -10,7 +18,15 @@ const initActionCable = () => {
 };
 
 const insertData = (data) => {
-  console.log(data)
-}
+  if (data["type"] === "example") {
+    example.innerHTML = data["detail"]
+  } else if (data["type"] === "definition") {
+    definition.innerHTML = data["detail"];
+    nature.innerHTML = data["natures"];
+    translation.innerHTML = data["translation"];
+  } else if (data["type"] === "synonyms") {
+    synonyms.innerHTML = data["detail"]
+  }
+};
 
 export { initActionCable };

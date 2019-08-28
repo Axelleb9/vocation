@@ -11,13 +11,13 @@ class FetchDefinitionJob < ApplicationJob
     definitions = response["meaning"].reject { |_k, v| v == "" }
     meanings = definitions.map { |_k, v| regex.match(v)[1] }
     natures = meanings.map { |i| regex2.match(i)[1].gsub(/\W/, '') }
-    send_details(meanings, user_id, natures)
+    send_details(meanings, user_id, natures, word)
     w = Word.find(word_id)
     w.update(definition: meanings, nature: natures)
   end
 
-  def send_details(detail, id, natures)
+  def send_details(detail, id, natures, translation)
     ActionCable.server.broadcast("word_details_user_#{id}",
-    { type: "definition", detail: detail, natures: natures })
+    { type: "definition", detail: detail, natures: natures, translation: translation })
   end
 end

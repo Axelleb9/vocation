@@ -1,26 +1,39 @@
 <div class="fix-top">
   <%= render "shared/translator" %>
 
-  <% unless @current_word.nil? %>
-    <div id="translation-answer">
-      <p>word: <%= @current_word.entry %></p>
-      <p>translation: <%= @current_word.translation %></p>
-      <p>example: <%= @current_word.example %></p>
-      <p>definition: <%= @current_word.definition %></p>
-      <p>synonyms: <%= @current_word.synonyms %></p>
-      <p>difficulty: <%= @current_word.difficulty %>/10</p>
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Add to List
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <% current_user.lists.each do |list| %>
-            <%= link_to list.title, words_path, class: "dropdown-item" %>
-          <% end %>
-        </div>
+  <% if @current_word.nil? %>
+      <div class="displayed-content">
+        <span id="translation"></span>
+        <span> <i id="nature"> </i> </span>
+        <span id="definition"></span>
+        <span id="example"></span>
+        <span> Synonyms:</span>
+        <span id="synonyms"></span>
       </div>
-    </div>
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
+  <% else %>
+      <div class="displayed-content">
+        <span id="translation"><%= @current_word.translation %></span>
+        <span> <i id="nature"><%= @current_word.nature %> </i> </span>
+        <span id="definition"><%= @current_word.definition %></span>
+        <span id="example"><%= @current_word.example %></span>
+        <span id="synonyms">
+          <% wordcount = @current_word.synonyms.count %>
+            <% if wordcount == 0 %>
+              No synonyms to display
+              <% else %>
+              <% @current_word.synonyms.each_with_index do |synonym, index| %>
+                <% if index == 0 %>
+                <%= "#{synonym.capitalize}," %>
+                <% elsif index == wordcount -1 %>
+                <%= "#{synonym}" %>
+                <% else %>
+                <%= "#{synonym}," %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </span>
+      </div>
   <% end %>
 
   <div id="language-infos">

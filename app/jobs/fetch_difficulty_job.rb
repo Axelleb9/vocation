@@ -9,11 +9,11 @@ class FetchDifficultyJob < ApplicationJob
     difficulty = response["ten_degree"]
     send_details(difficulty, user_id)
     w = Word.find(word_id)
-    w.update(difficulty: difficulty)
+    w.update!(difficulty: difficulty)
   end
 
   def send_details(detail, id)
     ActionCable.server.broadcast("word_details_user_#{id}",
-    { detail: detail })
+    { type: "difficulty", detail: detail })
   end
 end

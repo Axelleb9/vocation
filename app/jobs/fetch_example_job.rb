@@ -14,6 +14,6 @@ class FetchExampleJob < ApplicationJob
 
   def send_details(detail, id)
     ActionCable.server.broadcast("word_details_user_#{id}",
-    { detail: detail })
+    { type: "example", detail: detail })
   end
 end
