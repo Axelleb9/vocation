@@ -21,6 +21,8 @@ gem 'webpacker'
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
 
+gem 'acts_as_votable'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
