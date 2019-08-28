@@ -1,7 +1,14 @@
+.all-words {
+  background-color: black;
+  margin-top: 8px;
+}
+
+.linear-filter {
+  opacity: 0.8 !important;
+}
 .word-card-container {
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  border-bottom: solid 1px lightgrey;
   background: white;
-  margin: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -15,35 +22,61 @@
   align-items: center;
 }
 
-.word-entry {
-  height: 50px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+
+#word-entry {
+  height: 24px;
   border-radius: 4px;
   text-align: center;
+  color: $word-color;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
-  flex: 0 0 36%;
+  flex: 0 0 45%;
   word-break: break-word;
   word-wrap: break-word;
-  font-size: 12px;
-  padding: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 4px 4px 8px;
   margin: 0px;
 }
 
-#eye-icon {
-  height: 50px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
-  border-radius: 4px;
+.hide-show {
   display: flex;
+  flex-direction: row;
+  height: 24px;
+  padding: 2px;
+  align-items: center;
+  flex: 0 0 50%;
+}
+
+#word-result {
+  height: 24px;
+  text-align: center;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  word-break: break-word;
+  word-wrap: break-word;
+  font-size: 16px;
+  color: $word-color;
+  font-weight: lighter;
+  margin: 0px;
+  padding-left: 4px;
+}
+
+#eye-icon {
+  height: 24px;
+  display: flex;
+  color: $word-color;
   justify-content: space-around;
   align-items: center;
-  flex: 0 0 15%;
+  padding-right: 8px;
 }
 
 #chevron-icon {
   text-decoration: none;
   color: black;
+  color: $brand;
 }
 
 .display-content {
@@ -53,11 +86,32 @@ align-items: center;
 padding-bottom: 2px;
 }
 
-
 .displayed-content {
   background: white;
-  border-radius: 4px;
   padding: 0px 16px 16px;
   word-break: break-word;
   font-size: 12px;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+
+    & #definition {
+      margin: 0px !important;
+    }
+
+    & i {
+      font-size: 8px;
+      color: grey;
+    }
+
+    & #example {
+      font-size: 10px;
+      color: grey;
+      padding: 0px 0px 0px 16px;
+      margin-bottom: 8px;
+    }
+    & #synonyms {
+      color: grey;
+      padding: 0px 0px 0px 16px;
+    }
 }

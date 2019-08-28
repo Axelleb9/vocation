@@ -1,0 +1,22 @@
+<div class="border-bottom">
+  <div class="container-languages">
+    <div class="d-flex justify-content-between activ-languages">
+      <h6 class="text-center">Français</h6 class="text-center">
+      <i class="fas fa-arrow-right"></i>
+      <h6 class="text-center">Anglais</h6 class="text-center">
+    </div>
+  </div>
+</div>
+
+<%= form_tag words_path, method: :get do %>
+  <div class="word-entry-area">
+  <div><i class="fas fa-times d-none"></i></div>
+    <%= text_field_tag :entry, "Enter text",  class: "translator-entry-input", data: {toggle: "collapse", target: "#search"}, aria: {expanded: "false"} %>
+  </div>
+  <div class="d-flex justify-content-between" id="submit-translation">
+    <h6>To do : add api for word proposition</h6>
+    <%= button_tag type: "submit" do %>
+      <i class="fas fa-arrow-circle-right"></i>
+    <% end %>
+  </div>
+<% end %>

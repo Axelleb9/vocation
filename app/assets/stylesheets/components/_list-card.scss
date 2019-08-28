@@ -1,0 +1,19 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding-bottom: 8px;
+
+}
+
+.card-list{
+ box-shadow: 0 0 15px rgba(0,0,0,0.2);
+ border-radius: 5px;
+ margin: 8px;
+}
+
+.card-list h6 {
+  text-decoration: none;
+}
+
+
