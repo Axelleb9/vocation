@@ -14,7 +14,7 @@
 }
 
 .word-card {
-  height: 64px;
+  height: 32px;
   background: white;
   border-radius: 4px;
   display: flex;
@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: row;
   height: 24px;
-  padding: 2px;
+  padding: 4px 2px 0px;
   align-items: center;
   flex: 0 0 50%;
 }
@@ -91,6 +91,7 @@ display: flex;
 justify-content: space-around;
 align-items: center;
 padding-bottom: 2px;
+height: 24px;
 }
 
 
