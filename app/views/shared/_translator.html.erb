@@ -11,7 +11,7 @@
 <%= simple_form_for @word do |f| %>
   <div class="word-entry-area">
   <div><i class="fas fa-times d-none"></i></div>
-    <%= f.input :entry, input_html: { value: "" }, class: "translator-entry-input", data: {toggle: "collapse", target: "#search"}, aria: {expanded: "false"}, label: false  %>
+    <%= f.input :entry, input_html: { value: "" }, class: "translator-entry-input", label: false  %>
   </div>
   <div class="d-flex justify-content-between" id="submit-translation">
     <h6>To do : add api for word proposition</h6>

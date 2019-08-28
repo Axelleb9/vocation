@@ -1,23 +1,29 @@
 <div class="fix-top">
   <%= render "shared/translator" %>
 
-  <% unless params[:entry].nil? %>
-    <div id="translation-answer">
-      <p>word: <%= @entry %></p>
-      <p>example: <%= @example %></p>
-      <p>definition: <%= @meanings %></p>
-      <p>synonyms: <%= @synonyms %></p>
-      <p>difficulty: <%= @difficulty %>/10</p>
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Add to List
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <% current_user.lists.each do |list| %>
-            <%= link_to list.title, words_path, class: "dropdown-item" %>
+  <% unless @current_word.nil? %>
+    <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
+    <div class="displayed-content">
+      <span id="translation"><%= @current_word.translation %></span>
+      <span> <i id="nature"><%= @current_word.nature %> </i> </span>
+      <span id="definition"><%= @current_word.definition %></span>
+      <span id="example"><%= @current_word.example %></span>
+      <span id="synonyms">
+        <% wordcount = @current_word.synonyms&.count %>
+          <% if wordcount == 0 %>
+            No synonyms to display
+            <% else %>
+            <% @current_word.synonyms&.each_with_index do |synonym, index| %>
+              <% if index == 0 %>
+              <%= "#{synonym.capitalize}," %>
+              <% elsif index == wordcount -1 %>
+              <%= "#{synonym}" %>
+              <% else %>
+              <%= "#{synonym}," %>
+              <% end %>
+            <% end %>
           <% end %>
-        </div>
-      </div>
+      </span>
     </div>
   <% end %>
 

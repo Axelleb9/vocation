@@ -23,12 +23,4 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)
   end
-
-  def headers
-    {
-      "x-rapidapi-host" => ENV["HOST"],
-      "x-rapidapi-key" => ENV["TWINKEY"],
-      "RapidAPIProject" => ENV["PROJECTID"]
-    }
-  end
 end
