@@ -1,13 +1,14 @@
 <div class="fix-top">
   <%= render "shared/translator" %>
 
-  <% unless params[:entry].nil? %>
+  <% unless @current_word.nil? %>
     <div id="translation-answer">
-      <p>word: <%= @entry %></p>
-      <p>example: <%= @example %></p>
-      <p>definition: <%= @meanings %></p>
-      <p>synonyms: <%= @synonyms %></p>
-      <p>difficulty: <%= @difficulty %>/10</p>
+      <p>word: <%= @current_word.entry %></p>
+      <p>translation: <%= @current_word.translation %></p>
+      <p>example: <%= @current_word.example %></p>
+      <p>definition: <%= @current_word.definition %></p>
+      <p>synonyms: <%= @current_word.synonyms %></p>
+      <p>difficulty: <%= @current_word.difficulty %>/10</p>
       <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Add to List

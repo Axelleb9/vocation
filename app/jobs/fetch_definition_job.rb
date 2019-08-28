@@ -1,11 +1,17 @@
 class FetchDefinitionJob < ApplicationJob
   queue_as :default
+  BASE_URL = "https://twinword-word-graph-dictionary.p.rapidapi.com/definition/?"
 
-  def perform(url)
-    # Do something later
+  def perform(word, user_id, word_id)
+    regex = /(^.*$)/
+    regex2 = /(\(.{3}\))/
+    url = BASE_URL + "entry=#{word}"
     callback = HTTP.get(url, headers: headers)
     response = JSON.parse(callback)
     definitions = response["meaning"].reject { |_k, v| v == "" }
-    @meanings = definitions.map { |_k, v| regex.match(v)[1] }
+    meanings = definitions.map { |_k, v| regex.match(v)[1] }
+    natures = meanings.map { |i| regex2.match(i)[1].gsub(/\W/, '') }
+    w = Word.find(word_id)
+    w.update(definition: meanings, nature: natures)
   end
 end

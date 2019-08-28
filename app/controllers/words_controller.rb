@@ -1,33 +1,29 @@
 class WordsController < ApplicationController
-    skip_after_action :verify_authorized, only: [:change_order]
+    skip_after_action :verify_authorized, only: [:change_order, :create]
 
   def index
     policy_scope(Word)
     @list = current_user.lists.first
     @word = Word.new
+
+    @current_word = Word.find(params[:word_id]) if params[:word_id].present?
   end
 
   def create
-    @entry = translate_word(params_word[:entry])
-    TwinApiCallJob.perform_later(@entry)
-    regex = /(^.*$)/
-    base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
-    infos = ["example/?", "difficulty/?", "definition/?", "reference/?"]
-
-
-    infos.each_with_index do |info, index|
-      url = "#{base + info}entry=#{@entry}"
-
-      case index
-      when 0 then FetchExampleJob.perform_later(url)
-      when 1 then FetchDifficultyJob.perform_later(url)
-      when 2 then FetchDefinitionJob.perform_later(url)
-        definitions = response["meaning"].reject { |_k, v| v == "" } # clean les key vides
-        @meanings = definitions.map { |_k, v| regex.match(v)[1] }
-      when 3 then FetchSynonymsJob.perform_later(url)
-        @synonyms = response["relation"]["broad_terms"].split(',').first(3)
-      end
+    word = Word.find_by(entry: params_word[:entry])
+    if word.nil?
+      translation = translate_word(params_word[:entry])
+      word = Word.new(
+        entry: params_word[:entry],
+        translation: translation
+      )
+      word.save
+      FetchExampleJob.perform_later(translation, current_user.id, word.id)
+      FetchDifficultyJob.perform_later(translation, current_user.id, word.id)
+      FetchDefinitionJob.perform_later(translation, current_user.id, word.id)
+      FetchSynonymsJob.perform_later(translation, current_user.id, word.id)
     end
+    redirect_to words_path(word_id: word.id)
   end
 
   def change_order
