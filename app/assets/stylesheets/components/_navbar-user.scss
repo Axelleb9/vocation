@@ -38,17 +38,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  :hover {
-    text-decoration: none;
-  }
 }
+
+a.home-menu.icon-brand-color {
+
+  text-decoration: none;
+}
+
 
 .list-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
+}
 
+a.list-menu.icon-brand-color {
+  text-decoration: none;
 }
 
 .study-menu {
@@ -58,6 +63,10 @@
 
 }
 
+a.study-menu.icon-brand-color {
+  text-decoration: none;
+}
+
 .chart-menu {
   display: flex;
   flex-direction: column;
@@ -65,14 +74,21 @@
 
 }
 
+a.chart-menu.icon-brand-color {
+  text-decoration: none;
+}
 .user-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
+a.user-menu.icon-brand-color {
+  text-decoration: none;
+}
 
-.icon-red {
-  color: red;
+
+.icon-brand-color {
+  color: #0078B6;
 }
 
