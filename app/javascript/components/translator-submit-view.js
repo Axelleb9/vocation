@@ -37,9 +37,7 @@ const undisplaySubmit = () => {
 
 const closeWithCross = () => {
   cross.addEventListener('click', (event) => {
-    if (entryArea.value === "") {
-      entryArea.value = "Enter text"
-    };
+    entryArea.value = "Enter text";
     cross.classList.add('d-none');
     lang.classList.remove('hide-language');
     submitArea.classList.remove('display-me');
