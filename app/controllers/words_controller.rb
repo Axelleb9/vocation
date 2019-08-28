@@ -4,14 +4,17 @@ class WordsController < ApplicationController
   def index
     policy_scope(Word)
     @list = current_user.lists.first
+    @word = Word.new
+  end
 
-    return if params[:entry].nil?
-
-    @entry = translate_word(params[:entry])
-
+  def create
+    @entry = translate_word(params[:word][:entry])
+    authorize @entry
+    # TwinwordJob.perform_later(@entry)
     regex = /(^.*$)/
     base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
     infos = ["example/?", "difficulty/?", "definition/?", "reference/?"]
+
 
     infos.each_with_index do |info, index|
       url = "#{base + info}entry=#{@entry}"

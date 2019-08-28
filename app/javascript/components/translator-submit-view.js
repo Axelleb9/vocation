@@ -1,4 +1,4 @@
-const entryArea = document.getElementById("entry");
+const entryArea = document.getElementById("word_entry");
 const submitArea = document.getElementById("submit-translation");
 const banner = document.querySelector(".top-banner");
 const cards = document.querySelectorAll('.word-card-container');

@@ -40,6 +40,10 @@
 
 .word-entry-area {
   position: relative;
+  input {
+    height:70px;
+    border-radius: 0;
+  }
 }
 
 #language-infos {
