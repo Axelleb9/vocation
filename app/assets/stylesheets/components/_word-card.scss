@@ -11,6 +11,7 @@
   background: white;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .word-card {
@@ -20,10 +21,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 6px 0px;
 }
 
 #word-entry {
-  height: 24px;
   border-radius: 4px;
   text-align: center;
   color: $word-color;
@@ -35,24 +36,24 @@
   word-wrap: break-word;
   font-size: 16px;
   font-weight: bold;
-  padding: 4px 4px 4px 8px;
-  margin: 0px;
+  padding: 4px 4px 0px 8px;
+  margin-bottom: 4px;
 }
 
 .hide-show {
   display: flex;
   flex-direction: row;
-  height: 24px;
   padding: 4px 2px 0px;
   align-items: center;
   flex: 0 0 50%;
+  margin-bottom: 4px;
 }
 
 #word-result {
-  height: 24px;
   text-align: center;
   display: flex;
   justify-content: start;
+  flex: 0 0 75%;
   align-items: center;
   word-break: break-word;
   word-wrap: break-word;
@@ -77,27 +78,30 @@
 }
 
 #rotate-me {
-  -webkit-transition: -webkit-transform 1s;
+  -webkit-transition: -webkit-transform 0.8s;
   -webkit-transform: rotate(180deg);
 }
 
 #unrotate-me {
-  -webkit-transition: -webkit-transform 1s;
+  -webkit-transition: -webkit-transform 0.8s;
   -webkit-transform: rotate(0deg);
 }
 
 .display-content {
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding-bottom: 2px;
-height: 24px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 4px;
+    height: 36px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    justify-content: flex-end;
 }
 
 
 .displayed-content {
   background: white;
-  padding: 0px 16px 16px;
+  padding: 4px 16px 16px;
   word-break: break-word;
   font-size: 12px;
   font-weight: lighter;
