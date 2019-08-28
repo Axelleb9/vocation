@@ -22,7 +22,7 @@ class ListsController < ApplicationController
     authorize @list
 
     if @list.save
-      redirect_to @list
+      redirect_to list_path(list)
     else
       render :new
     end
@@ -32,7 +32,7 @@ class ListsController < ApplicationController
     @list.update(list_params)
     if @list.save
 
-      redirect_to @list
+      redirect_to list_path(list)
     else
       render :edit
     end
