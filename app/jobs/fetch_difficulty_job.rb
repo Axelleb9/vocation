@@ -6,7 +6,14 @@ class FetchDifficultyJob < ApplicationJob
     url = BASE_URL + "entry=#{word}"
     callback = HTTP.get(url, headers: headers)
     response = JSON.parse(callback)
+    difficulty = response["ten_degree"]
+    send_details(difficulty, user_id)
     w = Word.find(word_id)
-    w.update(difficulty: response["ten_degree"])
+    w.update(difficulty: difficulty)
+  end
+
+  def send_details(detail, id)
+    ActionCable.server.broadcast("word_details_user_#{id}",
+    { detail: detail })
   end
 end

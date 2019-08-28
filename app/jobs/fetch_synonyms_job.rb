@@ -7,7 +7,13 @@ class FetchSynonymsJob < ApplicationJob
     callback = HTTP.get(url, headers: headers)
     response = JSON.parse(callback)
     synonyms = response["relation"]["broad_terms"].split(',').first(3)
+    send_details(synonyms, user_id)
     w = Word.find(word_id)
     w.update(synonyms: synonyms)
+  end
+
+  def send_details(detail, id)
+    ActionCable.server.broadcast("word_details_user_#{id}",
+    { detail: detail })
   end
 end
