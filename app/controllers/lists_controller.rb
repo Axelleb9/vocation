@@ -4,6 +4,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = policy_scope(List)
+    @list = List.new
   end
 
   def show
@@ -18,13 +19,14 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = current_user.lists.new(list_params)
+    @list = List.new(list_params)
+    @list.user = current_user
     authorize @list
 
     if @list.save
-      redirect_to @list
+      redirect_to lists_path
     else
-      render :new
+      render :index
     end
   end
 
@@ -32,9 +34,9 @@ class ListsController < ApplicationController
     @list.update(list_params)
     if @list.save
 
-      redirect_to @list
+      redirect_to lists_path
     else
-      render :edit
+      render :index
     end
   end
 
@@ -47,7 +49,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :description, :user_id)
+    params.require(:list).permit(:title)
   end
 
   def set_list
