@@ -6,6 +6,7 @@ host = "twinword-word-graph-dictionary.p.rapidapi.com"
 twin_key = ENV["TWINKEY"]
 project_id = ENV["PROJECTID"]
 regex = /(^.*$)/
+regex2 = /(\(.{3}\))/
 
 headers = {
   "x-rapidapi-host" => host,
@@ -14,7 +15,7 @@ headers = {
 }
 
 info = ["example/?", "difficulty/?", "definition/?", "reference/?"]
-words = %w(spinster chair glimpse peep warble show sheep dress hat grade)
+words = %w(peur autre confiance mouton disque verre sang fumer savoir temps)
 
 def set_url(category, word)
   base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
@@ -35,31 +36,40 @@ list.save!
 
 puts "calling the API"
 words.each_with_index do |word, index|
+  base = "https://translate.yandex.net/api/v1.5/tr.json/translate?"
+  key = ENV["YANKEY"]
+  languages = "fr-en"
+  url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
+  callback = JSON.parse(HTTP.get(url))
+  translation = callback["text"].first
+
   wl = WordsList.new(list: list)
   ww = UserWord.new(user: user)
   puts "creating word n°#{index + 1}"
-  callback = HTTP.get(set_url(info[0], word), :headers => headers )
+  callback = HTTP.get(set_url(info[0], translation), :headers => headers )
   response = JSON.parse(callback)
   example = response['example'].first # retourne un array d'examples
 
-  callback = HTTP.get(set_url(info[1], word), :headers => headers )
+  callback = HTTP.get(set_url(info[1], translation), :headers => headers )
   response = JSON.parse(callback)
   difficulty = response["ten_degree"]
 
-  callback = HTTP.get(set_url(info[2], word), :headers => headers )
+  callback = HTTP.get(set_url(info[2], translation), :headers => headers )
   response = JSON.parse(callback)
   definitions = response["meaning"].reject { |k, v| v == "" } # clean les key vides
   meanings = definitions.map { |k, v| regex.match(v)[1] } # ne prend que la premiere def par type (nom, verbe, adverbe, adjectif)
+  natures = meanings.map { |i| regex2.match(i)[1].gsub(/\W/, '') }
 
-  callback = HTTP.get(set_url(info[3], word), :headers => headers )
+  callback = HTTP.get(set_url(info[3], translation), :headers => headers )
   response = JSON.parse(callback)
   synonyms = response["relation"]["broad_terms"].split(',').first(3)
 
+
   word = Word.new(
   entry: word,
-  translation: "inc",
+  translation: translation,
   definition: meanings,
-  nature: "inc",
+  nature: natures,
   difficulty: difficulty,
   visible: true,
   example: example,

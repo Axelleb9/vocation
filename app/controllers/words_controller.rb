@@ -1,8 +1,9 @@
 class WordsController < ApplicationController
+    skip_after_action :verify_authorized, only: [:change_order]
 
   def index
     policy_scope(Word)
-    @words = current_user.lists.first.words
+    @list = current_user.lists.first
 
     return if params[:entry].nil?
 
@@ -25,6 +26,12 @@ class WordsController < ApplicationController
       when 3 then @synonyms = response["relation"]["broad_terms"].split(',').first(3)
       end
     end
+  end
+
+  def change_order
+    @list = List.find(params[:list_id])
+    @list.order ? @list.update(order: false) : @list.update(order: true)
+    redirect_to words_path
   end
 
   private
