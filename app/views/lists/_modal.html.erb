@@ -9,8 +9,7 @@
       </div>
       <%= simple_form_for @list do |f| %>
         <div class="modal-body">
-          <%= f.input :title, :input_html => { :value => list.title} %>
-          <%= f.input :title %>
+          <%= f.input :title, :input_html => { :value => @list.title} %>
         </div>
         <div class="modal-footer">
           <%= f.submit "Save", id: "btnsave" %>
