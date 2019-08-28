@@ -6,8 +6,8 @@
   justify-content: space-around;
   align-items: center;
   padding-top: 25px;
-  a{
-    color: grey;
+  a {
+    color: #414141;
     text-decoration: none;
   }
 }
@@ -93,16 +93,10 @@ a.user-menu.icon-brand-color {
 
 
 .icon-brand-color {
-  i {
+  i, p {
      color: #0078B6;
   }
-
-  p
-  {
-     color: #0078B6;
-  }
-
-  }
+}
 
 
 
