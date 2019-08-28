@@ -27,4 +27,27 @@
 .display-me {
   height: 50px !important;
   padding: 10px 0 !important;
+  box-shadow: 0px 20px 50px rgba(0,0,0, 0.4 ) !important;
+}
+
+.fa-times {
+  position: absolute;
+  font-size: 16px;
+  color: $word-color;
+  top: 10px;
+  right: 10px;
+}
+
+.word-entry-area {
+  position: relative;
+}
+
+#language-infos {
+  height: 68px;
+  transition: height .4s ease !important;
+}
+
+.hide-language {
+  height: 0px !important;
+  overflow: hidden;
 }

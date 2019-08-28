@@ -1,16 +1,94 @@
 .navbar-user {
   background: white;
-  height: 40px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
-
-.go-home {
-
+  padding-top: 25px;
 }
 
 #home-icon {
   flex-grow: 0;
 }
+
+#home-title {
+  font-size: 10px;
+
+}
+
+#list-title {
+  font-size: 10px;
+  text-align: center;
+}
+
+#study-title {
+  font-size: 10px;
+}
+
+#chart-title {
+  font-size: 10px;
+}
+
+#user-title {
+  font-size: 10px;
+}
+
+.home-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a.home-menu.icon-brand-color {
+
+  text-decoration: none;
+}
+
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a.list-menu.icon-brand-color {
+  text-decoration: none;
+}
+
+.study-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+a.study-menu.icon-brand-color {
+  text-decoration: none;
+}
+
+.chart-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+a.chart-menu.icon-brand-color {
+  text-decoration: none;
+}
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+a.user-menu.icon-brand-color {
+  text-decoration: none;
+}
+
+
+.icon-brand-color {
+  color: #0078B6;
+}
+

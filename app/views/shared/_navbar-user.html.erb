@@ -1,7 +1,35 @@
 <div class="navbar-user fixed-bottom">
-  <div>
+
+    <%= link_to words_path, class: "home-menu  #{'icon-brand-color' if current_page?(words_path)}" do %>
     <i id= "home-icon" class="fas fa-home"></i>
-  </div>
+    <p id= "home-title">Home</p>
+    <% end %>
+
+    <%= link_to lists_path, class: "list-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
+    <i id= "list-icon" class="fas fa-list"></i>
+    <p id= "list-title">Lists</p>
+    <% end %>
+
+    <%= link_to lists_path, class: "study-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
+    <i id= "study-icon" class="fas fa-graduation-cap"></i>
+    <p id= "study-title">Study</p>
+    <% end %>
+
+    <%= link_to lists_path, class: "chart-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
+    <i id= "chart-icon" class="fas fa-chart-line"></i>
+    <p id= "chart-title">Results</p>
+    <% end %>
+
+    <%= link_to user_session_path, class: "user-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
+    <i id= "user-icon" class="fas fa-user"></i>
+    <p id= "user-title">Login</p>
+    <% end %>
+
+
+
+
+
+
 
 <!-- faire une div par icon, avec un id pour chaque icon si nécessaire et éventuellement faire une class pour chaque div contenant les icons, qqch comme:
 
