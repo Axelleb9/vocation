@@ -6,15 +6,28 @@
 
 
       <div class="hide-show">
-        <i class="fas fa-eye" id="eye-icon"></i>
-        <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
+        <% if word.votes_for.where(voter_id: current_user.id).empty? %>
+         <%= link_to word_close_eye_path(word) do  %>
+          <i class="fas fa-eye"></i>
+         <% end %>
+         <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
+        <% elsif word.votes_for.where(voter_id: current_user.id).first.vote_flag == true %>
+          <%= link_to word_close_eye_path(word) do  %>
+            <i class="fas fa-eye"></i>
+          <% end %>
+          <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
+          <% else %>
+          <%= link_to word_open_eye_path(word) do  %>
+            <i class="fas fa-eye-slash"></i>
+         <% end %>
+        <% end %>
       </div>
     </div>
 
     <div id="accordion-<%= index %>">
       <div class="display-div">
         <div class="display-content" data-id="<%= index %>" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false" >
-          <i id="test"  class="fas fa-chevron-down chevron-icon" ></i>
+          <i id="test" class="fas fa-chevron-down chevron-icon" ></i>
         </div>
       </div>
 

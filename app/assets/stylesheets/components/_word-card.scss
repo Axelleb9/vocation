@@ -64,12 +64,13 @@
   padding-left: 4px;
 }
 
-#eye-icon {
-  height: 24px;
-  display: flex;
+.fa-eye {
   color: $word-color;
-  justify-content: space-around;
-  align-items: center;
+  padding-right: 8px;
+}
+
+.fa-eye-slash {
+  color: $word-color;
   padding-right: 8px;
 }
 
