@@ -1,10 +1,24 @@
-// const displayContent = document.querySelector(".display-content");
-// const chevronIcon = document.getElementById("chevron-icon");
+const displayDiv = document.querySelector(".display-div");
+const chevronIcon = document.querySelectorAll(".chevron-icon");
 
-// const rotateMe = () => {
-//   displayContent.addEventListener("focus", (event) => {
-//     chevronIcon.classList.add("rotate-me");
-//   });
-// }
 
-// export { rotateMe }
+
+const rotateMe = () => {
+  chevronIcon.forEach(function(element) {
+    element.addEventListener("click", (event) => {
+      if (event.currentTarget.id === "test") {
+        event.currentTarget.id = "rotate-me";
+      } else if (event.currentTarget.id === "rotate-me") {
+        event.currentTarget.id = "";
+        event.currentTarget.id = "unrotate-me";
+      } else {
+        event.currentTarget.id = "rotate-me";
+      }
+
+    });
+  });
+
+}
+
+
+export { rotateMe }

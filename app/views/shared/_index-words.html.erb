@@ -12,8 +12,8 @@
       </div>
 
     <div id="accordion-<%= index %>">
-      <div>
-        <i id="chevron-icon" class="fas fa-chevron-down display-content" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></i>
+      <div class="display-div">
+        <i id="test" data-id="<%= index %>" class="fas fa-chevron-down display-content chevron-icon" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></i>
       </div>
 
       <div id="collapse-<%= index %>" class="collapse displayed-content" style="transition: height .8s ease">
@@ -21,7 +21,20 @@
         <span id="definition"><%= "#{word.definition.first}" %></span>
         <span id="example"> "<%= "#{word.example}" %>"</span>
         <span> Synonyms:</span>
-        <span id="synonyms"> <%= "#{word.synonyms.first.capitalize}, #{word.synonyms[1]}, #{word.synonyms[2]}" %> </span>
+        <span id="synonyms">
+          <% wordcount = word.synonyms.count %>
+          <% word.synonyms.each_with_index do |synonym, index| %>
+            <% if index == 0 %>
+            <%= "#{synonym.capitalize}," %>
+            <% elsif index == wordcount -1 %>
+            <%= "#{synonym}" %>
+            <% else %>
+            <%= "#{synonym}," %>
+            <% end %>
+          <% end %>
+
+        </span>
+
       </div>
     </div>
 

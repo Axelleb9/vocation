@@ -64,14 +64,19 @@
   padding-right: 8px;
 }
 
-#chevron-icon{
+.chevron-icon{
   color: $brand;
 }
 
-// .rotate-me {
-//   // -webkit-transition: -webkit-transform 1s;
-//   // -webkit-transform: rotate(180deg);
-// }
+#rotate-me {
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-transform: rotate(180deg);
+}
+
+#unrotate-me {
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-transform: rotate(0deg);
+}
 
 .display-content {
 display: flex;
