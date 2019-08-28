@@ -24,4 +24,12 @@ class WordPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def open_eye?
+    true
+  end
+
+  def close_eye?
+    true
+  end
 end

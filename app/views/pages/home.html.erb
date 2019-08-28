@@ -4,11 +4,24 @@
     <h1>Learn a new language!</h1>
     <p>Vocation brings you an efficient method to learn vocabulary</p>
     <div style='width:100%' class='text-center'>
-      <button type="button" class="btn btn-primary text-center">Sign Up</button>
+      <%= link_to "Sign Up", new_user_session_path, class: "btn btn-primary text-center" %>
+
 
     </div>
   </div>
 </div>
 
 
-
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    Vocation Service Company
+    © 2019. All rights reserved
+  </div>
+</div>

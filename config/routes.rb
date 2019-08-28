@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :words, only: [:new, :create, :delete, :index]
+  resources :words, only: [:new, :create, :delete, :index] do
+    get "open_eye"
+    get "close_eye"
+  end
+
   resources :lists do
     put "order", to: 'words#change_order'
   end

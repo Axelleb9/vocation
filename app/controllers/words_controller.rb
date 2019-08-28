@@ -32,6 +32,20 @@ class WordsController < ApplicationController
     redirect_to words_path
   end
 
+  def open_eye
+    @word = Word.find(params[:word_id])
+    @word.liked_by current_user
+    authorize @word
+    redirect_to words_path
+  end
+
+  def close_eye
+    @word = Word.find(params[:word_id])
+    @word.downvote_from current_user
+    authorize @word
+    redirect_to words_path
+  end
+
   private
 
   def params_word

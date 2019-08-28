@@ -6,6 +6,10 @@
   justify-content: space-around;
   align-items: center;
   padding-top: 25px;
+  a {
+    color: #414141;
+    text-decoration: none;
+  }
 }
 
 #home-icon {
@@ -89,6 +93,10 @@ a.user-menu.icon-brand-color {
 
 
 .icon-brand-color {
-  color: #0078B6;
+  i, p {
+     color: #0078B6;
+  }
 }
+
+
 

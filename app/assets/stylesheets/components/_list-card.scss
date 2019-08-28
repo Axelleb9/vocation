@@ -8,16 +8,11 @@
 .card-list{
   text-align: left;
   border-bottom: 1px solid lightgrey;
-  margin: 10px;
+  margin: 19px;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 19px;
 }
-
-.card-list h6 {
-  text-decoration: none; 
-  font-weight: bolder;
-}
-
 
 #title-lists {
 	margin-top: 16px;
@@ -44,3 +39,41 @@
   opacity: 1;
   border-bottom: 3px solid #555555;
 }
+
+.listcard {
+  display: flex;
+  align-items: center;
+  h6 {
+    text-decoration: none; 
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    margin-left: 8px;
+    color: $word-color;
+    font-size: 12px;
+  }
+}
+
+#highpage {
+  color: $brand;
+  font-size: 30px;
+  padding-bottom: 14px;
+  padding-right: 8px;
+  margin-top: 8px;
+}
+
+.calltoaction {
+  display: flex;
+  justify-content: space-between;
+}
+
+// #btnsave {
+//   background-color: $brand;
+//   color: white;
+//   padding: 12px 20px;
+//   font-size: 16px;
+//   margin: 0px 10px;
+//   border-radius: 10px;
+//   text-decoration: none;
+// }
