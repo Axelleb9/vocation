@@ -22,7 +22,6 @@
   align-items: center;
 }
 
-
 #word-entry {
   height: 24px;
   border-radius: 4px;
@@ -73,10 +72,18 @@
   padding-right: 8px;
 }
 
-#chevron-icon {
-  text-decoration: none;
-  color: black;
+.chevron-icon{
   color: $brand;
+}
+
+#rotate-me {
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-transform: rotate(180deg);
+}
+
+#unrotate-me {
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-transform: rotate(0deg);
 }
 
 .display-content {
@@ -85,6 +92,7 @@ justify-content: space-around;
 align-items: center;
 padding-bottom: 2px;
 }
+
 
 .displayed-content {
   background: white;

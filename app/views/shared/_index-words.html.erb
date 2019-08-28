@@ -1,0 +1,46 @@
+<% @list.words.each_with_index do |word, index| %>
+  <div class="word-card-container">
+
+      <div class="word-card">
+        <p id="word-entry"> <%= @list.order ? word.entry : word.translation %> </p>
+
+
+        <div class="hide-show">
+          <i class="fas fa-eye" id="eye-icon"></i>
+          <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
+        </div>
+      </div>
+
+    <div id="accordion-<%= index %>">
+      <div class="display-div">
+        <i id="test" data-id="<%= index %>" class="fas fa-chevron-down display-content chevron-icon" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false"></i>
+      </div>
+
+      <div id="collapse-<%= index %>" class="collapse displayed-content" style="transition: height .8s ease">
+        <i> (nature) </i>
+        <span id="definition"><%= word.definition.first %></span>
+        <span id="example"> "<%= word.example %>"</span>
+        <span> Synonyms:</span>
+        <span id="synonyms">
+          <% wordcount = word.synonyms.count %>
+            <% if wordcount == 0 %>
+              No synonyms to display
+              <% else %>
+              <% word.synonyms.each_with_index do |synonym, index| %>
+
+                <% if index == 0 %>
+                <%= "#{synonym.capitalize}," %>
+                <% elsif index == wordcount -1 %>
+                <%= "#{synonym}" %>
+                <% else %>
+                <%= "#{synonym}," %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </span>
+
+      </div>
+    </div>
+
+  </div>
+<% end %>
