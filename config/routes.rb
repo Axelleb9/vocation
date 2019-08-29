@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :words, only: [:new, :create, :delete, :index] do
     get "open_eye"
     get "close_eye"
+    post "favori", to: "words#favori"
+    delete "unfavori", to: "words#unfavori"
+    post "add_to_list", to: "words#add_word_to_list"
   end
 
   resources :lists do
@@ -16,4 +19,9 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'study', to: 'pages#study', as: :study
+  get 'study/flashcard', to: 'pages#flashcard'
+
+
 end

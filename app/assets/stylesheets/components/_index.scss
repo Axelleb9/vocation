@@ -12,3 +12,8 @@
 @import "banner";
 @import "top-banner";
 @import "list-title";
+@import "study-card";
+
+abbr[title="required"] {
+  display: none;
+}

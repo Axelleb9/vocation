@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_085521) do
+ActiveRecord::Schema.define(version: 2019_08_29_091513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2019_08_29_085521) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "order", default: true
+
     t.string "flashcard", array: true
+
+    t.boolean "switch", default: true
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -65,14 +67,14 @@ ActiveRecord::Schema.define(version: 2019_08_29_085521) do
   create_table "words", force: :cascade do |t|
     t.string "entry"
     t.string "translation"
-    t.text "definition", array: true
+    t.text "definition"
     t.text "example"
-    t.string "nature", array: true
+    t.string "type"
     t.integer "difficulty"
     t.string "synonyms", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "visible"
+    t.boolean "visible", default: false
   end
 
   create_table "words_lists", force: :cascade do |t|

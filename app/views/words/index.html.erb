@@ -2,9 +2,22 @@
   <%= render "shared/translator" %>
 
   <% unless @current_word.nil? %>
+  <%= render "lists-modal" %>
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
     <div class="displayed-content">
-      <span id="translation"><%= @current_word.translation %></span>
+
+      <div class="d-flex justify-content-between">
+        <strong><span id="translation"><%= @current_word.translation %></span></strong>
+        <div class="d-flex align-items-center">
+          <% if current_user.words.include?(@current_word) %>
+            <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+            <%=  link_to "", word_unfavori_path(@current_word) , method: :delete, class: "fas fa-star"%>
+          <% else %>
+            <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+            <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%>
+          <% end %>
+        </div>
+      </div>
       <span> <i id="nature"><%= @current_word.nature %> </i> </span>
       <span id="definition"><%= @current_word.definition %></span>
       <span id="example"><%= @current_word.example %></span>
@@ -34,17 +47,13 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-between px-5 my-1 align-items-center">
-      <%= @list.order ? "Français" : "Anglais" %>
-      <%= link_to list_order_path(@list), method: :put do %>
-        <i class="fas fa-exchange-alt"></i>
-      <% end %>
-      <%= @list.order ? "Anglais" : "Français" %>
-    </div>
+    <%= render 'shared/languages-header', list: @list unless @list.nil? %>
 
   </div>
 </div>
 
+
 <div class="all-words">
   <%= render "shared/index-words" %>
 </div>
+

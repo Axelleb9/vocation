@@ -3,11 +3,13 @@ class ListsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @lists = policy_scope(List)
+    @lists = policy_scope(List.where(user_id: current_user.id))
+
     @list = List.new
   end
 
   def show
+    @list = List.find(params[:id])
   end
 
   def new
