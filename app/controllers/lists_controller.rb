@@ -46,6 +46,28 @@ class ListsController < ApplicationController
     redirect_to lists_path
   end
 
+  def flashcard
+    @list = List.find(params[:list_id])
+    authorize @list
+    @list.update(flashcard: @list.words.pluck(:entry)) if @list.flashcard.empty?
+    render :flashcard
+  end
+
+  def good_answer
+    @list = List.find(params[:list_id])
+    authorize @list
+    @list.flashcard.shift
+    @list.save
+    render :flashcard
+  end
+
+  def wrong_answer
+    @list = List.find(params[:list_id])
+    authorize @list
+    @list.flashcard.sample
+    render :flashcard
+  end
+
   private
 
   def list_params
