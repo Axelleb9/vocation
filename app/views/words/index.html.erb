@@ -1,10 +1,10 @@
 <div class="fix-top">
   <%= render "shared/translator" %>
 
+<div id="sub-body">
   <% unless @current_word.nil? %>
   <%= render "lists-modal" %>
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
-    <div id="sub-body">
       <div class="displayed-content">
 
         <div class="d-flex justify-content-between">
@@ -54,7 +54,7 @@
     <div class="all-words">
       <%= render "shared/index-words" %>
     </div>
-  </div>
+</div>
 
 
 
