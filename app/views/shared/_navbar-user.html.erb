@@ -3,27 +3,27 @@
 
     <%= link_to words_path, class: "home-menu  #{'icon-brand-color' if current_page?(words_path)}" do %>
     <i id= "home-icon" class="fas fa-home"></i>
-    <p id= "home-title">Home</p>
+    <span id= "home-title">Home</span>
     <% end %>
 
     <%= link_to lists_path, class: "list-menu #{'icon-brand-color' if current_page?(lists_path)}" do %>
     <i id= "list-icon" class="fas fa-list"></i>
-    <p id= "list-title">Lists</p>
+    <span id= "list-title">Lists</span>
     <% end %>
 
     <%= link_to study_path, class: "study-menu #{'icon-brand-color' if current_page?(study_path)}" do %>
     <i id= "study-icon" class="fas fa-graduation-cap"></i>
-    <p id= "study-title">Study</p>
+    <span id= "study-title">Study</span>
     <% end %>
 
     <%= link_to lists_path, class: "chart-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
     <i id= "chart-icon" class="fas fa-chart-line"></i>
-    <p id= "chart-title">Results</p>
+    <span id= "chart-title">Results</span>
     <% end %>
 
     <%= link_to user_session_path, class: "user-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
     <i id= "user-icon" class="fas fa-user"></i>
-    <p id= "user-title">Profile</p>
+    <span id= "user-title">Profile</span>
     <% end %>
 
 

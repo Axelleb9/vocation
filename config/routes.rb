@@ -6,10 +6,13 @@ Rails.application.routes.draw do
     get "close_eye"
     post "favori", to: "words#favori"
     delete "unfavori", to: "words#unfavori"
+    post "add_to_list", to: "words#add_word_to_list"
   end
 
   resources :lists do
     put "order", to: 'words#change_order'
+    get "flashcard", to: 'lists#flashcard'
+    patch "good_answer", to: 'lists#good_answer'
   end
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
@@ -19,6 +22,6 @@ Rails.application.routes.draw do
 
   get 'study', to: 'pages#study', as: :study
   get 'study/flashcard', to: 'pages#flashcard'
-
-
+  
+  mount ActionCable.server => "/cable"
 end

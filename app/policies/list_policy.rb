@@ -20,4 +20,16 @@ class ListPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def flashcard?
+    true
+  end
+
+  def good_answer?
+    true
+  end
+
+  def wrong_answer?
+    true
+  end
 end
