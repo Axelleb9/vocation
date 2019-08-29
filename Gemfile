@@ -20,6 +20,9 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 
 gem 'acts_as_votable'
 

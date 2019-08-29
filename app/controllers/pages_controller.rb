@@ -3,4 +3,19 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def study
+  end
+
+  def flashcard
+    @lists = current_user.lists
+    @flashcards = []
+    @lists.each do |list|
+    @flashcards << list.flashcards
+    end
+    @flashcards.flatten
+
+  end
+
+
 end
