@@ -4,4 +4,8 @@ class List < ApplicationRecord
   has_many :words, through: :words_lists
 
   validates :title, presence: true
+
+  def change
+    rename_column :lists, :order, :switch
+  end
 end

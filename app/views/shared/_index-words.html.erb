@@ -2,7 +2,7 @@
   <div class="word-card-container">
 
     <div class="word-card">
-      <p id="word-entry"> <%= @list.order ? word.entry : word.translation %> </p>
+      <p id="word-entry"> <%= @list.switch ? word.entry : word.translation %> </p>
 
 
       <div class="hide-show">
@@ -10,12 +10,12 @@
          <%= link_to word_close_eye_path(word) do  %>
           <i class="fas fa-eye"></i>
          <% end %>
-         <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
+         <p id="word-result"> <%= @list.switch ? word.translation : word.entry %></p>
         <% elsif word.votes_for.where(voter_id: current_user.id).first.vote_flag == true %>
           <%= link_to word_close_eye_path(word) do  %>
             <i class="fas fa-eye"></i>
           <% end %>
-          <p id="word-result"> <%= @list.order ? word.translation : word.entry %></p>
+          <p id="word-result"> <%= @list.switch ? word.translation : word.entry %></p>
           <% else %>
           <%= link_to word_open_eye_path(word) do  %>
             <i class="fas fa-eye-slash"></i>

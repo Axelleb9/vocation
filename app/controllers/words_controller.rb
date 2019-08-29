@@ -28,7 +28,7 @@ class WordsController < ApplicationController
 
   def change_order
     @list = List.find(params[:list_id])
-    @list.order ? @list.update(order: false) : @list.update(order: true)
+    @list.switch ? @list.update(switch: false) : @list.update(switch: true)
     redirect_to words_path
   end
 
