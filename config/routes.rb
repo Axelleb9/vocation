@@ -22,6 +22,6 @@ Rails.application.routes.draw do
 
   get 'study', to: 'pages#study', as: :study
   get 'study/flashcard', to: 'pages#flashcard'
-
-
+  
+  mount ActionCable.server => "/cable"
 end
