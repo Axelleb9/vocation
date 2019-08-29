@@ -5,7 +5,7 @@
     <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%> 
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
     <div class="displayed-content">
-      <span id="translation"><%= @current_word.translation %></span>
+      <strong><span id="translation"><%= @current_word.translation %></span></strong>
       <span> <i id="nature"><%= @current_word.nature %> </i> </span>
       <span id="definition"><%= @current_word.definition %></span>
       <span id="example"><%= @current_word.example %></span>
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <%= render 'shared/languages-header', list: @list %>
+    <%= render 'shared/languages-header', list: @list unless @list.nil? %>
 
   </div>
 </div>
