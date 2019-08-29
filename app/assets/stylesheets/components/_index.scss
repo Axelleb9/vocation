@@ -12,3 +12,7 @@
 @import "banner";
 @import "top-banner";
 @import "list-title";
+
+abbr[title="required"] {
+  display: none;
+}
