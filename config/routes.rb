@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get "open_eye"
     get "close_eye"
     post "favori", to: "words#favori"
+    delete "unfavori", to: "words#unfavori"
   end
 
   resources :lists do

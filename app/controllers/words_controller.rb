@@ -1,5 +1,5 @@
 class WordsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:change_order, :create, :favori]
+  skip_after_action :verify_authorized, only: [:change_order, :create, :favori, :unfavori]
 
   def index
     policy_scope(Word)
@@ -48,8 +48,14 @@ class WordsController < ApplicationController
     @current_word = Word.find(params[:word_id])
     @user_word = UserWord.new(user: current_user, word: @current_word)
     @user_word.save
+    redirect_to words_path(word_id: @current_word.id)
+  end
 
-    redirect_to words_path
+  def unfavori
+    @current_word = Word.find(params[:word_id])
+    user_word = UserWord.where(word: @current_word, user: current_user).first
+    user_word.destroy
+    redirect_to words_path(word_id: @current_word.id)
   end
 
   private

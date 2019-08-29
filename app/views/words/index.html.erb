@@ -2,10 +2,16 @@
   <%= render "shared/translator" %>
 
   <% unless @current_word.nil? %>
-    <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%> 
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
     <div class="displayed-content">
-      <strong><span id="translation"><%= @current_word.translation %></span></strong>
+      <div class="d-flex justify-content-between">
+        <strong><span id="translation"><%= @current_word.translation %></span></strong>
+        <% if current_user.words.include?(@current_word) %>
+          <%=  link_to "", word_unfavori_path(@current_word) , method: :delete, class: "fas fa-star"%>
+        <% else %>
+          <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%>
+        <% end %>
+      </div>
       <span> <i id="nature"><%= @current_word.nature %> </i> </span>
       <span id="definition"><%= @current_word.definition %></span>
       <span id="example"><%= @current_word.example %></span>
@@ -42,7 +48,7 @@
 <!-- ---------------------------------------------------------------------------------------------------------------
 -->
 
-  
+
 
 
 <div class="all-words">
