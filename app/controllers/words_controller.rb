@@ -1,10 +1,11 @@
 class WordsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:change_order, :create, :favori, :unfavori]
+  skip_after_action :verify_authorized, only: [:change_order, :create, :favori, :unfavori, :add_word_to_list]
 
   def index
     policy_scope(Word)
     @list = current_user.lists.first
     @word = Word.new
+    @lists = current_user.lists
 
     @current_word = Word.find(params[:word_id]) if params[:word_id].present?
   end
@@ -56,6 +57,14 @@ class WordsController < ApplicationController
     user_word = UserWord.where(word: @current_word, user: current_user).first
     user_word.destroy
     redirect_to words_path(word_id: @current_word.id)
+  end
+
+  def add_word_to_list
+    word = Word.find(params[:word_id])
+    list = List.find(params[:list_id])
+    words_list = WordsList.new(word: word, list: list)
+    words_list.save
+    redirect_to words_path(word_id: word.id)
   end
 
   private
