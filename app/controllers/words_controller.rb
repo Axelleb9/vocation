@@ -7,7 +7,6 @@ class WordsController < ApplicationController
     @word = Word.new
 
     @current_word = Word.find(params[:word_id]) if params[:word_id].present?
-    raise
   end
 
   def create
