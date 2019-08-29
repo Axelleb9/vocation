@@ -4,56 +4,58 @@
   <% unless @current_word.nil? %>
   <%= render "lists-modal" %>
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
-    <div class="displayed-content">
+    <div id="sub-body">
+      <div class="displayed-content">
 
-      <div class="d-flex justify-content-between">
-        <strong><span id="translation"><%= @current_word.translation %></span></strong>
-        <div class="d-flex align-items-center">
-          <% if current_user.words.include?(@current_word) %>
-            <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
-            <%=  link_to "", word_unfavori_path(@current_word) , method: :delete, class: "fas fa-star"%>
-          <% else %>
-            <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
-            <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%>
-          <% end %>
-        </div>
-      </div>
-      <span> <i id="nature"><%= @current_word.nature %> </i> </span>
-      <span id="definition"><%= @current_word.definition %></span>
-      <span id="example"><%= @current_word.example %></span>
-      <span id="synonyms">
-        <% wordcount = @current_word.synonyms&.count %>
-          <% if wordcount == 0 %>
-            No synonyms to display
+        <div class="d-flex justify-content-between">
+          <strong><span id="translation"><%= @current_word.translation %></span></strong>
+          <div class="d-flex align-items-center">
+            <% if current_user.words.include?(@current_word) %>
+              <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+              <%=  link_to "", word_unfavori_path(@current_word) , method: :delete, class: "fas fa-star"%>
             <% else %>
-            <% @current_word.synonyms&.each_with_index do |synonym, index| %>
-              <% if index == 0 %>
-              <%= "#{synonym.capitalize}," %>
-              <% elsif index == wordcount -1 %>
-              <%= "#{synonym}" %>
+              <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+              <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%>
+            <% end %>
+          </div>
+        </div>
+        <span> <i id="nature"><%= @current_word.nature %> </i> </span>
+        <span id="definition"><%= @current_word.definition %></span>
+        <span id="example"><%= @current_word.example %></span>
+        <span id="synonyms">
+          <% wordcount = @current_word.synonyms&.count %>
+            <% if wordcount == 0 %>
+              No synonyms to display
               <% else %>
-              <%= "#{synonym}," %>
+              <% @current_word.synonyms&.each_with_index do |synonym, index| %>
+                <% if index == 0 %>
+                <%= "#{synonym.capitalize}," %>
+                <% elsif index == wordcount -1 %>
+                <%= "#{synonym}" %>
+                <% else %>
+                <%= "#{synonym}," %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-      </span>
-    </div>
-  <% end %>
-
-  <div id="language-infos">
-    <div class="d-flex justify-content-center my-3">
-      <div class="list-title">
-        <p><strong>List of the Week</strong></p>
+        </span>
       </div>
+    <% end %>
+
+    <div id="language-infos">
+      <div class="d-flex justify-content-center my-3">
+        <div class="list-title">
+          <p><strong>List of the Week</strong></p>
+        </div>
+      </div>
+
+      <%= render 'shared/languages-header', list: @list unless @list.nil? %>
+
     </div>
-
-    <%= render 'shared/languages-header', list: @list unless @list.nil? %>
-
+    <div class="all-words">
+      <%= render "shared/index-words" %>
+    </div>
   </div>
-</div>
 
 
-<div class="all-words">
-  <%= render "shared/index-words" %>
-</div>
 
+    </div>

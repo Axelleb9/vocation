@@ -7,9 +7,9 @@ import { switchCard } from 'components/flashcard-switch'
 
 // translate()
 
-// displaySubmit();
-// undisplaySubmit();
-// closeWithCross();
+displaySubmit();
+undisplaySubmit();
+closeWithCross();
 rotateMe();
 initActionCable();
 switchCard();
