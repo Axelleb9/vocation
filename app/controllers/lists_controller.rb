@@ -1,10 +1,15 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_authorized, only: [:index]
 
   def index
-    @lists = policy_scope(List.where(user_id: current_user.id))
-
+    policy_scope(List)
+    if params["lists"].nil?
+      @lists = current_user.lists.select { |i| i.week.nil? }
+    else
+      @lists = current_user.lists.where.not(week: nil)
+    end
     @list = List.new
   end
 

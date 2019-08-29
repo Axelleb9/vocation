@@ -21,8 +21,8 @@
 .tabs-underlined {
   display: flex;
   align-items: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 16px;
+  margin-bottom: 24px;
 }
 
 .tabs-underlined .tab-underlined {
@@ -55,12 +55,22 @@
   }
 }
 
+.list-inline {
+  position: relative;
+}
+
+.menu .tabs-underlined {
+  margin-top: 0px;
+  padding-top: 16px;
+}
 #highpage {
+  position: absolute;
   color: $brand;
-  font-size: 30px;
-  padding-bottom: 14px;
+  font-size: 20px;
   padding-right: 8px;
-  margin-top: 8px;
+  top: 8px;
+  right: 0;
+  margin-right: 8px;
 }
 
 .calltoaction {

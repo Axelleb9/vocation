@@ -1,6 +1,7 @@
 class WordsController < ApplicationController
   skip_after_action :verify_authorized, only: [:change_order, :create, :favori, :unfavori, :add_word_to_list]
   before_action :create_list_of_the_week, only: [:index, :favori, :unfavori]
+
   def index
     create_list_of_the_week
     policy_scope(Word)
