@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :lists do
     put "order", to: 'words#change_order'
+    get "flashcard", to: 'lists#flashcard'
+    patch "good_answer", to: 'lists#good_answer'
   end
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do

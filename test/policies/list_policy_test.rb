@@ -15,4 +15,5 @@ class ListPolicyTest < ActiveSupport::TestCase
 
   def test_destroy
   end
+
 end
