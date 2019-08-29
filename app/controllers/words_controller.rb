@@ -1,12 +1,11 @@
 class WordsController < ApplicationController
   skip_after_action :verify_authorized, only: [:change_order, :create, :favori, :unfavori, :add_word_to_list]
-
+  before_action :create_list_of_the_week, only: [:index, :favori, :unfavori]
   def index
+    create_list_of_the_week
     policy_scope(Word)
-    @list = current_user.lists.first
     @word = Word.new
     @lists = current_user.lists
-
     @current_word = Word.find(params[:word_id]) if params[:word_id].present?
   end
 
@@ -46,10 +45,11 @@ class WordsController < ApplicationController
   end
 
   def favori
-    @current_word = Word.find(params[:word_id])
-    @user_word = UserWord.new(user: current_user, word: @current_word)
-    @user_word.save
-    redirect_to words_path(word_id: @current_word.id)
+    current_word = Word.find(params[:word_id])
+    user_word = UserWord.new(user: current_user, word: current_word)
+    user_word.save
+    WordsList.create(word: current_word, list: @list)
+    redirect_to words_path(word_id: current_word.id)
   end
 
   def unfavori
@@ -71,5 +71,12 @@ class WordsController < ApplicationController
 
   def params_word
     params.require(:word).permit(:entry)
+  end
+
+  def create_list_of_the_week
+    current_week = Time.now.strftime("%U").to_i
+    @list = current_user.lists.where(week: current_week).first
+    return unless @list.blank?
+    @list = List.create(title: "week #{current_week}", user: current_user, week: current_week)
   end
 end

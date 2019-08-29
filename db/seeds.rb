@@ -31,7 +31,7 @@ username: Faker::Name.first_name
 )
 user.save!
 
-list = List.new(title: "List of the week", user: user)
+list = List.new(title: "List of the week", user: user, week: Time.now.strftime("%U").to_i)
 list.save!
 
 puts "calling the API"
@@ -41,7 +41,6 @@ words.each_with_index do |word, index|
   languages = "fr-en"
   url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
   callback = JSON.parse(HTTP.get(url))
-  puts callback
   translation = callback["text"].first
 
   wl = WordsList.new(list: list)
@@ -72,7 +71,6 @@ words.each_with_index do |word, index|
   definition: meanings,
   nature: natures,
   difficulty: difficulty,
-  visible: true,
   example: example,
   synonyms: synonyms
   )
@@ -89,7 +87,7 @@ puts "Using Faker to seed the DataBase"
   puts "create list n° #{count}"
   list = List.new(
   title: [Faker::Music.genre, Faker::Job.field].sample,
-  user: user
+  user: user,
   )
   list.save!
 

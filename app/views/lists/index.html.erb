@@ -1,66 +1,64 @@
-<div class="container">	
-	<div id="title-lists">
-    <div class="calltoaction">
-		  <h1>Lists</h1>
-      <i class="fas fa-plus" id="highpage" data-toggle="modal" data-target="#ModalCenter">
-      </i>
-    </div>
-    <%= render 'modal' %>
-     
-    <%= render 'searchbar' %>
+<div id="title-lists">
+  <div class="calltoaction">
+	  <h1>Lists</h1>
+    <i class="fas fa-plus" id="highpage" data-toggle="modal" data-target="#ModalCenter">
+    </i>
   </div>
+  <%= render 'modal' %>
 
-  <div class="menu">
-    <ul class="list-inline tabs-underlined">
-      <li>
-         <%= link_to "My lists", lists_path, class: "tab-underlined active" %>
-      </li>
-      <li>
-       <a href="" style="color: black">List of the week</a>
-      </li>
-    </ul>
-  </div>
+  <%= render 'searchbar' %>
+</div>
 
-  <div class="content">
-  	<div class="card-container">
-			<% @lists.each do |list| %>
-        <div class="modal fade" id="ModalCenter-<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="ModalLongTitle">Rename</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <%= simple_form_for @list, url: list_path(list), method: :patch do |f| %>
-                <div class="modal-body">
-                  <%= f.input :title, :input_html => { :value => list.title} %>
-                </div>
-                <div class="modal-footer">
-                  <%= f.submit "Update", id: "btnsave" %>
-                </div>
-              <% end %>
+<div class="menu">
+  <ul class="list-inline tabs-underlined">
+    <li>
+       <%= link_to "My lists", lists_path, class: "tab-underlined active" %>
+    </li>
+    <li>
+     <a href="" style="color: black">List of the week</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content">
+	<div class="card-container">
+		<% @lists.each do |list| %>
+      <div class="modal fade" id="ModalCenter-<%= list.id %>" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLongTitle">Rename</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <%= simple_form_for @list, url: list_path(list), method: :patch do |f| %>
+              <div class="modal-body">
+                <%= f.input :title, :input_html => { :value => list.title} %>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit "Update", id: "btnsave" %>
+              </div>
+            <% end %>
           </div>
         </div>
+      </div>
 
-			  <div class="card-list">
-			  	<% if policy(list).show? %>
-            <div class="listcard">
-  			  	  <i id="list-icon" class="fas fa-list"></i>
-  			      <h6 class="ml-3"><%= link_to list.title, list_path(list), style:"color: black" %></h6>
-              <p id="wordslist"><i>(<%= list.words.count %> words)</i></p>
-            </div>
-            <i class="fas fa-ellipsis-h" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-              <a href="" data-toggle="modal" data-target="#ModalCenter-<%= list.id %>" class="dropdown-item">Rename</a>
-              <%= link_to "Delete", list_path(list), method: :delete, class: "dropdown-item" %>
-            </div>
-			    <% end %>
-			  </div>
-			<% end %>  
-		</div>
-  </div>
+		  <div class="card-list">
+		  	<% if policy(list).show? %>
+          <div class="listcard">
+			  	  <i id="list-icon" class="fas fa-list"></i>
+			      <h6><%= link_to list.title, list_path(list), style:"color: black" %></h6>
+            <p id="wordslist"><i>(<%= list.words.count %> words)</i></p>
+          </div>
+          <i class="fas fa-ellipsis-h" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+            <a href="" data-toggle="modal" data-target="#ModalCenter-<%= list.id %>" class="dropdown-item">Rename</a>
+            <%= link_to "Delete", list_path(list), method: :delete, class: "dropdown-item" %>
+          </div>
+		    <% end %>
+		  </div>
+		<% end %>
+	</div>
 </div>
 

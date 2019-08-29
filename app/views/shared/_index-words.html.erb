@@ -32,16 +32,16 @@
       </div>
 
       <div id="collapse-<%= index %>" class="collapse displayed-content" style="transition: height .8s ease">
-        <span> <i> (<%= word.nature.first %>) </i> </span>
-        <span id="definition"><%= word.definition.first %></span>
+        <span> <i> (<%= word.nature&.first %>) </i> </span>
+        <span id="definition"><%= word.definition&.first %></span>
         <span id="example"> "<%= word.example %>"</span>
         <span> Synonyms:</span>
         <span id="synonyms">
-          <% wordcount = word.synonyms.count %>
+          <% wordcount = word.synonyms&.count %>
             <% if wordcount == 0 %>
               No synonyms to display
               <% else %>
-              <% word.synonyms.each_with_index do |synonym, index| %>
+              <% word.synonyms&.each_with_index do |synonym, index| %>
                 <% if index == 0 %>
                 <%= "#{synonym.capitalize}," %>
                 <% elsif index == wordcount -1 %>
