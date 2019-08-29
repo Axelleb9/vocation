@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_091513) do
     t.string "synonyms", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "visible"
+    t.boolean "visible", default: false
   end
 
   create_table "words_lists", force: :cascade do |t|

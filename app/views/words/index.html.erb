@@ -2,6 +2,7 @@
   <%= render "shared/translator" %>
 
   <% unless @current_word.nil? %>
+    <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%> 
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
     <div class="displayed-content">
       <span id="translation"><%= @current_word.translation %></span>
@@ -39,7 +40,11 @@
   </div>
 </div>
 <!-- ---------------------------------------------------------------------------------------------------------------
- -->
+-->
+
+  
+
+
 <div class="all-words">
   <%= render "shared/index-words" %>
 </div>

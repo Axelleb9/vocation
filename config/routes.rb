@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :words, only: [:new, :create, :delete, :index] do
     get "open_eye"
     get "close_eye"
+    post "favori", to: "words#favori"
   end
 
   resources :lists do

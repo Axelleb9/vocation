@@ -1,5 +1,5 @@
 class WordsController < ApplicationController
-    skip_after_action :verify_authorized, only: [:change_order, :create]
+  skip_after_action :verify_authorized, only: [:change_order, :create, :favori]
 
   def index
     policy_scope(Word)
@@ -46,11 +46,20 @@ class WordsController < ApplicationController
     redirect_to(request.referer)
   end
 
+  def favori
+    @current_word = Word.find(params[:word_id])
+    @user_word = UserWord.new(user: current_user, word: @current_word)
+    @user_word.save
+
+    redirect_to words_path
+  end
+
   private
 
   def params_word
     params.require(:word).permit(:entry)
   end
+
   def translate_word(word)
     base = "https://translate.yandex.net/api/v1.5/tr.json/translate?"
     key = ENV["YANKEY"]

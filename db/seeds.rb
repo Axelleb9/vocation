@@ -41,6 +41,7 @@ words.each_with_index do |word, index|
   languages = "fr-en"
   url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
   callback = JSON.parse(HTTP.get(url))
+  puts callback
   translation = callback["text"].first
 
   wl = WordsList.new(list: list)
