@@ -29,21 +29,20 @@ class WordsController < ApplicationController
   def change_order
     @list = List.find(params[:list_id])
     @list.order ? @list.update(order: false) : @list.update(order: true)
-    redirect_to words_path
   end
 
   def open_eye
     @word = Word.find(params[:word_id])
     @word.liked_by current_user
     authorize @word
-    redirect_to words_path
+    redirect_to(request.referer)
   end
 
   def close_eye
     @word = Word.find(params[:word_id])
     @word.downvote_from current_user
     authorize @word
-    redirect_to words_path
+    redirect_to(request.referer)
   end
 
   private
