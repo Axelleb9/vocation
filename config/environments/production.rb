@@ -84,8 +84,8 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.action_cable.url = "wss://www.yourdomain.top/cable"
-  config.action_cable.allowed_request_origins = [ "http://www.yourdomain.top", "https://www.yourdomain.top" ]
+  config.action_cable.url = "wss://www.vocation.top/cable"
+  config.action_cable.allowed_request_origins = [ "http://www.vocation.top", "https://www.yourdomain.top" ]
 
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
