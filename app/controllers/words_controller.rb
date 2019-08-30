@@ -15,11 +15,11 @@ class WordsController < ApplicationController
       entry = params_word[:entry]
       word = Word.new(entry: entry)
       word.save
-      FetchTranslationJob.perform_now(entry, current_user.id, word.id)
-      FetchExampleJob.perform_now(entry, current_user.id, word.id)
-      FetchDifficultyJob.perform_now(entry, current_user.id, word.id)
-      FetchDefinitionJob.perform_now(entry, current_user.id, word.id)
-      FetchSynonymsJob.perform_now(entry, current_user.id, word.id)
+      FetchTranslationJob.perform_later(entry, current_user.id, word.id)
+      FetchExampleJob.perform_later(entry, current_user.id, word.id)
+      FetchDifficultyJob.perform_later(entry, current_user.id, word.id)
+      FetchDefinitionJob.perform_later(entry, current_user.id, word.id)
+      FetchSynonymsJob.perform_later(entry, current_user.id, word.id)
     end
     redirect_to words_path(word_id: word.id)
   end
