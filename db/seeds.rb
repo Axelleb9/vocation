@@ -15,7 +15,7 @@ headers = {
 }
 
 info = ["example/?", "difficulty/?", "definition/?", "reference/?"]
-words = %w(peur autre confiance mouton disque verre sang fumer savoir temps)
+words = %w(fear other trust sheep cup sink blood smoke knowledge time)
 
 def set_url(category, word)
   base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
@@ -31,14 +31,14 @@ username: Faker::Name.first_name
 )
 user.save!
 
-list = List.new(title: "List of the week", user: user, week: Time.now.strftime("%U").to_i)
+list = List.new(title: "List of the week", user: user, week: Date.today.cweek)
 list.save!
 
 puts "calling the API"
 words.each_with_index do |word, index|
   base = "https://translate.yandex.net/api/v1.5/tr.json/translate?"
   key = ENV["YANKEY"]
-  languages = "fr-en"
+  languages = "en-fr"
   url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
   callback = JSON.parse(HTTP.get(url))
   translation = callback["text"].first
