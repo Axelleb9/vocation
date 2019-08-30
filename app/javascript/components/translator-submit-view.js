@@ -3,8 +3,9 @@ const submitArea = document.getElementById("submit-translation");
 const banner = document.querySelector(".top-banner");
 const cards = document.querySelectorAll('.word-card-container');
 const cross = document.querySelector('.fa-times');
-const lang = document.getElementById('language-infos')
-const subBody = document.getElementById('sub-body')
+const lang = document.getElementById('language-infos');
+const subBody = document.getElementById('sub-body');
+const appName = document.getElementById('app-name');
 
 const displaySubmit = () => {
   if (entryArea) {
@@ -13,6 +14,7 @@ const displaySubmit = () => {
         entryArea.value = ""
       }
       cross.classList.remove('d-none');
+      appName.innerHTML = ""
       lang.classList.add('hide-language');
       submitArea.classList.add('display-me');
       banner.classList.add('hide-me');
@@ -31,6 +33,7 @@ const undisplaySubmit = () => {
       };
       cross.classList.add('d-none');
       lang.classList.remove('hide-language');
+      appName.innerHTML = "<strong>V</strong>ocation";
       submitArea.classList.remove('display-me');
       banner.classList.remove('hide-me');
       cards.forEach((card) => {
@@ -43,7 +46,7 @@ const undisplaySubmit = () => {
 const closeWithCross = () => {
   if (cross) {
     cross.addEventListener('click', (event) => {
-      console.log(event.currentTarget)
+      appName.innerHTML = "<strong>V</strong>ocation";
       entryArea.value = "Enter text";
       cross.classList.add('d-none');
       lang.classList.remove('hide-language');
