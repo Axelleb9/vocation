@@ -54,7 +54,7 @@ class WordsController < ApplicationController
 
   def unfavori
     @current_word = Word.find(params[:word_id])
-    user_word = UserWord.where(word: @current_word, user: current_user).first
+    user_word = UserWord.where(word: @current_word, user: current_user).take
     user_word.destroy
     redirect_to words_path(word_id: @current_word.id)
   end
@@ -74,8 +74,8 @@ class WordsController < ApplicationController
   end
 
   def create_list_of_the_week
-    current_week = Time.now.strftime("%U").to_i
-    @list = current_user.lists.where(week: current_week).first
+    current_week = Date.today.cweek - 1
+    @list = current_user.lists.where(week: current_week).take
     return unless @list.blank?
     @list = List.create(title: "week #{current_week}", user: current_user, week: current_week)
   end
