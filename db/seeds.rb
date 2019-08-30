@@ -31,6 +31,77 @@ username: Faker::Name.first_name
 )
 user.save!
 
+
+lists_name = %w(Macro-Economie Droit Compta-Financiere Human-Sociology Macbeth Flexbox)
+name_index = 0
+
+puts "Using Faker to seed the DataBase"
+6.times do
+  puts "create list n° #{count}"
+  list = List.new(
+  title: lists_name[name_index],
+  user: user,
+  )
+  list.save!
+
+  puts "generating 15 random words for list #{list}"
+  (5..18).to_a.sample.times do
+    wl = WordsList.new(list: list)
+    ww = UserWord.new(user: user)
+    word = Word.new(
+    entry: Faker::Creature::Cat.name,
+    translation: Faker::Creature::Dog.name,
+    definition: Faker::Quote.famous_last_words,
+    example: Faker::Quote.most_interesting_man_in_the_world,
+    nature: Faker::Verb.base,
+    difficulty: (0..10).to_a.sample,
+    synonyms: [Faker::Verb.past_participle, Faker::Verb.simple_present, Faker::Verb.ing_form],
+    visible: [false, true].sample
+    )
+    word.save!
+    ww.word = word
+    wl.word = word
+    ww.save!
+    wl.save!
+  end
+  name_index += 1
+  count += 1
+end
+
+week_count = 0
+puts "Creating 4 fake lists of the week"
+6.times do
+  puts "create list for week n° #{29 + week_count}"
+  list = List.new(
+  title: "week #{29 + week_count}",
+  user: user,
+  week: week_count + 29
+  )
+  list.save!
+
+  puts "generating random words for list #{list}"
+  (5..18).to_a.sample.times do
+    wl = WordsList.new(list: list)
+    ww = UserWord.new(user: user)
+    word = Word.new(
+    entry: Faker::Creature::Cat.name,
+    translation: Faker::Creature::Dog.name,
+    definition: Faker::Quote.famous_last_words,
+    example: Faker::Quote.most_interesting_man_in_the_world,
+    nature: Faker::Verb.base,
+    difficulty: (0..10).to_a.sample,
+    synonyms: [Faker::Verb.past_participle, Faker::Verb.simple_present, Faker::Verb.ing_form],
+    visible: [false, true].sample
+    )
+    word.save!
+    ww.word = word
+    wl.word = word
+    ww.save!
+    wl.save!
+  end
+  week_count += 1
+end
+
 list = List.new(title: "List of the week", user: user, week: Date.today.cweek)
 list.save!
 
@@ -80,40 +151,6 @@ words.each_with_index do |word, index|
   wl.word = word
   ww.save!
   wl.save!
-end
-
-
-puts "Using Faker to seed the DataBase"
-10.times do
-  puts "create list n° #{count}"
-  list = List.new(
-  title: [Faker::Music.genre, Faker::Job.field].sample,
-  user: user,
-  )
-  list.save!
-
-  puts "generating 15 random words for list #{list}"
-  15.times do
-    wl = WordsList.new(list: list)
-    ww = UserWord.new(user: user)
-    word = Word.new(
-    entry: Faker::Creature::Cat.name,
-    translation: Faker::Creature::Dog.name,
-    definition: Faker::Quote.famous_last_words,
-    example: Faker::Quote.most_interesting_man_in_the_world,
-    nature: Faker::Verb.base,
-    difficulty: (0..10).to_a.sample,
-    synonyms: [Faker::Verb.past_participle, Faker::Verb.simple_present, Faker::Verb.ing_form],
-    visible: [false, true].sample
-    )
-    word.save!
-    ww.word = word
-    wl.word = word
-    ww.save!
-    wl.save!
-
-  end
-  count += 1
 end
 
 print `clear`

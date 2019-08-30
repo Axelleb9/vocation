@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'study', to: 'pages#study', as: :study
-  get 'study/flashcard', to: 'pages#flashcard'
-  
+  get 'study/flashcards', to: 'pages#flashcards'
+
   mount ActionCable.server => "/cable"
 end

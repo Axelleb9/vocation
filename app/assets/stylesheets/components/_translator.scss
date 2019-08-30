@@ -56,4 +56,22 @@
   overflow: hidden;
 }
 
+#translation {
+  font-size: 16px;
+}
 
+.word-translation {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.fa-star {
+  color: $word-color;
+  font-size: 16px;
+  margin-bottom: 1px;
+}
+
+#add-to-list {
+  color: $word-color;
+  font-size: 16px;
+}
