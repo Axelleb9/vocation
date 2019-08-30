@@ -1,27 +1,14 @@
 <%= render 'shared/navbar' %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dlodtvkez/image/upload/v1566908522/bannerhp2.jpg');">
   <div class="container text-center">
-    <h1>Learn a new language!</h1>
-    <p>Vocation brings you an efficient method to learn vocabulary</p>
-    <div style='width:100%' class='text-center'>
-      <%= link_to "Sign Up", new_user_session_path, class: "btn btn-primary text-center" %>
-
+    <%= cl_image_tag 'v-logo', width: 130, height: 130 %>
+    <div class="value-proposition">
+      <h1>Improve your English!</h1>
+      <p>Vocation brings you an efficient method to learn vocabulary</p>
+      <div style='width:100%' class='text-center div-signup'>
+        <%= link_to "Sign Up", new_user_session_path, class: "btn btn-primary text-center signup-btn" %>
+    </div>
 
     </div>
-  </div>
-</div>
-
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    Vocation Service Company
-    © 2019. All rights reserved
   </div>
 </div>

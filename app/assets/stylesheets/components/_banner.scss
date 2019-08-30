@@ -2,7 +2,7 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
+  height: 100vh;
 }
 
 .banner h1 {
@@ -20,9 +20,17 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.value-proposition {
+  margin-top: 20%;
+}
 
+.container img {
+  margin-top: 35%;
+}
 
-.text-center {
-  margin-top: 35px;
+.div-signup {
+  margin-top: 20%;
+}
 
+.container {
 }

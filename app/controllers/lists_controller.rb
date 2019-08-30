@@ -1,7 +1,8 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  skip_after_action :verify_authorized, only: [:index]
+  skip_after_action :verify_authorized, only: [:index, :flashcard, :wrong_answer, :good_answer]
+
 
   def index
     policy_scope(List)
@@ -55,24 +56,21 @@ class ListsController < ApplicationController
 
   def flashcard
     @list = List.find(params[:list_id])
-    authorize @list
-    @list.update(flashcard: @list.words.pluck(:entry)) if @list.flashcard.empty?
-    render :flashcard
+    @word = @list.words_lists.where(reviewed: false).sample
+    @total_number = @list.words.count
+    @mastered = @list.words_lists.where(reviewed: false).count
+    # list.update(flashcard: @list.words.pluck(:entry)) if @list.flashcard.empty?
+    # render :flashcard redirect_to request.referrer
   end
 
   def good_answer
+    word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
     authorize @list
-    @list.flashcard.shift
-    @list.save
-    render :flashcard
-  end
-
-  def wrong_answer
-    @list = List.find(params[:list_id])
-    authorize @list
-    @list.flashcard.sample
-    render :flashcard
+    word_status = word.words_lists.find_by(list_id: @list.id)
+    word_status.reviewed = true
+    word_status.save
+    redirect_to list_flashcard_path(@list)
   end
 
   private
