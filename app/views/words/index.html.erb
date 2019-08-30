@@ -7,7 +7,7 @@
     <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
       <div class="displayed-content">
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between word-translation">
           <strong><span id="translation"><%= @current_word.translation %></span></strong>
           <div class="d-flex align-items-center">
             <% if current_user.words.include?(@current_word) %>
@@ -19,8 +19,7 @@
             <% end %>
           </div>
         </div>
-        <span> <i id="nature"><%= @current_word.nature %> </i> </span>
-        <span id="definition"><%= @current_word.definition %></span>
+        <span id="definition"><%= @current_word.definition.first %></span>
         <span id="example"><%= @current_word.example %></span>
         <span id="synonyms">
           <% wordcount = @current_word.synonyms&.count %>

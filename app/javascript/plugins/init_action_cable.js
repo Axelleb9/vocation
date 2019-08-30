@@ -22,7 +22,6 @@ const insertData = (data) => {
     example.innerHTML = data["detail"]
   } else if (data["type"] === "definition") {
     definition.innerHTML = data["detail"][0];
-    nature.innerHTML = data["natures"][0];
   } else if (data["type"] === "synonyms") {
     synonyms.innerHTML = data["detail"]
   } else if (data["type"] === "translation") {
