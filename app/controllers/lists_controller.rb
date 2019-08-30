@@ -49,7 +49,9 @@ class ListsController < ApplicationController
 
   def flashcard
     @list = List.find(params[:list_id])
-    @word = @list.words.sample
+    @word = @list.words_lists.where(reviewed: false).sample
+    @total_number = @list.words.count
+    @mastered = @list.words_lists.where(reviewed: false).count
     # list.update(flashcard: @list.words.pluck(:entry)) if @list.flashcard.empty?
     # render :flashcard redirect_to request.referrer
   end
@@ -58,15 +60,9 @@ class ListsController < ApplicationController
     word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
     authorize @list
-    @list.flashcard.delete(word.entry)
-    @list.save
-    redirect_to list_flashcard_path(@list)
-  end
-
-  def wrong_answer
-    previous_word = params[:word_id]
-    @list = List.find(params[:list_id])
-    @word = @list.words.reject { |i| i == previous_word }.sample
+    word_status = word.words_lists.find_by(list_id: @list.id)
+    word_status.reviewed = true
+    word_status.save
     redirect_to list_flashcard_path(@list)
   end
 

@@ -7,15 +7,10 @@
     </div>
 
     <div class="general-progress">
-      <p>You have mastered X words out of <%= @list.flashcard.count %> words</p>
-      <div class="show-progress">
-        <p>green</p>
-      </div>
-    </div>
-    <div class="general-progress">
-      <p>You are learning X words out of <%= @list.flashcard.count %> words</p>
-      <div class="show-progress">
-        <p>red</p>
+      <p>You have mastered <%= @total_number - @mastered %> words out of <%= @total_number %> words </p>
+      <div class="progress">
+        <div class="progress-bar bg-success" style="width: <%= ((@total_number - @mastered)*100)/@total_number %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
+        </div>
       </div>
     </div>
   </div>
@@ -24,28 +19,37 @@
   <div class="flashcard-container">
     <div class="flashcard">
 
-      <div class="flashcard-content">
-        <div id="flashcard-question">
-          <%= @word.entry %>
+       <% if @word.nil? %>
+        <div class="flashcard-content">
+          <div id="flashcard-congrats">
+            <span> You know everything </span>
+          </div>
         </div>
-        <div id="flashcard-answer" class="d-none"><%= @word.translation %>
-        </div>
-      </div>
+          <div id="flashcard-end">
+            <span> <%= link_to "Go back to home page", words_path %> </span>
+          </div>
 
-      <div id="flashcard-button">
-        <div id="see-meaning">
-          <a href="#"> Tap to see meaning </a>
-        </div>
-        <div id="wrong-answer" class="d-none">
-          <span> <%= link_to "I suck", list_wrong_answer_path(word_id: @word.id), method: :patch %> </span>
+        <% else %>
+          <div class="flashcard-content">
+            <div id="flashcard-question">
+              <%= @word.word.entry %>
+            </div>
+            <div id="flashcard-answer" class="d-none"><%= @word.word.translation %>
+            </div>
+          </div>
 
-        </div>
-        <div id="good-answer" class="d-none">
-          <span> <%= link_to "I knew it!", list_good_answer_path(word_id: @word.id), method: :patch %> </span>
-
-        </div>
-      </div>
-
+          <div id="flashcard-button">
+            <div id="see-meaning">
+              <a href="#"> Tap to see meaning </a>
+            </div>
+            <div id="wrong-answer" class="d-none">
+              <span> <%= link_to "I suck", list_flashcard_path(@list) %> </span>
+            </div>
+            <div id="good-answer" class="d-none">
+            <span> <%= link_to "I knew it!", list_good_answer_path(word_id: @word.id), method: :patch %> </span>
+            </div>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
