@@ -3,7 +3,6 @@ class WordsController < ApplicationController
   before_action :create_list_of_the_week, only: [:index, :favori, :unfavori]
 
   def index
-    create_list_of_the_week
     policy_scope(Word)
     @word = Word.new
     @lists = current_user.lists
