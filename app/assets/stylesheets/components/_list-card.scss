@@ -81,12 +81,16 @@
   }
 }
 
-// #btnsave {
-//   background-color: $brand;
-//   color: white;
-//   padding: 12px 20px;
-//   font-size: 16px;
-//   margin: 0px 10px;
-//   border-radius: 10px;
-//   text-decoration: none;
-// }
+#omgmodal {
+  box-sizing: content-box !important;
+  margin: 0;  
+}
+
+.modal-content {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.modal {
+  height: 102vh !important;
+}
