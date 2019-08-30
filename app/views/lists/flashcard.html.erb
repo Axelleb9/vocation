@@ -26,22 +26,22 @@
 
       <div class="flashcard-content">
         <div id="flashcard-question">
-          <%= @list.flashcard.first %>
+          <%= @word.entry %>
         </div>
-        <div id="flashcard-answer" class="d-none"><%= Word.find_by(entry: @list.flashcard.first).translation %>
+        <div id="flashcard-answer" class="d-none"><%= @word.translation %>
         </div>
       </div>
 
       <div id="flashcard-button">
         <div id="see-meaning">
-          Tap to see meaning
+          <a href="#"> Tap to see meaning </a>
         </div>
         <div id="wrong-answer" class="d-none">
-          <span> I got it wrong... </span>
+          <span> <%= link_to "I suck", list_wrong_answer_path(word_id: @word.id), method: :patch %> </span>
 
         </div>
         <div id="good-answer" class="d-none">
-          <span> <%= link_to "I knew it!", list_good_answer_path, method: :patch %> </span>
+          <span> <%= link_to "I knew it!", list_good_answer_path(word_id: @word.id), method: :patch %> </span>
 
         </div>
       </div>
