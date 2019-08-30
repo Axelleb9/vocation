@@ -55,6 +55,7 @@ class WordsController < ApplicationController
   def unfavori
     @current_word = Word.find(params[:word_id])
     user_word = UserWord.where(word: @current_word, user: current_user).take
+    WordsList.where(word: @current_word, list: @list).take.destroy
     user_word.destroy
     redirect_to words_path(word_id: @current_word.id)
   end
