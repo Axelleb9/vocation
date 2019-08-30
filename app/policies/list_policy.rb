@@ -32,8 +32,4 @@ class ListPolicy < ApplicationPolicy
   def good_answer?
     true
   end
-
-  def wrong_answer?
-    true
-  end
 end
