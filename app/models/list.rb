@@ -4,4 +4,8 @@ class List < ApplicationRecord
   has_many :words, through: :words_lists
 
   validates :title, presence: true
+
+  def self.default_scope
+    List.order(created_at: :desc)
+  end
 end
