@@ -19,7 +19,7 @@
             <% end %>
           </div>
         </div>
-        <span id="definition"><%= @current_word.definition.first %></span>
+        <span id="definition"><%= @current_word.definition&.first %></span>
         <span id="example"><%= @current_word.example %></span>
         <span id="synonyms">
           <% wordcount = @current_word.synonyms&.count %>
