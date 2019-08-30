@@ -7,15 +7,7 @@ class PagesController < ApplicationController
   def study
   end
 
-  def flashcard
-    @lists = current_user.lists
-    @flashcards = []
-    @lists.each do |list|
-    @flashcards << list.flashcards
-    end
-    @flashcards.flatten
-
+  def flashcards
+    @flashcards = current_user.lists
   end
-
-
 end
