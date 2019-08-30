@@ -1,7 +1,7 @@
 require 'faker'
 require 'json'
 require 'http'
-
+User.destroy_all
 host = "twinword-word-graph-dictionary.p.rapidapi.com"
 twin_key = ENV["TWINKEY"]
 project_id = ENV["PROJECTID"]
@@ -41,26 +41,27 @@ words.each_with_index do |word, index|
   languages = "en-fr"
   url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
   callback = JSON.parse(HTTP.get(url))
+  puts callback
   translation = callback["text"].first
 
   wl = WordsList.new(list: list)
   ww = UserWord.new(user: user)
   puts "creating word n°#{index + 1}"
-  callback = HTTP.get(set_url(info[0], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[0], word), :headers => headers )
   response = JSON.parse(callback)
   example = response['example'].first # retourne un array d'examples
 
-  callback = HTTP.get(set_url(info[1], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[1], word), :headers => headers )
   response = JSON.parse(callback)
   difficulty = response["ten_degree"]
 
-  callback = HTTP.get(set_url(info[2], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[2], word), :headers => headers )
   response = JSON.parse(callback)
   definitions = response["meaning"].reject { |k, v| v == "" } # clean les key vides
   meanings = definitions.map { |k, v| regex.match(v)[1] } # ne prend que la premiere def par type (nom, verbe, adverbe, adjectif)
   natures = meanings.map { |i| regex2.match(i)[1].gsub(/\W/, '') }
 
-  callback = HTTP.get(set_url(info[3], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[3], word), :headers => headers )
   response = JSON.parse(callback)
   synonyms = response["relation"]["broad_terms"].split(',').first(3)
 
