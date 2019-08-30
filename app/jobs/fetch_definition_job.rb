@@ -18,6 +18,6 @@ class FetchDefinitionJob < ApplicationJob
 
   def send_details(detail, id, natures, translation)
     ActionCable.server.broadcast("word_details_user_#{id}",
-    { type: "definition", detail: detail, natures: natures, translation: translation })
+    { type: "definition", detail: detail, natures: natures })
   end
 end

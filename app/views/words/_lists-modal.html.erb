@@ -1,0 +1,27 @@
+<div class="modal fade" id="openlists" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="ModalLongTitle">Add to List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>New word:</h6>
+        <h6><%= @current_word.entry %></h6>
+        <div class="card-container">
+          <% @lists.each do |list| %>
+            <div class="card-list">
+              <div class="listcard">
+                <i id="list-icon" class="fas fa-list"></i>
+                <h6><%= link_to list.title, word_add_to_list_path(@current_word, list_id: list), method: :post, style:"color: black" %></h6>
+                <p id="wordslist"><i>(<%= list.words.count %> words)</i></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

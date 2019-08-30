@@ -4,6 +4,7 @@ const banner = document.querySelector(".top-banner");
 const cards = document.querySelectorAll('.word-card-container');
 const cross = document.querySelector('.fa-times');
 const lang = document.getElementById('language-infos')
+const subBody = document.getElementById('sub-body')
 
 const displaySubmit = () => {
   entryArea.addEventListener('focus', (event) => {
@@ -21,7 +22,7 @@ const displaySubmit = () => {
 }
 
 const undisplaySubmit = () => {
-  entryArea.addEventListener('blur', (event) => {
+  subBody.addEventListener('click', (event) => {
     if (entryArea.value === "") {
       entryArea.value = "Enter text"
     };
@@ -37,6 +38,7 @@ const undisplaySubmit = () => {
 
 const closeWithCross = () => {
   cross.addEventListener('click', (event) => {
+    console.log(event.currentTarget)
     entryArea.value = "Enter text";
     cross.classList.add('d-none');
     lang.classList.remove('hide-language');

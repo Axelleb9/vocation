@@ -1,7 +1,7 @@
 require 'faker'
 require 'json'
 require 'http'
-
+User.destroy_all
 host = "twinword-word-graph-dictionary.p.rapidapi.com"
 twin_key = ENV["TWINKEY"]
 project_id = ENV["PROJECTID"]
@@ -15,7 +15,7 @@ headers = {
 }
 
 info = ["example/?", "difficulty/?", "definition/?", "reference/?"]
-words = %w(peur autre confiance mouton disque verre sang fumer savoir temps)
+words = %w(fear other trust sheep cup sink blood smoke knowledge time)
 
 def set_url(category, word)
   base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
@@ -31,36 +31,37 @@ username: Faker::Name.first_name
 )
 user.save!
 
-list = List.new(title: "List of the week", user: user)
+list = List.new(title: "List of the week", user: user, week: Date.today.cweek)
 list.save!
 
 puts "calling the API"
 words.each_with_index do |word, index|
   base = "https://translate.yandex.net/api/v1.5/tr.json/translate?"
   key = ENV["YANKEY"]
-  languages = "fr-en"
+  languages = "en-fr"
   url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
   callback = JSON.parse(HTTP.get(url))
+  puts callback
   translation = callback["text"].first
 
   wl = WordsList.new(list: list)
   ww = UserWord.new(user: user)
   puts "creating word n°#{index + 1}"
-  callback = HTTP.get(set_url(info[0], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[0], word), :headers => headers )
   response = JSON.parse(callback)
   example = response['example'].first # retourne un array d'examples
 
-  callback = HTTP.get(set_url(info[1], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[1], word), :headers => headers )
   response = JSON.parse(callback)
   difficulty = response["ten_degree"]
 
-  callback = HTTP.get(set_url(info[2], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[2], word), :headers => headers )
   response = JSON.parse(callback)
   definitions = response["meaning"].reject { |k, v| v == "" } # clean les key vides
   meanings = definitions.map { |k, v| regex.match(v)[1] } # ne prend que la premiere def par type (nom, verbe, adverbe, adjectif)
   natures = meanings.map { |i| regex2.match(i)[1].gsub(/\W/, '') }
 
-  callback = HTTP.get(set_url(info[3], translation), :headers => headers )
+  callback = HTTP.get(set_url(info[3], word), :headers => headers )
   response = JSON.parse(callback)
   synonyms = response["relation"]["broad_terms"].split(',').first(3)
 
@@ -71,7 +72,6 @@ words.each_with_index do |word, index|
   definition: meanings,
   nature: natures,
   difficulty: difficulty,
-  visible: true,
   example: example,
   synonyms: synonyms
   )
@@ -88,7 +88,7 @@ puts "Using Faker to seed the DataBase"
   puts "create list n° #{count}"
   list = List.new(
   title: [Faker::Music.genre, Faker::Job.field].sample,
-  user: user
+  user: user,
   )
   list.save!
 

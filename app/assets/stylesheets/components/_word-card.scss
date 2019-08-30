@@ -27,7 +27,8 @@
 #word-entry {
   border-radius: 4px;
   text-align: center;
-  color: $word-color;
+  color: rgb(50, 50, 50);
+
   display: flex;
   justify-content: start;
   align-items: center;
@@ -35,7 +36,7 @@
   word-break: break-word;
   word-wrap: break-word;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 400;
   padding: 4px 4px 0px 8px;
   margin-bottom: 4px;
 }
@@ -58,7 +59,7 @@
   word-break: break-word;
   word-wrap: break-word;
   font-size: 16px;
-  color: $word-color;
+  color: rgb(100, 100, 100);
   font-weight: lighter;
   margin: 0px;
   padding-left: 4px;
@@ -75,7 +76,8 @@
 }
 
 .chevron-icon{
-  color: $brand;
+  color: rgb(120, 120, 120);
+  font-size: 13px;
 }
 
 #rotate-me {
@@ -97,6 +99,7 @@
     top: 8px;
     right: 8px;
     justify-content: flex-end;
+    margin-top: 5px;
 }
 
 

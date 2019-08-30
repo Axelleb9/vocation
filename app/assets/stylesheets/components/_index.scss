@@ -12,3 +12,21 @@
 @import "banner";
 @import "top-banner";
 @import "list-title";
+@import "study-card";
+
+abbr[title="required"] {
+  display: none;
+}
+
+.dropdown-item {
+    padding: 0.25rem 0.5rem;
+    border-bottom: solid 1px lightgrey;
+    font-size: 14px;
+    color: rgb(50,50,50);
+}
+
+.dropdown-icon {
+  color: $word-color;
+  font-size: 12px;
+  margin-left: 8px;
+}

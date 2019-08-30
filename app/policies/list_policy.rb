@@ -1,8 +1,12 @@
 class ListPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all.sort_by{ |l| l.title  }
+      scope.all.sort_by(&:title)
     end
+  end
+
+  def index?
+    true
   end
 
   def create?

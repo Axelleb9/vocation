@@ -1,9 +1,9 @@
 <div class="border-bottom">
   <div class="container-languages">
     <div class="d-flex justify-content-between activ-languages">
-      <h6 class="text-center">Français</h6 class="text-center">
-      <i class="fas fa-arrow-right"></i>
       <h6 class="text-center">Anglais</h6 class="text-center">
+      <i class="fas fa-arrow-right"></i>
+      <h6 class="text-center">Français</h6 class="text-center">
     </div>
   </div>
 </div>
@@ -11,7 +11,7 @@
 <%= simple_form_for @word do |f| %>
   <div class="word-entry-area">
   <div><i class="fas fa-times d-none"></i></div>
-    <%= f.input :entry, input_html: { value: "" }, class: "translator-entry-input", label: false  %>
+    <%= f.input :entry, input_html: { value: "Enter text" }, class: "translator-entry-input", label: false  %>
   </div>
   <div class="d-flex justify-content-between" id="submit-translation">
     <h6>To do : add api for word proposition</h6>

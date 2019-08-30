@@ -1,14 +1,21 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  skip_after_action :verify_authorized, only: [:flashcard, :wrong_answer, :good_answer]
+  skip_after_action :verify_authorized, only: [:index, :flashcard, :wrong_answer, :good_answer]
+
 
   def index
-    @lists = policy_scope(List)
+    policy_scope(List)
+    if params["lists"].nil?
+      @lists = current_user.lists.select { |i| i.week.nil? }
+    else
+      @lists = current_user.lists.where.not(week: nil)
+    end
     @list = List.new
   end
 
   def show
+    @list = List.find(params[:id])
   end
 
   def new

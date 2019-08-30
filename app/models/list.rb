@@ -5,4 +5,8 @@ class List < ApplicationRecord
 
 
   validates :title, presence: true
+
+  def self.default_scope
+    List.order(created_at: :desc)
+  end
 end

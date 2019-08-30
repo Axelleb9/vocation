@@ -11,7 +11,7 @@
   margin: 19px;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 19px;
+  padding-bottom: 14px;
 }
 
 #title-lists {
@@ -21,8 +21,8 @@
 .tabs-underlined {
   display: flex;
   align-items: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 16px;
+  margin-bottom: 24px;
 }
 
 .tabs-underlined .tab-underlined {
@@ -44,8 +44,8 @@
   display: flex;
   align-items: center;
   h6 {
-    text-decoration: none; 
-    margin: 0;
+    text-decoration: none;
+    margin: 0 0 0 8px;
   }
   p {
     margin: 0;
@@ -55,17 +55,30 @@
   }
 }
 
+.list-inline {
+  position: relative;
+}
+
+.menu .tabs-underlined {
+  margin-top: 0px;
+  padding-top: 16px;
+}
 #highpage {
+  position: absolute;
   color: $brand;
-  font-size: 30px;
-  padding-bottom: 14px;
+  font-size: 20px;
   padding-right: 8px;
-  margin-top: 8px;
+  top: 8px;
+  right: 0;
+  margin-right: 8px;
 }
 
 .calltoaction {
   display: flex;
   justify-content: space-between;
+  h1 {
+    margin-left: 8px;
+  }
 }
 
 // #btnsave {

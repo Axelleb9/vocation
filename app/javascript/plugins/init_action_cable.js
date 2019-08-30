@@ -21,11 +21,12 @@ const insertData = (data) => {
   if (data["type"] === "example") {
     example.innerHTML = data["detail"]
   } else if (data["type"] === "definition") {
-    definition.innerHTML = data["detail"];
-    nature.innerHTML = data["natures"];
-    translation.innerHTML = data["translation"];
+    definition.innerHTML = data["detail"][0];
+    nature.innerHTML = data["natures"][0];
   } else if (data["type"] === "synonyms") {
     synonyms.innerHTML = data["detail"]
+  } else if (data["type"] === "translation") {
+    translation.innerHTML = data["detail"]
   }
 };
 
