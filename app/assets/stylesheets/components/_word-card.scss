@@ -1,3 +1,13 @@
+.details-show {
+  height: 80px !important;
+}
+
+#word-details {
+  height: 0px;
+  padding: 0;
+  transition: height .5s ease !important;
+}
+
 .all-words {
   background-color: black;
   margin-top: 8px;

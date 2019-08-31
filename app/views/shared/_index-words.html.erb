@@ -24,16 +24,13 @@
       </div>
     </div>
 
-    <div id="accordion-<%= index %>">
-      <div class="display-div">
-        <div class="display-content" data-id="<%= index %>" data-toggle="collapse" data-target="#collapse-<%= index %>" aria-expanded="false" >
-          <i id="test" class="fas fa-chevron-down chevron-icon" ></i>
-        </div>
-      </div>
+    <div class="display-content">
+      <i id="test" class="fas fa-chevron-down chevron-icon chevron-selector" ></i>
+    </div>
 
-      <div id="collapse-<%= index %>" class="collapse displayed-content" style="transition: height .8s ease">
+      <div id="word-details" class="displayed-content" style="transition: height .8s ease">
         <span> <i> (<%= word.nature&.first %>) </i> </span>
-        <span id="definition"><%= word.definition&.first %></span>
+        <span id="definition"><%= word.definition&.firs %></span>
         <span id="example"> "<%= word.example %>"</span>
         <span> Synonyms:</span>
         <span id="synonyms">
