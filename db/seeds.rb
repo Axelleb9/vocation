@@ -112,16 +112,18 @@ words.each_with_index do |word, index|
   languages = "en-fr"
   url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
   callback = JSON.parse(HTTP.get(url))
-  puts callback
+  puts callback["text"]
   translation = callback["text"].first
 
   wl = WordsList.new(list: list)
   ww = UserWord.new(user: user)
   puts "creating word n°#{index + 1}"
-  puts "calling API for examples"
-  callback = HTTP.get(set_url(info[0], word), headers: headers)
-  response = JSON.parse(callback)
-  example = response['example'].first # retourne un array d'examples
+    puts "calling API for examples"
+    callback = HTTP.get(set_url(info[0], word), headers: headers)
+    response = JSON.parse(callback)
+    p response["example"].class
+    p response["example"]
+    example = response['example'].first(3) # retourne un array d'examples
 
   puts "calling API for difficulty level"
   callback = HTTP.get(set_url(info[1], word), headers: headers)

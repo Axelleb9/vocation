@@ -1,0 +1,19 @@
+<div id="word-details" class="displayed-content" style="transition: height .8s ease">
+  <span> <i> (<%= word.nature&.first %>) </i> </span>
+  <span id="definition"><%= meaning %></span>
+  <span id="example"> "<%= word.example[index] %>"</span>
+  <span> Synonyms:</span>
+  <span id="synonyms">
+    <% terms = word.reference.broad_terms.blank? ? word.reference.synonyms : word.reference.broad_terms %>
+    <% wordcount = terms.length %>
+        <% terms.each_with_index do |term, i| %>
+          <% if i == 0 %>
+          <%= "#{term.capitalize}," %>
+          <% elsif i == wordcount -1 %>
+          <%= "#{term}" %>
+          <% else %>
+          <%= "#{term}," %>
+          <% end %>
+      <% end %>
+  </span>
+</div>

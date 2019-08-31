@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2019_08_31_120705) do
     t.string "entry"
     t.string "translation"
     t.text "definition", array: true
-    t.text "example"
+    t.text "example", array: true
     t.string "nature", array: true
     t.integer "difficulty"
     t.string "synonyms", array: true
