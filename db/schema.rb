@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_090052) do
+ActiveRecord::Schema.define(version: 2019_08_31_120705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,28 @@ ActiveRecord::Schema.define(version: 2019_08_30_090052) do
     t.boolean "switch", default: true
     t.integer "week"
     t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "meanings", force: :cascade do |t|
+    t.bigint "word_id"
+    t.string "nou", array: true
+    t.string "vrb", array: true
+    t.string "adj", array: true
+    t.string "adv", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_meanings_on_word_id"
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.bigint "word_id"
+    t.string "broad_terms", array: true
+    t.string "narrow_terms", array: true
+    t.string "related_terms", array: true
+    t.string "synonyms", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_references_on_word_id"
   end
 
   create_table "user_words", force: :cascade do |t|
@@ -86,6 +108,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_090052) do
   end
 
   add_foreign_key "lists", "users"
+  add_foreign_key "meanings", "words"
+  add_foreign_key "references", "words"
   add_foreign_key "user_words", "users"
   add_foreign_key "user_words", "words"
   add_foreign_key "words_lists", "lists"
