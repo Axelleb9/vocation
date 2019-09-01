@@ -6,6 +6,7 @@ class WordsController < ApplicationController
     policy_scope(Word)
     @word = Word.new
     @lists = current_user.lists
+    @new_word = Word.find(params[:new_word_id]) if params[:new_word_id].present?
     @current_word = Word.find(params[:word_id]) if params[:word_id].present?
   end
 
@@ -20,8 +21,10 @@ class WordsController < ApplicationController
       FetchDifficultyJob.perform_later(entry, current_user.id, word.id)
       FetchDefinitionJob.perform_later(entry, current_user.id, word.id)
       FetchSynonymsJob.perform_later(entry, current_user.id, word.id)
+      redirect_to words_path(new_word_id: word.id)
+    else
+      redirect_to words_path(word_id: word.id)
     end
-    redirect_to words_path(word_id: word.id)
   end
 
   def change_order

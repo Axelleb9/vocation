@@ -1,13 +1,15 @@
 .navbar-user {
   background: white;
-  height: 50px;
+  height: 65px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   a {
+    font-size: 24px;
     color: #414141;
     text-decoration: none;
+    i {margin-bottom: 4px}
   }
 }
 
