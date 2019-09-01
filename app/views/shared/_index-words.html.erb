@@ -38,7 +38,7 @@
         <ul class="nav nav-tabs">
           <% user_word = UserWord.where(user: current_user, word: word).take %>
 
-          <% unless word.meaning.nou.nil? %>
+          <% unless word.meaning&.nou.nil? %>
             <% if user_word.state == "nou" %>
               <li class="nav-item">
                 <%= link_to "noun", word_change_state_to_nou_path(word), method: :post, class: "nav-link active"%>
@@ -50,7 +50,7 @@
             <% end %>
           <% end %>
 
-          <% unless word.meaning.adj.nil? %>
+          <% unless word.meaning&.adj.nil? %>
             <% if user_word.state == "adj" %>
               <li class="nav-item">
                 <%= link_to "adj", word_change_state_to_adj_path(word), method: :post, class: "nav-link active" %>
@@ -62,7 +62,7 @@
             <% end %>
           <% end %>
 
-          <% unless word.meaning.vrb.nil? %>
+          <% unless word.meaning&.vrb.nil? %>
             <% if user_word.state == "vrb" %>
               <li class="nav-item">
                 <%= link_to "vrb", word_change_state_to_vrb_path(word), method: :post, class: "nav-link active" %>
@@ -74,7 +74,7 @@
             <% end %>
           <% end %>
 
-          <% unless word.meaning.adv.nil? %>
+          <% unless word.meaning&.adv.nil? %>
             <% if user_word.state == "adv" %>
               <li class="nav-item">
                 <%= link_to "adv", word_change_state_to_adv_path(word), method: :post, class: "nav-link active" %>
