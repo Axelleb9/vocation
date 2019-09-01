@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :words, only: [:new, :create, :delete, :index] do
     get "open_eye"
     get "close_eye"
+    post "change_state", to: "userwords#change_state"
     post "favori", to: "words#favori"
     delete "unfavori", to: "words#unfavori"
     post "add_to_list", to: "words#add_word_to_list"

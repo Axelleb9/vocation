@@ -39,25 +39,25 @@
 
           <% unless word.meaning.nou.nil? %>
             <li class="nav-item">
-              <a class="nav-link active" href="#">noun</a>
+              <%= link_to "noun", word_change_state_path(word), method: :post, class: "nav-link active" %>
             </li>
           <% end %>
 
           <% unless word.meaning.adj.nil? %>
             <li class="nav-item">
-              <a class="nav-link" href="#">adj</a>
+              <%= link_to "adj", word_change_state_path(word), method: :post, class: "nav-link" %>
             </li>
           <% end %>
 
           <% unless word.meaning.vrb.nil? %>
             <li class="nav-item">
-              <a class="nav-link" href="#">vrb</a>
+              <%= link_to "vrb", word_change_state_path(word), method: :post, class: "nav-link" %>
             </li>
           <% end %>
 
           <% unless word.meaning.adv.nil? %>
             <li class="nav-item">
-              <a class="nav-link" href="#">adv</a>
+              <%= link_to "adv", word_change_state_path(word), method: :post, class: "nav-link" %>
             </li>
           <% end %>
 

@@ -1,7 +1,9 @@
 require 'faker'
 require 'json'
 require 'http'
+
 User.destroy_all
+
 host = "twinword-word-graph-dictionary.p.rapidapi.com"
 twin_key = ENV["TWINKEY"]
 project_id = ENV["PROJECTID"]
@@ -17,6 +19,18 @@ headers = {
 def set_url(category, word)
   base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
   url = "#{base + category}entry=#{word}"
+end
+
+def set_state(word)
+  if !word.meaning.nou.blank?
+    "nou"
+  elsif !word.meaning.adj.blank?
+    "adj"
+  elsif !word.meaning.vrb.blank?
+    "vrb"
+  elsif !word.meaning.adv.blank?
+    "adv"
+  end
 end
 
 puts "creating user"
@@ -177,11 +191,10 @@ words.each_with_index do |word, index|
   word.save!
   ww.word = word
   wl.word = word
+  ww.state = set_state(word)
   ww.save!
   wl.save!
 end
-
 print `clear`
-
 puts "------------------ You can login to #{user.username}'s account with the following logs ------------------"
 puts "------------------------------ email: #{user.email} || password: #{user.password} ------------------------------"
