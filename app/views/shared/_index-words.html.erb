@@ -35,59 +35,10 @@
         <li data-target="#word-card-carousel<%= index %>" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
-        <ul class="nav nav-tabs">
-          <% user_word = UserWord.where(user: current_user, word: word).take %>
 
-          <% unless word.meaning&.nou.nil? %>
-            <% if user_word.state == "nou" %>
-              <li class="nav-item">
-                <%= link_to "noun", word_change_state_to_nou_path(word), method: :post, class: "nav-link active"%>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "noun", word_change_state_to_nou_path(word), method: :post, class: "nav-link" %>
-              </li>
-            <% end %>
-          <% end %>
+      <% user_word = UserWord.where(user: current_user, word: word).take %>
 
-          <% unless word.meaning&.adj.nil? %>
-            <% if user_word.state == "adj" %>
-              <li class="nav-item">
-                <%= link_to "adj", word_change_state_to_adj_path(word), method: :post, class: "nav-link active" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "adj", word_change_state_to_adj_path(word), method: :post, class: "nav-link" %>
-              </li>
-            <% end %>
-          <% end %>
-
-          <% unless word.meaning&.vrb.nil? %>
-            <% if user_word.state == "vrb" %>
-              <li class="nav-item">
-                <%= link_to "vrb", word_change_state_to_vrb_path(word), method: :post, class: "nav-link active" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "vrb", word_change_state_to_vrb_path(word), method: :post, class: "nav-link" %>
-              </li>
-            <% end %>
-          <% end %>
-
-          <% unless word.meaning&.adv.nil? %>
-            <% if user_word.state == "adv" %>
-              <li class="nav-item">
-                <%= link_to "adv", word_change_state_to_adv_path(word), method: :post, class: "nav-link active" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "adv", word_change_state_to_adv_path(word), method: :post, class: "nav-link active" %>
-              </li>
-            <% end %>
-          <% end %>
-
-        </ul>
-
+      <%= render 'shared/carousel-tabs', word: word, user_word: user_word %>
         <% case user_word.state %>
         <% when "nou" %>
           <% word.meaning.nou&.first(3)&.each_with_index do |meaning, i| %>
