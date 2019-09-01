@@ -8,8 +8,24 @@ class FetchSynonymsJob < ApplicationJob
     response = JSON.parse(callback)
     synonyms = response["relation"]["broad_terms"].split(',').first(3)
     send_details(synonyms, user_id)
+    reference = Reference.new
+    response["relation"].each do |relation, terms|
+      unless terms == ""
+        case relation
+        when "broad_terms"
+          reference.broad_terms = terms.split(',')
+        when "narrow_terms"
+          reference.narrow_terms = terms.split(',')
+        when "related_terms"
+          reference.related_terms = terms.split(',')
+        when "synonyms"
+          reference.synonyms = terms.split(',')
+        end
+      end
+    end
     w = Word.find(word_id)
-    w.update(synonyms: synonyms)
+    reference.word = w
+    reference.save
   end
 
   def send_details(detail, id)

@@ -9,7 +9,7 @@ class FetchExampleJob < ApplicationJob
     example = response["example"].first
     send_details(example, user_id)
     w = Word.find(word_id)
-    w.update(example: example)
+    w.update(example: response["example"])
   end
 
   def send_details(detail, id)

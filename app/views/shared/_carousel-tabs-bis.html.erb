@@ -1,0 +1,27 @@
+<ul class="nav nav-tabs">
+
+  <% unless word.meaning&.nou.nil? %>
+    <li class="nav-item">
+      <%= link_to "noun", word_change_state_to_nou_path(word, from: "bis"), method: :post, class: "nav-link #{'active' if word.state == "nou"}"%>
+    </li>
+  <% end %>
+
+  <% unless word.meaning&.adj.nil? %>
+    <li class="nav-item">
+      <%= link_to "adj", word_change_state_to_adj_path(word, from: "bis"), method: :post, class: "nav-link #{'active' if word.state == "adj"}" %>
+    </li>
+   <% end %>
+
+  <% unless word.meaning&.vrb.nil? %>
+    <li class="nav-item">
+      <%= link_to "vrb", word_change_state_to_vrb_path(word, from: "bis"), method: :post, class: "nav-link #{'active' if word.state == "vrb"}" %>
+    </li>
+  <% end %>
+
+  <% unless word.meaning&.adv.nil? %>
+    <li class="nav-item">
+      <%= link_to "adv", word_change_state_to_adv_path(word, from: "bis"), method: :post, class: "nav-link #{'active' if word.state == "adv"}" %>
+    </li>
+  <% end %>
+
+</ul>

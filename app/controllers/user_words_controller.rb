@@ -3,23 +3,43 @@ class UserWordsController < ApplicationController
   skip_after_action :verify_authorized
 
   def change_state_to_nou
-    @user_word.update(state: "nou")
-    redirect_to words_path
+    if params[:from].present?
+      @word.update(state: "nou")
+      redirect_to words_path(word_id: @word)
+    else
+      @user_word.update(state: "nou")
+      redirect_to words_path
+    end
   end
 
   def change_state_to_adj
-    @user_word.update(state: "adj")
-    redirect_to words_path
+    if params[:from].present?
+      @word.update(state: "adj")
+      redirect_to words_path(word_id: @word)
+    else
+      @user_word.update(state: "adj")
+      redirect_to words_path
+    end
   end
 
   def change_state_to_vrb
-    @user_word.update(state: "vrb")
-    redirect_to words_path
+    if params[:from].present?
+      @word.update(state: "vrb")
+      redirect_to words_path(word_id: @word)
+    else
+      @user_word.update(state: "vrb")
+      redirect_to words_path
+    end
   end
 
   def change_state_to_adv
-    @user_word.update(state: "adv")
-    redirect_to words_path
+    if params[:from].present?
+      @word.update(state: "adv")
+      redirect_to words_path(word_id: @word)
+    else
+      @user_word.update(state: "adv")
+      redirect_to words_path
+    end
   end
 
   private
