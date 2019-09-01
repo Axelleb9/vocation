@@ -1,5 +1,23 @@
+.nav-tabs .nav-link {
+  font-size: 12px;
+  color: $word-color;
+  padding: 5px 10px;
+}
+.nav-tabs .nav-link.active {
+  color: $brand;
+  background-color: #f4f4f447;
+}
+
+.carousel-indicators {
+  margin-bottom: 0;
+  li {
+    width: 14px;
+    background-color: $word-color;
+  }
+}
+
 .details-show {
-  height: 110px !important;
+  height: 140px !important;
 }
 
 .carousel-word-card {

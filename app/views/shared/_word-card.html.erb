@@ -1,10 +1,10 @@
 <div id="word-details" class="displayed-content" style="transition: height .8s ease">
-  <span> <i> (<%= word.nature&.first %>) </i> </span>
   <span id="definition"><%= meaning %></span>
   <span id="example"> "<%= word.example[index] %>"</span>
   <span> Synonyms:</span>
   <span id="synonyms">
-    <% terms = word.reference.broad_terms.blank? ? word.reference.synonyms : word.reference.broad_terms %>
+    <% all_terms = [word.reference.synonyms, word.reference.broad_terms, word.reference.related_terms, word.reference.narrow_terms].flatten.compact %>
+    <% terms = all_terms[(index * 3)..(index * 3 + 2)] %>
     <% wordcount = terms.length %>
         <% terms.each_with_index do |term, i| %>
           <% if i == 0 %>

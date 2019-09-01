@@ -14,9 +14,6 @@ headers = {
   "RapidAPIProject" => project_id
 }
 
-info = ["example/?", "difficulty/?", "definition/?", "reference/?"]
-words = %w(fear other trust sheep cup sink blood smoke knowledge time)
-
 def set_url(category, word)
   base = "https://twinword-word-graph-dictionary.p.rapidapi.com/"
   url = "#{base + category}entry=#{word}"
@@ -105,6 +102,9 @@ end
 list = List.new(title: "List of the week", user: user, week: Date.today.cweek)
 list.save!
 
+info = ["example/?", "difficulty/?", "definition/?", "reference/?"]
+words = %w(fear other trust sheep cup sink blood smoke knowledge time)
+
 puts "calling the API"
 words.each_with_index do |word, index|
   base = "https://translate.yandex.net/api/v1.5/tr.json/translate?"
@@ -121,8 +121,6 @@ words.each_with_index do |word, index|
     puts "calling API for examples"
     callback = HTTP.get(set_url(info[0], word), headers: headers)
     response = JSON.parse(callback)
-    p response["example"].class
-    p response["example"]
     example = response['example'].first(3) # retourne un array d'examples
 
   puts "calling API for difficulty level"

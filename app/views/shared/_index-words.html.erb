@@ -27,16 +27,45 @@
     <div class="display-content">
       <i id="test" class="fas fa-chevron-down chevron-icon chevron-selector" ></i>
     </div>
-    <div id="word-card-carousel" class="carousel slide carousel-word-card" data-ride="carousel" data-interval='false'>
+
+    <div id="word-card-carousel<%= index %>" class="carousel slide carousel-word-card" data-ride="carousel" data-interval='false'>
       <ol class="carousel-indicators">
-        <li data-target="#word-card-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#word-card-carousel" data-slide-to="1"></li>
-        <li data-target="#word-card-carousel" data-slide-to="2"></li>
+        <li data-target="#word-card-carousel<%= index %>" data-slide-to="0" class="active"></li>
+        <li data-target="#word-card-carousel<%= index %>" data-slide-to="1"></li>
+        <li data-target="#word-card-carousel<%= index %>" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
-        <% word.meaning.nou&.first(3)&.each_with_index do |meaning, index| %>
-          <div class="carousel-item <%= 'active' if index == 0 %>">
-            <%= render 'shared/word-card', word: word, index: index, meaning: meaning %>
+        <ul class="nav nav-tabs">
+
+          <% unless word.meaning.nou.nil? %>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">noun</a>
+            </li>
+          <% end %>
+
+          <% unless word.meaning.adj.nil? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">adj</a>
+            </li>
+          <% end %>
+
+          <% unless word.meaning.vrb.nil? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">vrb</a>
+            </li>
+          <% end %>
+
+          <% unless word.meaning.adv.nil? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">adv</a>
+            </li>
+          <% end %>
+
+        </ul>
+
+        <% word.meaning.nou&.first(3)&.each_with_index do |meaning, i| %>
+          <div class="carousel-item <%= 'active' if i == 0 %>">
+            <%= render 'shared/word-card', word: word, index: i, meaning: meaning %>
           </div>
         <% end %>
       </div>
