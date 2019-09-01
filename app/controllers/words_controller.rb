@@ -49,7 +49,7 @@ class WordsController < ApplicationController
 
   def favori
     current_word = Word.find(params[:word_id])
-    user_word = UserWord.new(user: current_user, word: current_word)
+    user_word = UserWord.new(user: current_user, word: current_word, state: set_state(current_word))
     user_word.save
     WordsList.create(word: current_word, list: @list)
     redirect_to words_path(word_id: current_word.id)
@@ -82,5 +82,17 @@ class WordsController < ApplicationController
     @list = current_user.lists.where(week: current_week).take
     return unless @list.blank?
     @list = List.create(title: "week #{current_week}", user: current_user, week: current_week)
+  end
+
+  def set_state(word)
+    if !word.meaning.nou.blank?
+      "nou"
+    elsif !word.meaning.adj.blank?
+      "adj"
+    elsif !word.meaning.vrb.blank?
+      "vrb"
+    elsif !word.meaning.adv.blank?
+      "adv"
+    end
   end
 end
