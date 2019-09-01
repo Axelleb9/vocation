@@ -23,7 +23,6 @@ const displayDetails = () => {
   chevrons.forEach((chevron) => {
     chevron.addEventListener('click', (event) => {
       const details = event.currentTarget.parentElement.nextSibling.nextElementSibling
-      console.log(details)
       details.classList.toggle('details-show');
     });
   });
