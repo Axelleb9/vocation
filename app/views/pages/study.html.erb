@@ -1,17 +1,13 @@
-<div class="cards container">
-   <%= link_to study_quizzes_path, class: "study-card-brand" do
-     %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dlodtvkez/image/upload/v1567082873/quizz.jpg)">
-      Quizzes
-    </div>
-    <% end %>
+<div class="study-container">
+    <div class="study-content">
+   <%= link_to "Quizzes", study_quizzes_path %>
 
-  <%= link_to study_flashcards_path, class: "study-card" do
-     %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dlodtvkez/image/upload/v1567082883/flashcard.jpg)">
-    Learn with flashcards
     </div>
-    <% end %>
+
+    <div class="study-content">
+  <%= link_to "Flashcards", study_flashcards_path %>
+
+    </div>
 </div>
 
 
