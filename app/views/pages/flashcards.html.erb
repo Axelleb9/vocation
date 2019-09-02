@@ -1,9 +1,8 @@
 <h1>Hello</h1>
-<% @flashcards.each do |flashcard|%>
-  <ul>
-    <li>
-      <%= link_to "#{flashcard.title}", list_flashcard_path(flashcard) %>
-    </li>
-  </ul>
-<% end %>
-
+<div class="flashcard-grid">
+  <% @flashcards.each do |flashcard|%>
+      <span class="flashcard-element">
+        <%= link_to "#{flashcard.title}", list_flashcard_path(flashcard) %>
+      </span>
+  <% end %>
+</div>
