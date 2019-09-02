@@ -2,13 +2,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  grid-auto-rows: auto;
+  grid-auto-rows: 100px;
   grid-auto-flow: columns;
+
 }
 
 .flashcard-element {
-  height: 100px;
   border: solid 1px;
   word-break:break-word;
-  width: 100px;
 }
