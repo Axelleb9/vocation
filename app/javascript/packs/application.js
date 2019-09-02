@@ -14,3 +14,14 @@ rotateMe();
 initActionCable();
 switchCard();
 displayDetails();
+
+
+$(document).ready(function(){
+    $('.dropdown-for-mobile').dropdown();
+});
+
+
+// const openModal = document.getElementById("highpage");
+// openModal.addEventListener("click", (event) => {
+// 	$('#highpage').modal();
+// })

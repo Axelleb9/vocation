@@ -1,4 +1,24 @@
-  <%= render 'modal' %>
+<div class="modal fade" id="create-list" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLongTitle">Create list</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= simple_form_for @list do |f| %>
+        <div class="modal-body">
+          <%= f.input :title, :input_html => { :value => @list.title} %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Save", id: "btnsave" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="menu">
@@ -11,7 +31,9 @@
       <li><%= link_to "My lists", lists_path, class: "tab-underlined active" %></li>
       <li><%= link_to "Weeks", lists_path(lists: "vocalists"), class: "tab-underlined" %></li>
     <% end %>
-    <i class="fas fa-plus" id="highpage" data-toggle="modal" data-target="#ModalCenter"></i>
+    <%= link_to nil, data: { target: "#create-list", toggle: "modal"} do %>
+      <i class="fas fa-plus" id="highpage"></i>
+    <% end %>
   </ul>
 </div>
 
@@ -48,7 +70,7 @@
 			      <h6><%= link_to list.title, list_path(list), style:"color: black" %></h6>
             <p id="wordslist"><i>(<%= list.words.count %> words)</i></p>
           </div>
-          <i class="fas fa-ellipsis-h" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <i class="fas fa-ellipsis-h dropdown-for-mobile" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu">
 
             <div class="d-flex justify-content-between align-items-center">
