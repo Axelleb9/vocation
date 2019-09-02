@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post "favori", to: "words#favori"
     delete "unfavori", to: "words#unfavori"
     post "add_to_list", to: "words#add_word_to_list"
+
+    resources :words_lists, only: [:new]
   end
 
   resources :lists do

@@ -1,0 +1,46 @@
+#add-to-list {
+	font-size: 28px;
+	text-align: center;
+	margin-top: 16px;
+}
+
+#head-of-page h6 {
+	font-size: 18px;
+	padding-left: 0px;
+}
+
+#head-of-page {
+	margin: 32px 19px;
+	border-bottom: 1px solid $word-color;
+	padding-left: 0px;
+}
+
+#new_word {
+	color: $word-color;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+#word_entry {
+  margin-bottom: 16px;
+}
+
+#highaddtolist {
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+
+#lien {
+	display: flex;
+	justify-content: start;
+	font-size: 16px;
+	padding-left: 16px;
+	margin-right: 100px;
+	color: #035ac1;
+  text-decoration: none;
+}
+
+#add-to-list{
+	margin-right: 172px;
+}
