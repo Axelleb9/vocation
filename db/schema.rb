@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_191411) do
+ActiveRecord::Schema.define(version: 2019_09_02_160027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2019_09_01_191411) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["word_id"], name: "index_meanings_on_word_id"
+  end
+
+  create_table "quizz_questions", force: :cascade do |t|
+    t.bigint "words_list_id"
+    t.string "good_answer"
+    t.string "wrong_answers", array: true
+    t.integer "question_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["words_list_id"], name: "index_quizz_questions_on_words_list_id"
   end
 
   create_table "references", force: :cascade do |t|
@@ -88,11 +98,8 @@ ActiveRecord::Schema.define(version: 2019_09_01_191411) do
   create_table "words", force: :cascade do |t|
     t.string "entry"
     t.string "translation"
-    t.text "definition", array: true
     t.text "example", array: true
-    t.string "nature", array: true
     t.integer "difficulty"
-    t.string "synonyms", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "visible", default: false
@@ -105,12 +112,14 @@ ActiveRecord::Schema.define(version: 2019_09_01_191411) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "reviewed", default: false
+    t.boolean "quizz_status", default: false
     t.index ["list_id"], name: "index_words_lists_on_list_id"
     t.index ["word_id"], name: "index_words_lists_on_word_id"
   end
 
   add_foreign_key "lists", "users"
   add_foreign_key "meanings", "words"
+  add_foreign_key "quizz_questions", "words_lists"
   add_foreign_key "references", "words"
   add_foreign_key "user_words", "users"
   add_foreign_key "user_words", "words"
