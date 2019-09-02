@@ -88,8 +88,11 @@ ActiveRecord::Schema.define(version: 2019_09_01_191411) do
   create_table "words", force: :cascade do |t|
     t.string "entry"
     t.string "translation"
+    t.text "definition", array: true
     t.text "example", array: true
+    t.string "nature", array: true
     t.integer "difficulty"
+    t.string "synonyms", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "visible", default: false
