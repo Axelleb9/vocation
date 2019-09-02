@@ -66,6 +66,8 @@ class WordsController < ApplicationController
   def add_word_to_list
     word = Word.find(params[:word_id])
     list = List.find(params[:list_id])
+    user_word = UserWord.new(word: word, user: current_user)
+    user_word.save
     words_list = WordsList.new(word_id: word.id, list_id: list.id)
     words_list.save
     redirect_to words_path(word_id: word.id)
