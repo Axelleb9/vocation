@@ -78,7 +78,7 @@ class WordsController < ApplicationController
   end
 
   def create_list_of_the_week
-    current_week = Date.today.cweek - 1
+    current_week = Date.today.cweek + 1
     @list = current_user.lists.where(week: current_week).take
     return unless @list.blank?
     @list = List.create(title: "week #{current_week}", user: current_user, week: current_week)

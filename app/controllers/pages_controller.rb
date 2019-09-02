@@ -8,7 +8,8 @@ class PagesController < ApplicationController
   end
 
   def flashcards
-    @flashcards = current_user.lists
+    @flashcards = current_user.lists.where(week: nil)
+    @flashcards_weeks = current_user.lists.where.not(week: nil)
   end
 
   def quizzes

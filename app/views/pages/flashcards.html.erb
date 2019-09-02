@@ -1,12 +1,45 @@
-<div class="flashcard-grid" style="width: 30% padding-bottom: 30%">
-  <% @flashcards.each do |flashcard|%>
+<div style="margin-top: 10%">
+  <h4 class="text-center flashcard-title">My Lists</h4>
+  <div class="d-flex horizontal-scroll flashcards-container">
+    <% @flashcards.each do |flashcard| %>
 
-      <span class="flashcard-element">
-
-        <%= link_to "#{flashcard.title}", list_flashcard_path(flashcard) %>
-      </span>
-  <% end %>
+      <div class="flashcard-element">
+        <div class="ribbon-container">
+          <div class="card-ribbon"></div>
+        </div>
+        <% luck = (2..4).to_a.sample %>
+        <% case luck %>
+        <% when 2 %>
+          <i class="fas fa-puzzle-piece"></i>
+        <% when 3 %>
+          <i class="fas fa-trophy"></i>
+        <% when 4 %>
+          <i class="fas fa-brain"></i>
+        <% end %>
+        <h6><%= flashcard.title %></h6>
+        <p><%= flashcard.words.count %> words</p>
+        <div class="card-back-one"></div>
+        <div class="card-back-two"></div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<!--   <img src="https://static.thenounproject.com/png/20461-200.png">
- -->
+<div style="margin-top: 10%">
+  <h4 class="text-center flashcard-weeks-title">Weeks</h4>
+  <div class="d-flex horizontal-scroll flashcards-container">
+    <% @flashcards_weeks.each do |flashcard| %>
+      <div class="flashcard-weeks-element">
+        <div class="ribbon-container">
+          <div class="card-ribbon"></div>
+      </div>
+
+        <h6><%= flashcard.title %></h6>
+        <p><%= flashcard.words.count %> words</p>
+        <div class="card-back-one"></div>
+        <div class="card-back-two"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
