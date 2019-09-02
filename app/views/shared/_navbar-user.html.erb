@@ -1,28 +1,39 @@
 <div class="navbar-user fixed-bottom">
 
-
-    <%= link_to words_path, class: "home-menu  #{'icon-brand-color' if current_page?(words_path)}" do %>
-    <i id= "home-icon" class="fas fa-home"></i>
-    <span id= "home-title">Home</span>
+  <div class="navbar-icon">
+    <%= link_to words_path,class: "#{'icon-brand-color' if current_page?(words_path)}" do %>
+    <i class="fas fa-home"></i>
+    <span class="general-size">Home</span>
     <% end %>
+  </div>
 
-    <%= link_to lists_path, class: "list-menu #{'icon-brand-color' if current_page?(lists_path)}" do %>
-    <i id= "list-icon" class="fas fa-list"></i>
-    <span id= "list-title">Lists</span>
+  <div class="navbar-icon">
+    <%= link_to lists_path, class: "#{'icon-brand-color' if params['controller'] == 'lists'}" do %>
+    <i class="fas fa-list"></i>
+    <span class="general-size">Lists</span>
     <% end %>
+  </div>
 
-    <%= link_to study_path, class: "study-menu #{'icon-brand-color' if current_page?(study_path)}" do %>
-    <i id= "study-icon" class="fas fa-graduation-cap"></i>
-    <span id= "study-title">Study</span>
-    <% end %>
 
-    <%= link_to lists_path(lists: "vocalists"), class: "chart-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
-    <i id= "chart-icon" class="fas fa-chart-line"></i>
-    <span id= "chart-title">Results</span>
+  <div class="navbar-icon">
+    <%= link_to study_path, class: "#{'icon-brand-color' if current_page?(study_path)}" do %>
+    <i class="fas fa-graduation-cap"></i>
+    <span class="general-size">Study</span>
     <% end %>
+  </div>
 
-    <%= link_to user_session_path, class: "user-menu #{'icon-brand-color' if current_page?(root_path)}" do %>
-    <i id= "user-icon" class="fas fa-user"></i>
-    <span id= "user-title">Profile</span>
+  <div class="navbar-icon">
+    <%= link_to lists_path(lists: "vocalists"), class: "#{'icon-brand-color' if current_page?(root_path)}" do %>
+    <i class="fas fa-chart-line"></i>
+    <span class="general-size">Results</span>
     <% end %>
+  </div>
+
+  <div class="navbar-icon">
+    <%= link_to user_session_path, class: "#{'icon-brand-color' if current_page?(root_path)}" do %>
+    <i class="fas fa-user"></i>
+    <span class="general-size">Profile</span>
+    <% end %>
+  </div>
+
 </div>

@@ -14,8 +14,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="flashcard-container">
     <div class="flashcard">
 
@@ -34,7 +32,8 @@
             <div id="flashcard-question">
               <%= @word.word.entry %>
             </div>
-            <div id="flashcard-answer" class="d-none"><%= @word.word.translation %>
+            <div id="flashcard-answer" class="d-none">
+              <span><%= @word.word.translation %> </span>
             </div>
           </div>
 
