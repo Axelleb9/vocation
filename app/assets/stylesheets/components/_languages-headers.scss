@@ -1,0 +1,28 @@
+.switch-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.switch-language {
+  text-align: center;
+  width: 90%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 24px;
+  margin: 4px;
+}
+
+.fa-exchange-alt {
+  position: absolute;
+  bottom: 4px;
+  right: 163px;
+  color: $brand;
+}
+
+#list-of-the-week {
+  text-align: center;
+  font-size: 17px;
+  margin: 9px;
+  color: $word-color;
+}
