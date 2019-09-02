@@ -6,7 +6,7 @@
     <span id= "home-title">Home</span>
     <% end %>
 
-    <%= link_to lists_path, class: "list-menu #{'icon-brand-color' if current_page?(lists_path)}" do %>
+    <%= link_to lists_path, class: "list-menu #{'icon-brand-color' if params['controller'] == 'lists'}" do %>
     <i id= "list-icon" class="fas fa-list"></i>
     <span id= "list-title">Lists</span>
     <% end %>
