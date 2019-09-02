@@ -1,7 +1,9 @@
-<div class="d-flex justify-content-between px-5 my-1 align-items-center">
-  <%= list&.switch ? "Anglais" : "Français" %>
-  <%= link_to list_order_path(list), method: :put do %>
-    <i class="fas fa-exchange-alt"></i>
-  <% end %>
-  <%= list.switch ? "Français" : "Anglais" %>
+<div class="switch-container">
+  <div class="switch-language">
+    <%= list&.switch ? "Anglais" : "Français" %>
+    <%= link_to list_order_path(list), method: :put do %>
+      <i class="fas fa-exchange-alt"></i>
+    <% end %>
+    <%= list.switch ? "Français" : "Anglais" %>
+  </div>
 </div>
