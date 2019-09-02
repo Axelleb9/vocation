@@ -3,17 +3,16 @@
 
   <div id="sub-body">
     <% unless @new_word.nil? %>
-    <%= render "lists-modal", word: @new_word %>
       <div id="connect-actioncable" data-user-id="<%= current_user.id %>"></div>
       <div class="displayed-content">
         <div class="d-flex justify-content-between word-translation">
           <strong><span id="translation"><%= @new_word.translation %></span></strong>
           <div class="d-flex align-items-center">
             <% if current_user.words.include?(@new_word) %>
-              <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+              <%= link_to "",new_word_words_list_path(@new_word), class: "fa fa-list mr-3", id:"add-to-list", style:"font-size: 14px"%>
                 <%=  link_to "", word_unfavori_path(@new_word) , method: :delete, class: "fas fa-star"%>
             <% else %>
-              <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+              <%= link_to "",new_word_words_list_path(@new_word), class: "fa fa-list mr-3", id:"add-to-list", style:"font-size: 14px"%>
                 <%=  link_to "", word_favori_path(@new_word) , method: :post, class: "far fa-star"%>
             <% end %>
           </div>
@@ -25,16 +24,15 @@
     <% end %>
 <!-- _________________________________________________________________________________________________________________________________-->
     <% unless @current_word.nil? %>
-    <%= render "lists-modal", word: @current_word%>
       <div class="displayed-content">
         <div class="d-flex justify-content-between word-translation">
           <strong><span id="translation"><%= @current_word.translation %></span></strong>
           <div class="d-flex align-items-center">
             <% if current_user.words.include?(@current_word) %>
-              <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+              <%= link_to "",new_word_words_list_path(@current_word), class: "fa fa-list mr-3", id:"add-to-list", style:"font-size: 14px"%>
                 <%=  link_to "", word_unfavori_path(@current_word) , method: :delete, class: "fas fa-star"%>
             <% else %>
-              <i id="add-to-list" data-toggle="modal" data-target="#openlists" class="fa fa-list mr-3" style="font-size: 14px;"></i>
+              <%= link_to "",new_word_words_list_path(@current_word), class: "fa fa-list mr-3", id:"add-to-list", style:"font-size: 14px"%>
                 <%=  link_to "", word_favori_path(@current_word) , method: :post, class: "far fa-star"%>
             <% end %>
           </div>
