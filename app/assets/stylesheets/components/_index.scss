@@ -30,3 +30,7 @@ abbr[title="required"] {
   font-size: 12px;
   margin-left: 8px;
 }
+
+.carousel-item {
+  transition: transform 0.4s ease-out;
+}
