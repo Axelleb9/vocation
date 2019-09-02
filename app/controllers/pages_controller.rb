@@ -10,4 +10,7 @@ class PagesController < ApplicationController
   def flashcards
     @flashcards = current_user.lists
   end
+
+  def quizzes
+  end
 end

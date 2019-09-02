@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   get 'study', to: 'pages#study', as: :study
   get 'study/flashcards', to: 'pages#flashcards'
+  get 'study/quizzes', to: 'pages#quizzes'
 
   mount ActionCable.server => "/cable"
 end
