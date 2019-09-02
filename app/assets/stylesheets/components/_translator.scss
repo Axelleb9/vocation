@@ -13,9 +13,8 @@
 }
 
 .activ-languages h6 {
-  margin-top: 0;
   color: $brand;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #submit-translation {
@@ -47,8 +46,12 @@
 }
 
 #language-infos {
-  height: 68px;
+  height: 84px;
   transition: height .4s ease !important;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 7px;
 }
 
 .hide-language {
@@ -74,4 +77,9 @@
 #add-to-list {
   color: $word-color;
   font-size: 16px;
+}
+
+.form-control {
+  background-clip: none;
+  border: none;
 }

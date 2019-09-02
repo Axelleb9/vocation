@@ -89,9 +89,11 @@
     <% end %>
 <!-- _________________________________________________________________________________________________________________________________-->
       <div id="language-infos">
-        <div class="d-flex justify-content-center my-3">
-          <div class="list-title">
-            <p><strong>List of the Week</strong></p>
+        <div>
+          <div id="list-of-the-week">
+            <span>
+              <i class="fas fa-calendar-week"></i>
+              <strong>List of the Week</strong></span>
           </div>
         </div>
         <%= render 'shared/languages-header', list: @list unless @list.nil? %>
