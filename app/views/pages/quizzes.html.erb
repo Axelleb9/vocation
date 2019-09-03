@@ -1,4 +1,48 @@
+<div class="background-quizz">
+  <div style="padding-top: 15%;">
+    <h4 class="text-center flashcard-title"><span></span>My Lists<span></span></h4>
+    <div class="d-flex horizontal-scroll flashcards-container">
+      <% @user_lists.each do |list| %>
+        <div class="flashcard-element">
+          <div class="ribbon-container">
+            <div class="card-ribbon"><span>missed</span></div>
+          </div>
+          <% luck = (2..4).to_a.sample %>
+          <% case luck %>
+          <% when 2 %>
+            <i class="fas fa-puzzle-piece"></i>
+          <% when 3 %>
+            <i class="fas fa-trophy"></i>
+          <% when 4 %>
+            <i class="fas fa-brain"></i>
+          <% end %>
+          <h6><%= list.title %></h6>
+          <p><%= list.words.count %> words</p>
+          <div class="card-back-one"></div>
+          <div class="card-back-two"></div>
+          <%= link_to '', list_quizz_path(list), class: "stretched-link" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<% @quizzes.each do |quiz| %>
-<p> <%= link_to "This is a quiz", list_quizz_path(quiz) %></p>
-<% end %>
+  <div style="padding: 5% 0 10% 0;">
+    <h4 class="text-center flashcard-weeks-title"><span></span>Weeks<span></span></h4>
+    <div class="d-flex horizontal-scroll flashcards-container">
+      <% @week_lists.each do |list| %>
+        <div class="flashcard-weeks-element">
+          <div class="ribbon-container">
+            <div class="card-ribbon"></div>
+        </div>
+
+          <h6><%= list.title %></h6>
+          <p><%= list.words.count %> words</p>
+          <div class="card-back-one"></div>
+          <div class="card-back-two"></div>
+          <%= link_to '', list_quizz_path(list), class: "stretched-link" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

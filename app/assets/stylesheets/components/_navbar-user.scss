@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0px 0px 10px #aeaeae;
+  box-shadow: 0px 0px 10px #dedede;
 
   a {
     color: #414141;
@@ -42,5 +42,20 @@
 }
 
 .image-brand-color {
-  filter: invert(27%) sepia(54%) saturate(4185%) hue-rotate(181deg) brightness(93%) contrast(101%); 
+  filter: invert(27%) sepia(54%) saturate(4185%) hue-rotate(181deg) brightness(93%) contrast(101%);
+}
+
+.navbar-icon a {
+  img {
+    position: absolute;
+    top: 12px;
+  }
+  i {
+    position: absolute;
+    top: 12px;
+  }
+  span {
+    position: absolute;
+    bottom: 5px;
+  }
 }

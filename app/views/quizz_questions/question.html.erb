@@ -1,22 +1,23 @@
-  <% top = @list.words_lists.where.not(quizz_status: nil).count %>
-  <% down = @list.words.count %>
-  <% percentage = top.fdiv(down) * 100%>
-<div class="progress-container">
-  <div class="progress progress-quizz">
-    <div class="progress-bar" role="progressbar" style="width:<%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+<div id="quizz-container">
+    <% top = @list.words_lists.where.not(quizz_status: nil).count %>
+    <% down = @list.words.count %>
+    <% percentage = top.fdiv(down) * 100%>
+  <div class="progress-container">
+    <div class="progress progress-quizz">
+      <div class="progress-bar" role="progressbar" style="width:<%= percentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="score-progress"><%= "#{top}/#{down}" %></div>
   </div>
-  <div class="score-progress"><%= "#{top}/#{down}" %></div>
+  <% case @question %>
+  <% when 1 %>
+    <%= render 'quizz_questions/question1' %>
+  <% when 2 %>
+    <%= render 'quizz_questions/question2' %>
+  <% when 3 %>
+    <%= render 'quizz_questions/question3' %>
+  <% when 4 %>
+    <%= render 'quizz_questions/question4' %>
+  <% when 5 %>
+    <%= render 'quizz_questions/question5' %>
+  <% end %>
 </div>
-<% case @question %>
-<% when 1 %>
-  <%= render 'quizz_questions/question1' %>
-<% when 2 %>
-  <%= render 'quizz_questions/question2' %>
-<% when 3 %>
-  <%= render 'quizz_questions/question3' %>
-<% when 4 %>
-  <%= render 'quizz_questions/question4' %>
-<% when 5 %>
-  <%= render 'quizz_questions/question5' %>
-<% end %>
-

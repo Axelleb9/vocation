@@ -13,10 +13,7 @@ class PagesController < ApplicationController
   end
 
   def quizzes
-<<<<<<< HEAD
-    raise
-=======
-    @quizzes = current_user.lists.where(week: nil)
->>>>>>> 74deeb9da8f9b67a2f32e3f40050c9cca2ad9b77
+    @user_lists = current_user.lists.where(week: nil, quizz_done: false)
+    @week_lists = current_user.lists.where.not(week: nil, quizz_done: true)
   end
 end
