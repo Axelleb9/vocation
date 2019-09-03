@@ -22,6 +22,26 @@ $(document).ready(function(){
 });
 
 
+const answers = document.querySelectorAll('.possible-answer');
+const goodAnswer = document.querySelector('.good-answer');
+const wrongAnswers = document.querySelectorAll('.wrong-answer');
+
+answers.forEach((answer) => {
+  answer.addEventListener('click', (event) => {
+    if (event.currentTarget.dataset["answer"] === "1") {
+      event.currentTarget.classList.add('got-it');
+    } else {
+      event.currentTarget.insertAdjacentHTML('beforeend', `<i class="fas fa-times cross-wrong-answer"></i>`);
+      event.currentTarget.classList.add('oups');
+      goodAnswer.classList.add('show-valid-answer');
+    }
+  })
+})
+
+
+// window.location.href = "http://localhost:3000/words?sub_cat=20&mode=red+2010";
+
+
 // const openModal = document.getElementById("highpage");
 // openModal.addEventListener("click", (event) => {
 // 	$('#highpage').modal();
