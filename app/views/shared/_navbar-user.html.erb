@@ -16,15 +16,15 @@
 
 
   <div class="navbar-icon">
-    <%= link_to study_flashcards_path, class: "#{'icon-brand-color' if current_page?(study_path)}" do %>
-    <%= cl_image_tag "flashcards", width: 29, height: 29 %>
+    <%= link_to study_flashcards_path do %>
+    <%= cl_image_tag "flashcards", width: 29, height: 29, class: "#{'image-brand-color' if params['action'] == "flashcards" || params['action'] == 'flashcard'}" %>
     <span class="general-size">Flashcards</span>
     <% end %>
   </div>
 
   <div class="navbar-icon">
-    <%= link_to study_quizzes_path, class: "#{'icon-brand-color' if current_page?(root_path)}" do %>
-    <%= cl_image_tag 'quizz_timer', width: 27, height: 27 %>
+    <%= link_to study_quizzes_path do %>
+    <%= cl_image_tag 'quizz_timer', width: 27, height: 27, class: "#{'image-brand-color' if params['action'] == "quizzes" || params['controller'] == 'quizz_questions'}" %>
     <span class="general-size">Quizzes</span>
     <% end %>
   </div>
