@@ -1,1 +1,12 @@
-<h1>HELLO</h1>
+<div class="question">
+  <h3>Type the correct translation</h3>
+</div>
+<div class="hint-question1-2">
+  <h1><%= @word_list.word.translation %></h1>
+</div>
+
+
+
+<%= form_tag list_quizz_define_result_path(@list, word_id: @word_list.word.id, question_type: @word_list.quizz_question.question_type), method: :patch do %>
+  <%= text_field_tag 'quizz-answer' %>
+<% end %>
