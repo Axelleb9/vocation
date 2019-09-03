@@ -39,3 +39,7 @@
      color: #0078B6;
   }
 }
+
+.image-brand-color {
+  filter: invert(27%) sepia(54%) saturate(4185%) hue-rotate(181deg) brightness(93%) contrast(101%); 
+}
