@@ -2,10 +2,9 @@
   <h4 class="text-center flashcard-title">My Lists</h4>
   <div class="d-flex horizontal-scroll flashcards-container">
     <% @flashcards.each do |flashcard| %>
-
       <div class="flashcard-element">
         <div class="ribbon-container">
-          <div class="card-ribbon"></div>
+          <div class="card-ribbon"><span>missed</span></div>
         </div>
         <% luck = (2..4).to_a.sample %>
         <% case luck %>
@@ -20,6 +19,7 @@
         <p><%= flashcard.words.count %> words</p>
         <div class="card-back-one"></div>
         <div class="card-back-two"></div>
+        <%= link_to '', list_flashcard_path(flashcard), class: "stretched-link" %>
       </div>
     <% end %>
   </div>
@@ -38,6 +38,7 @@
         <p><%= flashcard.words.count %> words</p>
         <div class="card-back-one"></div>
         <div class="card-back-two"></div>
+        <%= link_to '', list_flashcard_path(flashcard), class: "stretched-link" %>
       </div>
     <% end %>
   </div>

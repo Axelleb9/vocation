@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     put "order", to: 'words#change_order'
     get "flashcard", to: 'lists#flashcard'
     patch "good_answer", to: 'lists#good_answer'
+    patch "quizz_good_answer", to: 'quizz_questions#quizz_good_answer'
+    patch "quizz_wrong_answer", to: 'quizz_questions#quizz_wrong_answer'
     get "quizz", to: "quizz_questions#question"
 
   end
