@@ -1,0 +1,17 @@
+<div class="hide-show">
+      <% if word.votes_for.where(voter_id: current_user.id).empty? %>
+       <%= link_to close_eye_path(list, word), remote: true do  %>
+        <i class="fas fa-eye"></i>
+       <% end %>
+       <p id="word-result"> <%= list.switch ? word.translation : word.entry %></p>
+      <% elsif word.votes_for.where(voter_id: current_user.id).first.vote_flag == true %>
+        <%= link_to close_eye_path(list, word), remote: true do  %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+        <p id="word-result"> <%= list.switch ? word.translation : word.entry %></p>
+        <% else %>
+        <%= link_to open_eye_path(list, word), remote: true do  %>
+          <i class="fas fa-eye-slash"></i>
+       <% end %>
+      <% end %>
+    </div>

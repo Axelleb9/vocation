@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :words, only: [:new, :create, :delete, :index] do
-    get "open_eye"
-    get "close_eye"
     post "change_state_to_nou", to: "user_words#change_state_to_nou"
     post "change_state_to_vrb", to: "user_words#change_state_to_vrb"
     post "change_state_to_adj", to: "user_words#change_state_to_adj"
@@ -35,4 +33,8 @@ Rails.application.routes.draw do
   get 'study/quizzes', to: 'pages#quizzes'
 
   mount ActionCable.server => "/cable"
+
+  get "/lists/:list_id/words/:word_id/open_eye", to: 'words#open_eye', as: :open_eye
+  get "/lists/:list_id/words/:word_id/close_eye", to: 'words#close_eye', as: :close_eye
+
 end

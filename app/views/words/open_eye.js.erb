@@ -1,0 +1,8 @@
+function refreshCloseEye(newLine) {
+  const wordLine = document.querySelector('[data-word-id="<%= @word.id %>"]');
+  const hideShow = wordLine.querySelector(".hide-show");
+  hideShow.outerHTML = newLine
+}
+
+refreshCloseEye("<%= j render 'shared/new-line', word: @word, list: @list, index: "index" %>")
+

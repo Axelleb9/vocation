@@ -35,16 +35,24 @@ class WordsController < ApplicationController
 
   def open_eye
     @word = Word.find(params[:word_id])
+    @list = List.find(params[:list_id])
     @word.liked_by current_user
     authorize @word
-    redirect_to(request.referer)
+    respond_to do |format|
+      format.html { redirect_to(request.referer) }
+      format.js
+    end
   end
 
   def close_eye
     @word = Word.find(params[:word_id])
+    @list = List.find(params[:list_id])
     @word.downvote_from current_user
     authorize @word
-    redirect_to(request.referer)
+    respond_to do |format|
+      format.html { redirect_to(request.referer) }
+      format.js
+    end
   end
 
   def favori
@@ -80,7 +88,7 @@ class WordsController < ApplicationController
   end
 
   def create_list_of_the_week
-    current_week = Date.today.cweek + 1
+    current_week = Date.today.cweek
     @list = current_user.lists.where(week: current_week).take
     return unless @list.blank?
     @list = List.create(title: "week #{current_week}", user: current_user, week: current_week)
