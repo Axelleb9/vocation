@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_160027) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "reviewed", default: false
-    t.boolean "quizz_status", default: false
+    t.boolean "quizz_status"
     t.index ["list_id"], name: "index_words_lists_on_list_id"
     t.index ["word_id"], name: "index_words_lists_on_word_id"
   end
