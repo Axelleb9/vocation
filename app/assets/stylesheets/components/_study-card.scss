@@ -1,22 +1,68 @@
 .study-container {
+  height:calc(100vh - 115px);
+  width: 100%;
+  background:
+    linear-gradient(
+    150deg,
+    white 50%, $brand 51%
+  );
+    display: flex;
+    flex-direction: column;
+}
+
+.quizzes-btn {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 85vh;
+  align-items: center;
+  padding-left: 20px;
+  flex: 1 0 50%;
+}
+
+.flashcards-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  flex: 1 0 50%;
   align-items: center;
 }
 
-.study-content {
+
+#study-content-flash {
   border-radius: 150px;
-  height: 150px;
-  width: 150px;
-  border: solid;
+  height: 200px;
+  width: 200px;
+  border: 2px solid white;
   display: flex;
   justify-content: space-around;
   align-items: center;
   word-break: break-word;
+  font-family: 'Righteous', cursive;
+  font-weight: 400; 
+  box-shadow: 5px 5px 5px white; 
+  position: relative;
+}
 
-  a {
 
-  }
+#study-content {
+  border-radius: 150px;
+  height: 200px;
+  width: 200px;
+  border: 2px solid $brand;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  word-break: break-word;
+  font-family: 'Righteous', cursive;
+  font-weight: 400;
+  box-shadow: 5px 5px 5px $brand;
+  position: relative;
+}
+
+#overriding {
+  color: $brand;
+  font-size: 24px;
+}
+
+#overrided {
+  color: white;
+  font-size: 24px;
 }

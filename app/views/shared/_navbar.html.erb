@@ -8,11 +8,16 @@
     <h3 class="navbar-brand-title"> <%= link_to "Vocation", words_path, {:style=>'color:white; text-decoration: none', :class => "css_class"} %></h3>
   </div>
 
-  <div class= "signin-menu">
-    <i class="fas fa-user-circle"></i>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-      <!-- <span class="navbar-toggler-icon"></span> -->
-    </button>
+  <div class= "signin-menu nav-item dropdown">
+    <div id= "navbarDropdown", data-toggle= "dropdown">
+    <i class="fas fa-user-circle "></i>
+    </div>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <% if !current_user %>
+        <%= link_to "Log in", new_user_session_path, class: "dropdown-item" %>
+        <% else %>
+         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+         <% end %>
+      </div>
   </div>
 </div>
