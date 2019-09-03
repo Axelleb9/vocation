@@ -18,17 +18,18 @@
   }
 }
 
-.details-show {
-  height: 140px !important;
-}
 
 .carousel-word-card {
-  height: 0px;
+  height: auto;
   padding: 0;
-  transition: height .5s ease !important;
+  transition: max-height .5s ease;
+  max-height: 0;
   overflow: hidden;
 }
 
+.carousel-word-card.details-show {
+  max-height: 180px !important;
+}
 .all-words {
   margin-top: 8px;
   padding: 12px;
@@ -129,7 +130,7 @@
 
 .displayed-content {
   background: white;
-  padding: 4px 16px 16px;
+  padding: 4px 16px 26px;
   word-break: break-word;
   font-size: 12px;
   display: flex;

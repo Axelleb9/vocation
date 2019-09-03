@@ -1,0 +1,28 @@
+.style-header {
+  position: absolute;
+  top: 20px;
+  background-color: white;
+  margin: 0 20%;
+  padding: 3% 18%;
+  border-radius: 20px;
+  border: solid 1px lightgrey;
+  box-shadow: 0px 7px 1px #c1c1c1;
+}
+
+.background-quizz {
+  height: 100%;
+  background-color: $quizz;
+}
+
+h4.text-center.flashcard-title span {
+    height: 3px;
+    background: $word-color;
+    margin: 8px;
+    flex: 1;
+}
+h4.text-center.flashcard-weeks-title span {
+    height: 3px;
+    background: $word-color;
+    margin: 8px;
+    flex: 1;
+}

@@ -22,7 +22,7 @@ const rotateMe = () => {
 const displayDetails = () => {
   chevrons.forEach((chevron) => {
     chevron.addEventListener('click', (event) => {
-      const details = event.currentTarget.parentElement.nextSibling.nextElementSibling
+      const details = event.currentTarget.parentElement.nextSibling.nextElementSibling;
       details.classList.toggle('details-show');
     });
   });
