@@ -66,7 +66,10 @@ class WordsController < ApplicationController
   def add_word_to_list
     word = Word.find(params[:word_id])
     list = List.find(params[:list_id])
-    user_word = UserWord.new(word: word, user: current_user)
+    week_list = List.where(title: "List of the week").take
+    week_word_list = WordsList.new(word: word, list: week_list)
+    week_word_list.save
+    user_word = UserWord.new(word: word, user: current_user, state: set_state(word))
     user_word.save
     words_list = WordsList.new(word_id: word.id, list_id: list.id)
     words_list.save

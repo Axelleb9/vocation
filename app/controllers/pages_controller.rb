@@ -13,5 +13,6 @@ class PagesController < ApplicationController
   end
 
   def quizzes
+    raise
   end
 end
