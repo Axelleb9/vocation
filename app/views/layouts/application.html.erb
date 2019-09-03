@@ -7,9 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <%= favicon_link_tag %>
     <title><%= meta_title %></title>
       <meta name="description" content="<%= meta_description %>">
 
@@ -28,6 +25,9 @@
       <meta name="twitter:description" content="<%= meta_description %>">
       <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
       <meta name="twitter:image:src" content="<%= meta_image %>">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= favicon_link_tag %>
   </head>
   <body>
     <%= render 'shared/flashes' %>
