@@ -4,7 +4,7 @@ class QuizzQuestionsController < ApplicationController
   def question
     @list = List.find(params[:list_id])
     @word_list = @list.words_lists.where(quizz_status: nil).sample
-    luck = (4..4).to_a.sample
+    luck = (3..3).to_a.sample
     case luck
     when 1
       @question = 1
@@ -39,13 +39,16 @@ class QuizzQuestionsController < ApplicationController
     list = List.find(params[:list_id])
     word_list = WordsList.where(list: list, word: params[:word_id]).take
     word_list.update(quizz_status: true) # MEME QUAND ON CLIQUE SUR LA BONNE REPONSE IL MET LE STATUS EN FALSE PK ??
+    raise
     redirect_to list_quizz_path(list)
   end
 
   def quizz_wrong_answer
+    raise
     list = List.find(params[:list_id])
     word_list = WordsList.where(list: list, word: params[:word_id]).take
     word_list.update(quizz_status: false)
+    raise
     redirect_to list_quizz_path(list)
   end
 
