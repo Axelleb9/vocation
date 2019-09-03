@@ -3,6 +3,7 @@ import { displaySubmit, undisplaySubmit, closeWithCross } from '../components/tr
 import { initActionCable } from '../plugins/init_action_cable'
 import { rotateMe, displayDetails }  from 'components/word-card-display-view'
 import { switchCard } from 'components/flashcard-switch'
+import { quizztransition } from '../components/quizz-transition'
 // import { translate } from '../components/translate-word';
 
 // translate()
