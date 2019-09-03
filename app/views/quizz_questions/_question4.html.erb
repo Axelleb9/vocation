@@ -1,5 +1,7 @@
-<div class="question"><h3>Choose the correct definition</h3></div>
-<div class="hint-definition"><h1><%= @entry %></h1></div>
+<div class="d-flex justify-content-center align-items-center" style="margin-top:30px;">
+  <div class="hint-definition"><h3><%= @entry %></h3></div>
+  <div class="question4"><h3>means:</h3></div>
+</div>
 
 <div class="all-answers">
   <% [@quizz_good_answer, @quizz_wrong_answers].flatten.shuffle.each do |answer| %>
