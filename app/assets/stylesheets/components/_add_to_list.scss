@@ -1,7 +1,7 @@
 #add-to-list {
-	font-size: 28px;
+	font-size: 17px !important;
 	text-align: center;
-	margin-top: 16px;
+  color: $word-color;
 }
 
 #head-of-page h6 {
@@ -39,8 +39,4 @@
 	margin-right: 100px;
 	color: #035ac1;
   text-decoration: none;
-}
-
-#add-to-list{
-	margin-right: 172px;
 }
