@@ -5,10 +5,11 @@
     <div class="value-proposition">
       <h1>Improve your English!</h1>
       <p>Vocation brings you an efficient method to learn vocabulary</p>
+      <% if !current_user %>
       <div style='width:100%' class='text-center div-signup'>
-        <%= link_to "Sign Up", new_user_session_path, class: "btn btn-primary text-center signup-btn" %>
-    </div>
-
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary text-center", id: "signup-btn" %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>

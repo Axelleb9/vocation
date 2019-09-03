@@ -1,13 +1,14 @@
 <div class="study-container">
-    <div class="study-content">
-   <%= link_to "Quizzes", study_quizzes_path %>
-
+  <div class="quizzes-btn">
+    <div id="study-content">
+      <%= link_to "Quizzes", study_quizzes_path, class: "stretched-link",  id:"overriding" %>
     </div>
-
-    <div class="study-content">
-  <%= link_to "Flashcards", study_flashcards_path %>
-
+  </div>
+  <div class="flashcards-btn">
+    <div id="study-content-flash">
+      <%= link_to "Flashcards", study_flashcards_path, class: "stretched-link", id: "overrided"%>
     </div>
+  </div>
 </div>
 
 
