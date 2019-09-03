@@ -1,5 +1,4 @@
 const wordQuestion = document.getElementById("flashcard-question");
-console.log(wordQuestion)
 const wordAnswer = document.getElementById("flashcard-answer");
 const flashcardButton = document.getElementById("flashcard-button");
 const goodAnswer = document.getElementById("good-answer");

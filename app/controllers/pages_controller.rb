@@ -13,5 +13,6 @@ class PagesController < ApplicationController
   end
 
   def quizzes
+    @quizzes = current_user.lists.where(week: nil)
   end
 end
