@@ -1,1 +1,4 @@
-<h1>hello</h1>
+
+<% @quizzes.each do |quiz| %>
+<p> <%= link_to "This is a quiz", list_quizz_path(quiz) %></p>
+<% end %>
