@@ -1,4 +1,4 @@
-<div class="navbar-user fixed-bottom">
+<div class="navbar-user fixed-bottom ">
 
   <div class="navbar-icon">
     <%= link_to words_path,class: "#{'icon-brand-color' if current_page?(words_path)}" do %>
@@ -16,23 +16,23 @@
 
 
   <div class="navbar-icon">
-    <%= link_to study_path, class: "#{'icon-brand-color' if current_page?(study_path)}" do %>
-    <i class="fas fa-graduation-cap"></i>
-    <span class="general-size">Study</span>
+    <%= link_to study_flashcards_path do %>
+    <%= cl_image_tag "flashcards", width: 29, height: 29, class: "#{'image-brand-color' if params['action'] == "flashcards" || params['action'] == 'flashcard'}" %>
+    <span class="general-size">Flashcards</span>
     <% end %>
   </div>
 
   <div class="navbar-icon">
-    <%= link_to lists_path(lists: "vocalists"), class: "#{'icon-brand-color' if current_page?(root_path)}" do %>
+    <%= link_to study_quizzes_path do %>
+    <%= cl_image_tag 'quizz_timer', width: 27, height: 27, class: "#{'image-brand-color' if params['action'] == "quizzes" || params['controller'] == 'quizz_questions'}" %>
+    <span class="general-size">Quizzes</span>
+    <% end %>
+  </div>
+
+  <div class="navbar-icon">
+    <%= link_to root_path, class: "#{'icon-brand-color' if current_page?(root_path)}" do %>
     <i class="fas fa-chart-line"></i>
     <span class="general-size">Results</span>
-    <% end %>
-  </div>
-
-  <div class="navbar-icon">
-    <%= link_to user_session_path, class: "#{'icon-brand-color' if current_page?(root_path)}" do %>
-    <i class="fas fa-user"></i>
-    <span class="general-size">Profile</span>
     <% end %>
   </div>
 

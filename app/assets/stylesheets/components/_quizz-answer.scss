@@ -13,24 +13,37 @@
   align-items: center;
   margin: 4% 5%;
   border-radius: 15px;
+  position: relative;
 }
 .possible-answer-definition {
   height: 100px;
   padding: 16px;
-  font-size: 14px;
+  font-size: 18px;
   background-color: #ededed;
   width: 90%;
   display: flex;
   margin: 4% 5%;
   border-radius: 15px;
+  position: relative;
 }
 
 .question {
   margin: 10% 5%;
   text-align: center;
+  color: $word-color;
 }
 
+.question4 {
+  color: $word-color;
+  padding-left: 12px;
+
+}
 .hint {
+  margin-top: 20%;
+  text-align: center;
+}
+
+.hint-question1-2 {
   margin-top: 40%;
   text-align: center;
 }
@@ -38,3 +51,24 @@
 .hint-definition {
   text-align: center;
 }
+
+.hint-question5 {
+
+  h1 {font-size: 1.5rem !important;}
+  margin: 0 5%;
+}
+
+#hint-explanation {
+  text-decoration: underline;
+}
+
+#quizz-answer {
+  margin: 40px 20%;
+  height: 50px;
+  width: 60%;
+  border-radius: 15px;
+  :focus {
+    outline-offset: 0px !important;
+  }
+}
+

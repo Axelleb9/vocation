@@ -4,16 +4,16 @@ class QuizzQuestionsController < ApplicationController
   def question
     @list = List.find(params[:list_id])
     @word_list = @list.words_lists.where(quizz_status: nil).sample
-    luck = (4..4).to_a.sample
+    luck = (1..5).to_a.sample
     case luck
     when 1
       @question = 1
       @good_answer = @word_list.word.translation
-      create_quizz_question(@word_list, 1, good_answer)
+      create_quizz_question(@word_list, 1, @good_answer)
     when 2
       @question = 2
       @good_answer = @word_list.word.entry
-      create_quizz_question(@word_list, 2, good_answer)
+      create_quizz_question(@word_list, 2, @good_answer)
     when 3
       @question = 3
       @entry = @word_list.word.entry
@@ -33,6 +33,26 @@ class QuizzQuestionsController < ApplicationController
       @quizz_wrong_answers = @list.words.reject { |i| i == @word_list.word }.sample(3).map(&:entry)
       create_quizz_question(@word_list, 5, @quizz_good_answer, @quizz_wrong_answers)
     end
+  end
+
+  def quizz_define_result
+    list = List.find(params[:list_id])
+    word_list = WordsList.where(list: list, word: params[:word_id]).take
+    user_answer = params["quizz-answer"].strip.gsub(/\W/, '')
+    if params[:question_type] == "1"
+      if user_answer == word_list.word.translation
+        word_list.update(quizz_status: true)
+      else
+        word_list.update(quizz_status: false)
+      end
+    else
+      if user_answer == word_list.word.entry
+        word_list.update(quizz_status: true)
+      else
+        word_list.update(quizz_status: false)
+      end
+    end
+    redirect_to list_quizz_path(list)
   end
 
   def quizz_good_answer
@@ -62,13 +82,13 @@ class QuizzQuestionsController < ApplicationController
 
   def find_definition(word_list)
     if !word_list.word.meaning.nou.nil?
-      good_answer = word_list.word.meaning.nou.first
+      good_answer = word_list.word.meaning.nou.min_by(&:length)
     elsif !word_list.word.meaning.vrb.nil?
-      good_answer = word_list.word.meaning.vrb.first
+      good_answer = word_list.word.meaning.vrb.min_by(&:length)
     elsif !word_list.word.meaning.adj.nil?
-      good_answer = word_list.word.meaning.adj.first
+      good_answer = word_list.word.meaning.adj.min_by(&:length)
     else
-      good_answer = word_list.word.meaning.adv.first
+      good_answer = word_list.word.meaning.adv.min_by(&:length)
     end
   end
 

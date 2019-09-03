@@ -1,0 +1,17 @@
+.progress {
+  border-radius: 10px;
+}
+
+.progress-container {
+  margin-top: 25px;
+  margin-left: 5%;
+  margin-right: 5%;
+  position: relative;
+}
+
+.score-progress {
+  position: absolute;
+  right: 18px;
+  font-size: 14px;
+  top: 18px;
+}

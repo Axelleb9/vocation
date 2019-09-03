@@ -21,6 +21,7 @@
   transition: height .3s ease;
   height: 0;
   overflow: hidden;
+  display: none !important;
 }
 
 .display-me {

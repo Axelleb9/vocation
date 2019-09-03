@@ -1,7 +1,6 @@
 const entryArea = document.getElementById("word_entry");
-const submitArea = document.getElementById("submit-translation");
 const banner = document.querySelector(".top-banner");
-const cards = document.querySelectorAll('.word-card-container');
+const cards = document.querySelector('.all-words');
 const cross = document.querySelector('.fa-times');
 const lang = document.getElementById('language-infos');
 const subBody = document.getElementById('sub-body');
@@ -16,11 +15,8 @@ const displaySubmit = () => {
       cross.classList.remove('d-none');
       appName.innerHTML = ""
       lang.classList.add('hide-language');
-      submitArea.classList.add('display-me');
       banner.classList.add('hide-me');
-      cards.forEach((card) => {
-        card.classList.add('linear-filter');
-      });
+      cards.style.opacity = 0.5;
     });
   }
 };
@@ -34,11 +30,8 @@ const undisplaySubmit = () => {
       cross.classList.add('d-none');
       lang.classList.remove('hide-language');
       appName.innerHTML = "<strong>V</strong>ocation";
-      submitArea.classList.remove('display-me');
       banner.classList.remove('hide-me');
-      cards.forEach((card) => {
-        card.classList.remove('linear-filter');
-      });
+      cards.style.opacity = 1;
     });
   };
 };
@@ -50,11 +43,8 @@ const closeWithCross = () => {
       entryArea.value = "Enter text";
       cross.classList.add('d-none');
       lang.classList.remove('hide-language');
-      submitArea.classList.remove('display-me');
       banner.classList.remove('hide-me');
-      cards.forEach((card) => {
-        card.classList.remove('linear-filter');
-      });
+      cards.style.opacity = 1;
     });
   }
 };
