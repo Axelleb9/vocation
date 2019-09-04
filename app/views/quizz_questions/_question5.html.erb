@@ -6,10 +6,11 @@
 </div>
 
 <div class="all-answers">
+  <div class="d-flex align-items-center justify-content-center"><i class="fas fa-arrow-circle-right"></i></div>
   <% [@quizz_good_answer, @quizz_wrong_answers].flatten.shuffle.each do |answer| %>
     <% if answer == @quizz_good_answer %>
       <div class="answer-container">
-        <div class="possible-answer good-answer" data-answer="1"><h4><%= answer %></h4></div>
+        <div class="possible-answer good-answer" data-answer="1" data-word_list="<%= @word_list.id %>" data-list_id="<%= @list.id %>"><h4><%= answer %></h4></div>
       </div>
     <% else %>
       <div class="answer-container">

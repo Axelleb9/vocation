@@ -7,7 +7,7 @@
   <% [@quizz_good_answer, @quizz_wrong_answers].flatten.shuffle.each do |answer| %>
     <% if answer == @quizz_good_answer %>
       <div class="answer-container">
-        <div class="possible-answer good-answer" data-answer="1"><h4><%= answer %></h4></div>
+        <div class="possible-answer good-answer" data-answer="1" data-word_list="<%= @word_list.id %>" data-list_id="<%= @list.id %>"><h4><%= answer %></h4></div>
       </div>
     <% else %>
       <div class="answer-container">
