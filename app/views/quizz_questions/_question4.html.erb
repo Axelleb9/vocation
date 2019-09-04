@@ -4,14 +4,22 @@
 </div>
 
 <div class="all-answers">
+  <div class="buttons-container">
+  <%= link_to list_quizz_good_answer_path(list_id: @list.id, word_id: @word_list.word.id), method: :patch do  %>
+    <i class="fas fa-arrow-circle-right" id="arrow-good"></i>
+  <% end %>
+  <%= link_to list_quizz_wrong_answer_path(list_id: @list.id, word_id: @word_list.word.id), method: :patch do  %>
+    <i class="fas fa-arrow-circle-right" id="arrow-wrong"></i>
+  <% end %>
+  </div>
   <% [@quizz_good_answer, @quizz_wrong_answers].flatten.shuffle.each do |answer| %>
     <% if answer == @quizz_good_answer %>
       <div class="answer-container-definition">
-        <div class="possible-answer good-answer" data-answer="1" data-word_list="<%= @word_list.id %>" data-list_id="<%= @list.id %>"><span><%= answer %></span></div>
+        <div class="possible-answer important-definition good-answer" data-answer="1" data-word_list="<%= @word_list.id %>" data-list_id="<%= @list.id %>"><span><%= answer %></span></div>
       </div>
     <% else %>
       <div class="answer-container-definition">
-        <div class="possible-answer wrong-answer" data-answer="0"><span><%= answer %></span></div>
+        <div class="possible-answer important-definition wrong-answer" data-answer="0"><span><%= answer %></span></div>
       </div>
     <% end %>
   <% end %>

@@ -40,7 +40,7 @@
   background-color: $good !important;
   color: white;
   height: 65px !important;
-  box-shadow: -3px 3px 4px rgb(133, 155, 54);
+  box-shadow: -3px 3px 4px #6ebf5a;
 }
 
 .oups {
@@ -67,7 +67,7 @@
 }
 
 .possible-answer {
-  height: 101px;
+  height: 60px;
   background-color: #ededed;
   width: 90%;
   display: flex;
@@ -82,11 +82,27 @@
   word-break: break-word;
   text-align: justify;
 }
+.important-definition {
+  height: 100px !important;
+  background-color: #ededed;
+  width: 90% !important;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0% 5% !important;
+  border-radius: 15px !important;
+  padding: 0px 16px !important;
+  position: relative;
+  transition: background-color 0.3s ease !important;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  word-break: break-word !important;
+  text-align: justify !important;
+}
 
 .possible-answer-definition {
   height: 100px;
   padding: 16px;
-  font-size: 18px;
+  font-size: 16px;
   background-color: #ededed;
   width: 90%;
   display: flex;
