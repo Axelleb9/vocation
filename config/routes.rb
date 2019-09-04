@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     put "order", to: 'words#change_order'
     get "flashcard", to: 'lists#flashcard'
     patch "good_answer", to: 'lists#good_answer'
+    patch "wrong_answer", to: 'lists#wrong_answer'
     patch "quizz_good_answer", to: 'quizz_questions#quizz_good_answer'
     patch "quizz_wrong_answer", to: 'quizz_questions#quizz_wrong_answer'
     patch "quizz_define_result", to: 'quizz_questions#quizz_define_result'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   get 'study', to: 'pages#study', as: :study
   get 'study/flashcards', to: 'pages#flashcards'
   get 'study/quizzes', to: 'pages#quizzes'
+  get 'results', to: 'pages#results'
 
   mount ActionCable.server => "/cable"
 

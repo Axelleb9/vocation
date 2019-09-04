@@ -16,4 +16,7 @@ class PagesController < ApplicationController
     @user_lists = current_user.lists.where(week: nil, quizz_done: false)
     @week_lists = current_user.lists.where.not(week: nil, quizz_done: true)
   end
+
+  def results
+  end
 end
