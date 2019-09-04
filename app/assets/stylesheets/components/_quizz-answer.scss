@@ -26,8 +26,14 @@
 .answer-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-top: 2px;
   height: 75px;
+}
+
+.answer-container-definition {
+  display: flex;
+  align-items: center;
+  height: 116px;
 }
 
 .got-it {
@@ -61,7 +67,7 @@
 }
 
 .possible-answer {
-  height: 60px;
+  height: 101px;
   background-color: #ededed;
   width: 90%;
   display: flex;
@@ -69,10 +75,14 @@
   align-items: center;
   margin: 0% 5%;
   border-radius: 15px;
+  padding: 0px 16px;
   position: relative;
   transition: background-color 0.3s ease;
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  word-break: break-word;
+  text-align: justify;
 }
+
 .possible-answer-definition {
   height: 100px;
   padding: 16px;
