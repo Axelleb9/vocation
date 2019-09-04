@@ -1,0 +1,12 @@
+function refreshTabs(outerHTML) {
+  const newTab = document.getElementById('word-card-carousel<%= @word.id %>');
+  newTab.outerHTML = outerHTML;
+}	 
+
+function displayTab() {	
+  const newTab = document.getElementById('word-card-carousel<%= @word.id %>');
+  newTab.classList.add("details-show")
+}
+
+refreshTabs('<%= j render "shared/tabs", word: @word %>')
+displayTab()

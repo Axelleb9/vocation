@@ -37,12 +37,13 @@
 
 .icon-brand-color {
   i {
-     color: #0078B6;
+     color: $brand;
   }
 }
 
 .image-brand-color {
-  filter: invert(27%) sepia(54%) saturate(4185%) hue-rotate(181deg) brightness(93%) contrast(101%);
+  filter: invert(28%) sepia(73%) saturate(3361%) hue-rotate(226deg) brightness(98%) contrast(100%);
+
 }
 
 .navbar-icon a {
