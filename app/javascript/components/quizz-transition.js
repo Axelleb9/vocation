@@ -3,11 +3,12 @@ const goodAnswer = document.querySelector('.good-answer');
 const wrongAnswers = document.querySelectorAll('.wrong-answer');
 const arrowGood = document.getElementById('arrow-good');
 const arrowWrong = document.getElementById('arrow-wrong');
+const definition = document.querySelector('.important-definition');
 
 function displayArrow(arrow) {
   if (arrow == "1") {
     arrowGood.classList.add('display-arrow');
-  } else {
+  } else if (arrow == "0") {
     arrowWrong.classList.add('display-arrow');
   }
 };
@@ -24,7 +25,9 @@ const displayResult = () => {
       } else {
         var url = `https://www.vocation.world/lists/${goodAnswer.dataset["list_id"]}/quizz_wrong_answer?words_list=${goodAnswer.dataset["word_list"]}`;
         var devurl = `http://localhost:3000//lists/${goodAnswer.dataset["list_id"]}/quizz_wrong_answer?words_list=${goodAnswer.dataset["word_list"]}`;
-        event.currentTarget.insertAdjacentHTML('beforeend', `<i class="fas fa-times cross-wrong-answer"></i>`);
+        if (definition == undefined ) {
+          event.currentTarget.insertAdjacentHTML('beforeend', `<i class="fas fa-times cross-wrong-answer"></i>`);
+        }
         event.currentTarget.classList.add('oups');
         goodAnswer.classList.add('show-valid-answer');
         setTimeout(function() {displayArrow("0")}, 800);
