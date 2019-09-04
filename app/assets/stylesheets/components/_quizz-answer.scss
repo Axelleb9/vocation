@@ -2,6 +2,19 @@
   color: $brand;
   font-size: 42px;
   margin-bottom: 25px;
+  position: absolute;
+  left: 0;
+  transition: left 0.4s ease-in-out;
+  visibility: hidden;
+}
+
+.display-arrow {
+  visibility: visible;
+  left: 44% !important;
+}
+
+.buttons-container {
+  height: 75px;
 }
 
 .all-answers {

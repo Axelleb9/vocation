@@ -61,21 +61,19 @@ class QuizzQuestionsController < ApplicationController
   end
 
   def quizz_good_answer
-    raise
-    WordsList.find(params["words_list"]).update(quizz_status: true)
-    # list = List.find(params[:list_id])
-    # word_list = WordsList.where(list: list, word: params[:word_id]).take
-    # word_list.update(quizz_status: true) # MEME QUAND ON CLIQUE SUR LA BONNE REPONSE IL MET LE STATUS EN FALSE PK ??
-    # redirect_to list_quizz_path(list)
+    # WordsList.find(params["words_list"]).update(quizz_status: true)
+    list = List.find(params[:list_id])
+    word_list = WordsList.where(list: list, word: params[:word_id]).take
+    word_list.update(quizz_status: true) # MEME QUAND ON CLIQUE SUR LA BONNE REPONSE IL MET LE STATUS EN FALSE PK ??
+    redirect_to list_quizz_path(list)
   end
 
   def quizz_wrong_answer
-    raise
-    WordsList.find(params["words_list"]).update(quizz_status: false)
-    # list = List.find(params[:list_id])
-    # word_list = WordsList.where(list: list, word: params[:word_id]).take
-    # word_list.update(quizz_status: false)
-    # redirect_to list_quizz_path(list)
+    # WordsList.find(params["words_list"]).update(quizz_status: false)
+    list = List.find(params[:list_id])
+    word_list = WordsList.where(list: list, word: params[:word_id]).take
+    word_list.update(quizz_status: false)
+    redirect_to list_quizz_path(list)
   end
 
   private
