@@ -8,7 +8,7 @@ class QuizzQuestionsController < ApplicationController
       @list.update(quizz_done: true)
       redirect_to words_path
     else
-      luck = (5..5).to_a.sample
+      luck = (4..4).to_a.sample
       case luck
       when 1
         @question = 1
@@ -18,13 +18,13 @@ class QuizzQuestionsController < ApplicationController
         @question = 2
         @good_answer = @word_list.word.entry
         create_quizz_question(@word_list, 2, @good_answer)
-      when 4
+      when 3
         @question = 3
         @entry = @word_list.word.entry
         @quizz_good_answer = find_synonym(@word_list)
         @quizz_wrong_answers = Reference.where.not(synonyms: nil).sample(3).map { |i| i.synonyms.first }
         create_quizz_question(@word_list, 3, @quizz_good_answer, @quizz_wrong_answers)
-      when 3
+      when 4
         @question = 4
         @entry = @word_list.word.entry
         @quizz_good_answer = find_definition(@word_list)
