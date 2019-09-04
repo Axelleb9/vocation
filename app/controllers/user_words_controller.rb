@@ -21,7 +21,10 @@ class UserWordsController < ApplicationController
       redirect_to words_path(word_id: @word)
     else
       @user_word.update(state: "adj")
-      redirect_to words_path
+      respond_to do |format|
+        format.html { redirect_to words_path }
+        format.js
+      end
     end
   end
 
@@ -44,7 +47,10 @@ class UserWordsController < ApplicationController
       redirect_to words_path(word_id: @word)
     else
       @user_word.update(state: "adv")
-      redirect_to words_path
+      respond_to do |format|
+        format.html { redirect_to words_path }
+        format.js
+      end
     end
   end
 
