@@ -1,5 +1,9 @@
 <div style="margin-top: 10%">
-  <h4 class="text-center flashcard-title">My Lists</h4>
+  <h4 class="text-center flashcard-title">
+    <span></span>
+    My Lists
+    <span></span>
+  </h4>
   <div class="d-flex horizontal-scroll flashcards-container">
     <% @flashcards.each do |flashcard| %>
       <div class="flashcard-element">
@@ -26,7 +30,11 @@
 </div>
 
 <div style="margin-top: 10%">
-  <h4 class="text-center flashcard-weeks-title">Weeks</h4>
+  <h4 class="text-center flashcard-weeks-title">
+    <span></span>
+    Weeks
+    <span></span>
+  </h4>
   <div class="d-flex horizontal-scroll flashcards-container">
     <% @flashcards_weeks.each do |flashcard| %>
       <div class="flashcard-weeks-element">
