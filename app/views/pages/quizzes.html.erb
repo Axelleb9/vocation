@@ -27,3 +27,31 @@
   </div>
 </div>
 
+<div class="background-quizz">
+  <div style="padding-top: 10%;">
+    <h4 class="text-center flashcard-title"><span></span>Weeks<span></span></h4>
+    <div>
+      <% @week_lists.each_slice(3) do |slice| %>
+        <div class="d-flex justify-content-between mb-5 quizz-box">
+          <% slice.each do |list| %>
+          <% levels = list.words.map(&:difficulty) %>
+          <% level = levels.sum.fdiv(levels.length).ceil %>
+            <div class="card-index-quizzes">
+              <% if level <= 2 %>
+              <%= cl_image_tag 'level_1', height: 60, width: 60 %>
+              <% elsif level > 2 && level < 5  %>
+              <%= cl_image_tag 'level_2', height: 60, width: 60 %>
+              <% elsif level >= 5 && level < 7  %>
+              <%= cl_image_tag 'level_3', height: 60, width: 60 %>
+              <% elsif level > 7 && level <= 10  %>
+              <%= cl_image_tag 'level_4', height: 60, width: 60 %>
+              <% end %>
+              <h6><%= list.title %></h6>
+              <%= link_to '', list_quizz_path(list), class: "stretched-link" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
