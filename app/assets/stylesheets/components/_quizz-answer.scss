@@ -1,19 +1,77 @@
+.fa-arrow-circle-right {
+  color: $brand;
+  font-size: 42px;
+  margin-bottom: 25px;
+  position: absolute;
+  left: 0;
+  transition: left 0.4s ease-in-out;
+  visibility: hidden;
+}
+
+.display-arrow {
+  visibility: visible;
+  left: 44% !important;
+}
+
+.buttons-container {
+  height: 75px;
+}
+
 .all-answers {
   position: absolute;
   width: 100%;
   bottom: 10%;
 }
 
+.answer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+}
+
+.got-it {
+  background-color: $good !important;
+  color: white;
+  height: 65px !important;
+  box-shadow: -3px 3px 4px rgb(133, 155, 54);
+}
+
+.oups {
+  height: 65px !important;
+  box-shadow: -3px 3px 4px rgba(148, 5, 5, 1);
+  background-color: $wrong !important;
+  color: white;
+}
+
+
+.show-valid-answer {
+  background-color: rgba(171,230,204, 0.6) !important;
+  color: $good !important;
+  border: 1px solid rgba(1, 208, 65, 0.5);
+}
+
+.cross-wrong-answer {
+  right: 10px;
+  font-size: 23px;
+  position: absolute;
+  left: 20px;
+  top: 30%;
+  color:white;
+}
+
 .possible-answer {
-  height: 50px;
+  height: 60px;
   background-color: #ededed;
   width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4% 5%;
+  margin: 0% 5%;
   border-radius: 15px;
   position: relative;
+  transition: background-color 0.3s ease;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .possible-answer-definition {
   height: 100px;
@@ -25,6 +83,7 @@
   margin: 4% 5%;
   border-radius: 15px;
   position: relative;
+  transition: background-color 0.4s ease;
 }
 
 .question {

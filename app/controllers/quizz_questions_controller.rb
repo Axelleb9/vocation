@@ -8,7 +8,7 @@ class QuizzQuestionsController < ApplicationController
       @list.update(quizz_done: true)
       redirect_to words_path
     else
-      luck = (1..5).to_a.sample
+      luck = (5..5).to_a.sample
       case luck
       when 1
         @question = 1
@@ -18,13 +18,13 @@ class QuizzQuestionsController < ApplicationController
         @question = 2
         @good_answer = @word_list.word.entry
         create_quizz_question(@word_list, 2, @good_answer)
-      when 3
+      when 4
         @question = 3
         @entry = @word_list.word.entry
         @quizz_good_answer = find_synonym(@word_list)
         @quizz_wrong_answers = Reference.where.not(synonyms: nil).sample(3).map { |i| i.synonyms.first }
         create_quizz_question(@word_list, 3, @quizz_good_answer, @quizz_wrong_answers)
-      when 4
+      when 3
         @question = 4
         @entry = @word_list.word.entry
         @quizz_good_answer = find_definition(@word_list)
@@ -61,6 +61,7 @@ class QuizzQuestionsController < ApplicationController
   end
 
   def quizz_good_answer
+    # WordsList.find(params["words_list"]).update(quizz_status: true)
     list = List.find(params[:list_id])
     word_list = WordsList.where(list: list, word: params[:word_id]).take
     word_list.update(quizz_status: true) # MEME QUAND ON CLIQUE SUR LA BONNE REPONSE IL MET LE STATUS EN FALSE PK ??
@@ -68,6 +69,7 @@ class QuizzQuestionsController < ApplicationController
   end
 
   def quizz_wrong_answer
+    # WordsList.find(params["words_list"]).update(quizz_status: false)
     list = List.find(params[:list_id])
     word_list = WordsList.where(list: list, word: params[:word_id]).take
     word_list.update(quizz_status: false)
