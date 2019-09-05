@@ -6,7 +6,7 @@ import { switchCard } from '../components/flashcard-switch';
 import { displayResult } from '../components/quizz-transition';
 import { displayQuizzDetails } from '../components/quizz-details';
 // import { translate } from '../components/translate-word';
-import { initAos } from '../plugins/init_aos';
+
 
 // translate()
 
