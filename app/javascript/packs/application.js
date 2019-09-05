@@ -21,7 +21,6 @@ displayResult();
 displayQuizzDetails();
 
 
-
 $(document).ready(function(){
     $('.dropdown-for-mobile').dropdown();
 });

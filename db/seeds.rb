@@ -1,7 +1,7 @@
 require 'faker'
 require 'json'
 require 'http'
-
+User.destroy_all
 
 host = "twinword-word-graph-dictionary.p.rapidapi.com"
 twin_key = ENV["TWINKEY"]
