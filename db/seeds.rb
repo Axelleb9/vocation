@@ -1,6 +1,7 @@
 require 'faker'
 require 'json'
 require 'http'
+QuizzQuestion.destroy_all
 User.destroy_all
 
 host = "twinword-word-graph-dictionary.p.rapidapi.com"
@@ -42,11 +43,11 @@ username: "Lior"
 user.save!
 
 
-lists_name = %w(Macro-Economie Droit Compta-Financiere Human-Sociology Macbeth Flexbox)
+lists_name = %w(Droit Compta Sociologie Macbeth Flexbox)
 name_index = 0
 
 puts "Using Faker to seed the DataBase"
-6.times do
+5.times do
   puts "create list n° #{count}"
   list = List.new(
   title: lists_name[name_index],
@@ -146,13 +147,96 @@ words.each_with_index do |word, index|
   response["meaning"].each do |nature, meaning|
     case nature
     when "noun"
-      definition.nou = meaning.scan(regex).flatten unless meaning == ""
+      definition.nou = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
     when "verb"
-      definition.vrb = meaning.scan(regex).flatten unless meaning == ""
+      definition.vrb = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
     when "adverb"
-      definition.adv = meaning.scan(regex).flatten unless meaning == ""
+      definition.adv = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
     when "adjective"
-      definition.adj = meaning.scan(regex).flatten unless meaning == ""
+      definition.adj = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
+    end
+  end
+
+  puts "calling API for references"
+  reference = Reference.new
+  callback = HTTP.get(set_url(info[3], word), headers: headers)
+  response = JSON.parse(callback)
+  synonyms = response["relation"].each do |relation, terms|
+    unless terms == ""
+      case relation
+      when "broad_terms"
+        reference.broad_terms = terms.split(',')
+      when "narrow_terms"
+        reference.narrow_terms = terms.split(',')
+      when "related_terms"
+        reference.related_terms = terms.split(',')
+      when "synonyms"
+        reference.synonyms = terms.split(',')
+      end
+    end
+  end
+
+  word = Word.new(
+    entry: word,
+    translation: translation,
+    difficulty: difficulty,
+    example: example,
+  )
+  definition.word = word
+  reference.word = word
+  reference.save!
+  definition.save!
+  word.save!
+  ww.word = word
+  wl.word = word
+  ww.state = set_state(word)
+  ww.save!
+  wl.save!
+end
+
+list = List.new(title: "Botanique", user: user)
+list.save!
+
+info = ["example/?", "difficulty/?", "definition/?", "reference/?"]
+words_botanic = %w(filament nectary prickly stimulus stem ripening)
+
+puts "calling the API"
+words_botanic.each_with_index do |word, index|
+  base = "https://translate.yandex.net/api/v1.5/tr.json/translate?"
+  key = ENV["YANKEY"]
+  languages = "en-fr"
+  url = "#{base}lang=#{languages}&key=#{key}&text=#{word}"
+  callback = JSON.parse(HTTP.get(url))
+  puts callback["text"]
+  translation = callback["text"].first
+
+  wl = WordsList.new(list: list)
+  ww = UserWord.new(user: user)
+  puts "creating word n°#{index + 1}"
+    puts "calling API for examples"
+    callback = HTTP.get(set_url(info[0], word), headers: headers)
+    response = JSON.parse(callback)
+    example = response['example'].first(3) # retourne un array d'examples
+
+  puts "calling API for difficulty level"
+  callback = HTTP.get(set_url(info[1], word), headers: headers)
+  response = JSON.parse(callback)
+  difficulty = response["ten_degree"]
+
+  puts "callin API for definitions"
+  definition = Meaning.new
+  callback = HTTP.get(set_url(info[2], word), headers: headers)
+  response = JSON.parse(callback)
+  response["meaning"].each do |nature, meaning|
+    case nature
+    when "noun"
+      definition.nou = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
+    when "verb"
+      definition.vrb = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
+    when "adverb"
+      definition.adv = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
+    when "adjective"
+      definition.adj = meaning.scan(regex).flatten.map { |i| i.gsub(regex2, "")} unless meaning == ""
     end
   end
 
