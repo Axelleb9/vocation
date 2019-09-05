@@ -1,13 +1,17 @@
-<div id="highaddtolist">
-  <%= link_to "Back", request.referrer, id: "lien" %>
- <h5 id="add-to-list">Add to List</h5>
+<div id="highaddtolist" style="margin-top:10%">
+  
+ <h4 class="text-center flashcard-title">
+  <span></span>
+  Add to list
+  <span></span>
+</h4>
 </div>
 <div id="head-of-page">
   <h6 id="new_word">New word:</h6>
   <h6 id="word_entry"><%= @word.entry %></h6>
 </div>
   <div class="card-container">
-    <% current_user.lists.each do |list| %>
+    <% current_user.lists.where(week: nil).each do |list| %>
       <div class="card-list">
         <div class="listcard">
           <i id="list-icon" class="fas fa-list"></i>
@@ -16,4 +20,5 @@
         </div>
       </div>
     <% end %>
+    <%= link_to "Back", request.referrer, id: "lien" %>
   </div>
