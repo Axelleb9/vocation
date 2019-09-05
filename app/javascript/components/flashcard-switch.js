@@ -9,7 +9,6 @@ const seeMeaning = document.getElementById("see-meaning");
 const switchCard = () => {
   if (flashcardButton) {
     flashcardButton.addEventListener("click", (event) => {
-      console.log(event.currentTarget);
       wordQuestion.classList.add("d-none");
       wordAnswer.classList.remove("d-none");
       wrongAnswer.classList.remove("d-none");
