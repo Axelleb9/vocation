@@ -8,7 +8,7 @@ class QuizzQuestionsController < ApplicationController
       @list.update(quizz_done: true)
       redirect_to words_path
     else
-      luck = (3..3).to_a.sample
+      luck = (5..5).to_a.sample
       case luck
       when 1
         @question = 1

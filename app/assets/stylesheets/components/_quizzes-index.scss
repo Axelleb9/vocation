@@ -42,15 +42,17 @@
 
 .quizz-details {
   margin: 0 5%;
-  padding: 3.5px;
+  padding: 8px 0 5px;
   background-color: white;
-  display: none !important;
+  visibility: hidden;
+  transition: visibility 2s ease;
   box-shadow: inset 0px 0px 5px #c8c8c8;
   p {margin:0; color: $word-color;}
 }
 
 .display-quizz {
-  display: flex !important;
+  display: flex;
+  visibility: inherit !important;
   border-radius: 5px;
 }
 
@@ -62,8 +64,8 @@
 
 .btn-start-quizz h3 {
   padding: 14px;
-  background-color: lightgrey;
-  color: $word-color;
+  background-color: #ededed;
+  color: #9e9e9e;
   font-size: 20px;
   border-radius: 5px;
   transition: background-color 1s ease;

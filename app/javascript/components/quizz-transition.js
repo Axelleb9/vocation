@@ -7,9 +7,21 @@ const definition = document.querySelector('.important-definition');
 
 function displayArrow(arrow) {
   if (arrow == "1") {
-    arrowGood.classList.add('display-arrow');
+    if (goodAnswer.dataset.question == "4") {
+      arrowGood.classList.add('display-arrow4')
+    } else if (goodAnswer.dataset.question == "5") {
+      arrowGood.classList.add('display-arrow5');
+    } else {
+      arrowWrong.classList.add('display-arrow')
+    }
   } else if (arrow == "0") {
-    arrowWrong.classList.add('display-arrow');
+    if (goodAnswer.dataset.question == "4") {
+      arrowWrong.classList.add('display-arrow4')
+    } else if (goodAnswer.dataset.question == "5"){
+      arrowWrong.classList.add('display-arrow5');
+    } else {
+      arrowWrong.classList.add('display-arrow')
+    }
   }
 };
 

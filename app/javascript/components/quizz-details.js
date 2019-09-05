@@ -31,8 +31,8 @@ const displayQuizzDetails = () => {
         button.classList.add('call-to-btn');
         var image = document.createElement('IMG');
         image.src = 'https://res.cloudinary.com/dlodtvkez/image/upload/v1567603735/level_1.png';
-        image.width = "40";
-        image.height = "40";
+        image.width = "60";
+        image.height = "60";
         image.className = "iam-white";
         if (event.currentTarget.dataset.difficulty < 2.5 ) {
           image.src = 'https://res.cloudinary.com/dlodtvkez/image/upload/v1567603735/level_1.png';
@@ -61,8 +61,8 @@ const displayQuizzDetails = () => {
         button.classList.add('call-to-btn');
         var image = document.createElement('IMG');
         image.src = 'https://res.cloudinary.com/dlodtvkez/image/upload/v1567603735/level_1.png';
-        image.width = "40";
-        image.height = "40";
+        image.width = "60";
+        image.height = "60";
         image.className = "iam-white";
         if (event.currentTarget.dataset.difficulty < 2.5 ) {
           image.src = 'https://res.cloudinary.com/dlodtvkez/image/upload/v1567603735/level_1.png';
