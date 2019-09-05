@@ -1,8 +1,8 @@
-<!-- https://codepen.io/jlalovi/details/bIyAr -->
-<div class="container">
-  <!-- DONUT CHART BLOCK (LEFT-CONTAINER) -->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
   <div class="donut-chart-block block">
-                    <h2 class="titular">OS AUDIENCE STATS</h2>
+                    <h2 class="titular">WORDS BY TYPE</h2>
                     <div class="donut-chart">
  <!-- PORCIONES GRAFICO CIRCULAR
       ELIMINADO #donut-chart
@@ -12,29 +12,31 @@
      <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
      <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
  <!-- FIN AÑADIDO GRÄFICO -->
-                            <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>
+                            <p class="center-date">SEPT<br><span class="scnd-font-color">2019</span></p>
                     </div>
                     <ul class="os-percentages horizontal-list">
                         <li>
-                            <p class="ios os scnd-font-color">iOS</p>
+                            <p class="ios os scnd-font-color">vrb</p>
                             <p class="os-percentage">21<sup>%</sup></p>
                         </li>
                         <li>
-                            <p class="mac os scnd-font-color">Mac</p>
+                            <p class="mac os scnd-font-color">nou</p>
                             <p class="os-percentage">39<sup>%</sup></p>
                         </li>
                         <li>
-                            <p class="linux os scnd-font-color">Linux</p>
+                            <p class="linux os scnd-font-color">adv</p>
                             <p class="os-percentage">9<sup>%</sup></p>
                         </li>
                         <li>
-                            <p class="win os scnd-font-color">Win</p>
+                            <p class="win os scnd-font-color">adj</p>
                             <p class="os-percentage">31<sup>%</sup></p>
                         </li>
                     </ul>
                 </div>
- <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
-                <div class="line-chart-block block">
+    </div>
+    <div class="carousel-item">
+                      <div class="line-chart-block block" style="height: 330px">
+                  <div id="lior" class="d-flex align-items-center justify-content-center"><h2>WORDS LEARNED</h2></div>
      <div class="line-chart">
        <div class='grafico'>
        <ul class='eje-y'>
@@ -44,9 +46,9 @@
          <li data-ejeY='0'></li>
        </ul>
        <ul class='eje-x'>
-         <li>Apr</li>
-         <li>May</li>
-         <li>Jun</li>
+         <li>Jul</li>
+         <li>Aug</li>
+         <li>Sept</li>
        </ul>
          <span data-valor='25'>
            <span data-valor='8'>
@@ -58,33 +60,19 @@
                      </span></span></span></span></span></span></span>
        </div>
 
-     </div>
+                  </div>
                     <ul class="time-lenght horizontal-list">
                         <li><a class="time-lenght-btn" href="#14">Week</a></li>
-                        <li><a class="time-lenght-btn" href="#15">Month</a></li>
+                        <li><a class="time-lenght-btn" style="background-color:#e64c65" href="#15">Month</a></li>
                         <li><a class="time-lenght-btn" href="#16">Year</a></li>
                     </ul>
-                    <ul class="month-data clear">
-                        <li>
-                            <p>APR<span class="scnd-font-color"> 2013</span></p>
-                            <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
-                        </li>
-                        <li>
-                            <p>MAY<span class="scnd-font-color"> 2013</span></p>
-                            <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
-                        </li>
-                        <li>
-                            <p>JUN<span class="scnd-font-color"> 2013</span></p>
-                            <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
-                        </li>
-                    </ul>
                 </div>
-
-
-
-  <div class="bar-chart-block block">
-    <h2 class='titular'>By Country <span>*1000</span></h2>
+    </div>
+    <div class="carousel-item">
+        <div class="bar-chart-block block" style="margin-bottom: 20%">
+    <h2 class='titular'>BY MONTH <span></span></h2>
     <div class='grafico bar-chart'>
+
        <ul class='eje-y'>
          <li data-ejeY='60'></li>
          <li data-ejeY='45'></li>
@@ -92,17 +80,47 @@
          <li data-ejeY='15'></li>
          <li data-ejeY='0'></li>
        </ul>
-       <ul class='eje-x'>
-         <li data-ejeX='37'><i>España</i></li>
-         <li data-ejeX='56'><i>Portugal</i></li>
-         <li data-ejeX='25'><i>Italia</i></li>
-         <li data-ejeX='18'><i>Grecia</i></li>
-         <li data-ejeX='45'><i>EE.UU</i></li>
-         <li data-ejeX='50'><i>México</i></li>
-         <li data-ejeX='33'><i>Chile</i></li>
+       <ul class='eje-x' style="margin-top: 5px;">
+         <li data-ejeX='37'><i>Monday</i></li>
+         <li data-ejeX='56'><i>Tuesday</i></li>
+         <li data-ejeX='25'><i>Wednes</i></li>
+         <li data-ejeX='18'><i>Thursday</i></li>
+         <li data-ejeX='45'><i>Friday</i></li>
+         <li data-ejeX='50'><i>Saturday</i></li>
+         <li data-ejeX='33'><i>Sunday</i></li>
        </ul>
+                        </div>
+                    <ul class="time-lenght horizontal-list" style="margin-top: 10px;">
+                        <li><a class="time-lenght-btn"style="background-color:#e64c65" href="#14">Day</a></li>
+                        <li><a class="time-lenght-btn" href="#15">Week</a></li>
+                        <li><a class="time-lenght-btn" href="#16">Month</a></li>
+                    </ul>
+                </div>
     </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- https://codepen.io/jlalovi/details/bIyAr -->
+<div class="container">
+  <!-- DONUT CHART BLOCK (LEFT-CONTAINER) -->
+
+ <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
+
+
+
+
+    </div>
+
+
   </div>
             </div>
 
-<p class='nota-final'>Este pen es sólo para que <strong>@jlalovi</strong> complemente con los gráficos <a href='https://codepen.io/jlalovi/details/bIyAr'>el suyo</a>.</p>
+<div style="margin-top: 10%"></div>
