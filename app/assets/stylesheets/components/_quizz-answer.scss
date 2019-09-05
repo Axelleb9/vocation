@@ -126,6 +126,7 @@
 .hint {
   margin-top: 20%;
   text-align: center;
+  h1{color: $brand !important; font-size: 40px;}
 }
 
 .hint-question1-2 {
@@ -139,7 +140,7 @@
 
 .hint-question5 {
 
-  h1 {font-size: 1.5rem !important;}
+  h1 {font-size: 1.5rem !important; color: $brand !important}
   margin: 0 5%;
 }
 
