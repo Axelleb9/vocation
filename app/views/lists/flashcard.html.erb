@@ -2,12 +2,12 @@
 
   <div class="top-part">
 
-    
+
         <h4 class="text-center flashcard-title">
-          <span></span> 
+          <span></span>
           <%= @list.title %>
-          
-          <span></span> 
+
+          <span></span>
         </h4>
 
     <div class="general-progress">
@@ -39,7 +39,7 @@
             <div id="flashcard-question">
               <%= @word.word.entry %>
             </div>
-            <div id="flashcard-answer" class="d-none">
+            <div id="flashcard-answer" class="d-none" data-aos="flip-left">
               <span><%= @word.word.translation %> </span>
             </div>
           </div>
