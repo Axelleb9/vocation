@@ -16,15 +16,16 @@ function displayArrow(arrow) {
 const displayResult = () => {
   answers.forEach((answer) => {
     answer.addEventListener('click', (event) => {
+      console.log(event.currentTarget)
       if (event.currentTarget.dataset["answer"] === "1") {
         event.currentTarget.classList.add('got-it');
         setTimeout(function() {displayArrow("1")}, 800);
-        var url = `https://www.vocation.world/lists/${goodAnswer.dataset["list_id"]}/quizz_good_answer?words_list=${goodAnswer.dataset["word_list"]}`;
-        var devurl = `http://localhost:3000//lists/${goodAnswer.dataset["list_id"]}/quizz_good_answer?words_list=${goodAnswer.dataset["word_list"]}`;
+        // var url = `https://www.vocation.world/lists/${goodAnswer.dataset["list_id"]}/quizz_good_answer?words_list=${goodAnswer.dataset["word_list"]}`;
+        // var devurl = `http://localhost:3000//lists/${goodAnswer.dataset["list_id"]}/quizz_good_answer?words_list=${goodAnswer.dataset["word_list"]}`;
         // setTimeout(window.location.href = devurl, 2000);
       } else {
-        var url = `https://www.vocation.world/lists/${goodAnswer.dataset["list_id"]}/quizz_wrong_answer?words_list=${goodAnswer.dataset["word_list"]}`;
-        var devurl = `http://localhost:3000//lists/${goodAnswer.dataset["list_id"]}/quizz_wrong_answer?words_list=${goodAnswer.dataset["word_list"]}`;
+        // var url = `https://www.vocation.world/lists/${goodAnswer.dataset["list_id"]}/quizz_wrong_answer?words_list=${goodAnswer.dataset["word_list"]}`;
+        // var devurl = `http://localhost:3000//lists/${goodAnswer.dataset["list_id"]}/quizz_wrong_answer?words_list=${goodAnswer.dataset["word_list"]}`;
         if (definition == undefined ) {
           event.currentTarget.insertAdjacentHTML('beforeend', `<i class="fas fa-times cross-wrong-answer"></i>`);
         }

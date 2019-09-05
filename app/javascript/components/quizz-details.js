@@ -83,21 +83,23 @@ const displayQuizzDetails = () => {
 }
 
 const startQuizz = () => {
-  button.addEventListener('click', (event) => {
-    const weekQuizz = document.querySelector('.new-week-style');
-    const listQuizz = document.querySelector('.new-style');
-    if (listQuizz) {
-      const url = `https://www.vocation.world/lists/${listQuizz.dataset.id}/quizz`
-      const devurl = `/lists/${listQuizz.dataset.id}/quizz`
-      console.log(devurl)
-      window.location.replace(devurl)
-    } else {
-      const url = `https://www.vocation.world/lists/${weekQuizz.dataset.id}/quizz`
-      const devurl = `/lists/${weekQuizz.dataset.id}/quizz`
-      console.log(devurl)
-      window.location.replace(devurl)
-    }
-  })
+  if (button) {
+    button.addEventListener('click', (event) => {
+      const weekQuizz = document.querySelector('.new-week-style');
+      const listQuizz = document.querySelector('.new-style');
+      if (listQuizz) {
+        const url = `https://www.vocation.world/lists/${listQuizz.dataset.id}/quizz`
+        const devurl = `/lists/${listQuizz.dataset.id}/quizz`
+        console.log(devurl)
+        window.location.replace(devurl)
+      } else {
+        const url = `https://www.vocation.world/lists/${weekQuizz.dataset.id}/quizz`
+        const devurl = `/lists/${weekQuizz.dataset.id}/quizz`
+        console.log(devurl)
+        window.location.replace(devurl)
+      }
+    })
+  }
 }
 startQuizz();
 export { displayQuizzDetails }
