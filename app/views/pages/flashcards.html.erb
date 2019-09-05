@@ -8,7 +8,8 @@
     <% @flashcards.each do |flashcard| %>
       <div class="flashcard-element">
         <div class="ribbon-container">
-          <div class="card-ribbon"><span>missed</span></div>
+          <div class="card-ribbon <%= "#{flashcard.flashcard_done ? 'card-done' : 'card-missed'}" %>">
+          </div>
         </div>
         <% luck = (2..4).to_a.sample %>
         <% case luck %>
@@ -39,9 +40,10 @@
     <% @flashcards_weeks.each do |flashcard| %>
       <div class="flashcard-weeks-element">
         <div class="ribbon-container">
-          <div class="card-ribbon"></div>
+          <div class="card-ribbon <%= "#{flashcard.flashcard_done ? 'card-done' : 'card-missed'}" %>">
+          </div>
       </div>
-
+        <i class="fas fa-calendar-week <%= "#{'iam-blue' if flashcard.title == "List of the week"}" %>" id="calendar"></i>
         <h6><%= flashcard.title %></h6>
         <p><%= flashcard.words.count %> words</p>
         <div class="card-back-one"></div>
