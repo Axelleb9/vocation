@@ -4,6 +4,7 @@ import { initActionCable } from '../plugins/init_action_cable'
 import { rotateMe, displayDetails }  from 'components/word-card-display-view'
 import { switchCard } from 'components/flashcard-switch'
 import { displayResult } from '../components/quizz-transition'
+import { displayQuizzDetails } from '../components/quizz-details'
 // import { translate } from '../components/translate-word';
 
 // translate()
@@ -16,6 +17,7 @@ initActionCable();
 switchCard();
 displayDetails();
 displayResult();
+displayQuizzDetails();
 
 $(document).ready(function(){
     $('.dropdown-for-mobile').dropdown();

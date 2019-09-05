@@ -1,7 +1,7 @@
 .card-index-quizzes {
-  height: 100px;
+  height: 85px;
   background-color: #ededed;
-  width: 100px;
+  width: 85px;
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -12,10 +12,93 @@
   font-size: 1rem;
   position: absolute;
   bottom: -35px;
+  color: $word-color;
   }
 }
 
 .quizz-box {
   position: relative;
   margin: 0 5%;
+}
+
+.fa-calendar-week {
+  font-size: 28px;
+  color: $brand;
+}
+
+#quizz-week-title {
+  width: 150px;
+  text-align: center;
+}
+
+#quizz-header {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  margin-top: 20px;
+  color: $word-color;
+  h3 {font-weight: 600; font-size: 24px; margin-bottom: 20px;}
+}
+
+.quizz-details {
+  margin: 0 5%;
+  padding: 3.5px;
+  background-color: white;
+  display: none !important;
+  box-shadow: inset 0px 0px 5px #c8c8c8;
+  p {margin:0; color: $word-color;}
+}
+
+.display-quizz {
+  display: flex !important;
+  border-radius: 5px;
+}
+
+.container-start-quiz {
+  position: absolute;
+  bottom: 12%;
+  width: 100%;
+}
+
+.btn-start-quizz h3 {
+  padding: 14px;
+  background-color: lightgrey;
+  color: $word-color;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: background-color 1s ease;
+}
+
+.call-to-btn {
+  color: white !important;
+  background-color: $brand !important;
+}
+
+.quizz-details-title {
+  display:none;
+  margin-top: 6px;
+}
+
+.reset-style {
+  background-color: #ededed !important;
+}
+
+.new-style {
+  background-color: $brand !important;
+  i {color:white !important; font-size: 28px !important;}
+}
+.new-week-style {
+  background-color: $brand !important;
+  i {color: white !important; font-size: 35px;}
+}
+
+.icon-quizz {
+  position: initial !important;
+  font-size: 24px !important;
+  color: black !important;
+}
+
+.iam-white {
+  filter: invert(26%) sepia(5%) saturate(10%) hue-rotate(2deg) brightness(96%) contrast(89%);
+  margin-top: -8px;
 }

@@ -2,7 +2,6 @@ require 'faker'
 require 'json'
 require 'http'
 
-User.destroy_all
 
 host = "twinword-word-graph-dictionary.p.rapidapi.com"
 twin_key = ENV["TWINKEY"]
@@ -66,7 +65,6 @@ puts "Using Faker to seed the DataBase"
     example: Faker::Quote.most_interesting_man_in_the_world,
     nature: Faker::Verb.base,
     difficulty: (0..10).to_a.sample,
-    synonyms: [Faker::Verb.past_participle, Faker::Verb.simple_present, Faker::Verb.ing_form],
     visible: [false, true].sample
     )
     word.save!
@@ -79,39 +77,38 @@ puts "Using Faker to seed the DataBase"
   count += 1
 end
 
-week_count = 0
-puts "Creating 4 fake lists of the week"
-6.times do
-  puts "create list for week n° #{29 + week_count}"
-  list = List.new(
-  title: "week #{29 + week_count}",
-  user: user,
-  week: week_count + 29
-  )
-  list.save!
+# week_count = 0
+# puts "Creating 4 fake lists of the week"
+# 6.times do
+#   puts "create list for week n° #{29 + week_count}"
+#   list = List.new(
+#   title: "week #{29 + week_count}",
+#   user: user,
+#   week: week_count + 29
+#   )
+#   list.save!
 
-  puts "generating random words for list #{list}"
-  (5..18).to_a.sample.times do
-    wl = WordsList.new(list: list)
-    ww = UserWord.new(user: user)
-    word = Word.new(
-    entry: Faker::Creature::Cat.name,
-    translation: Faker::Creature::Dog.name,
-    definition: Faker::Quote.famous_last_words,
-    example: Faker::Quote.most_interesting_man_in_the_world,
-    nature: Faker::Verb.base,
-    difficulty: (0..10).to_a.sample,
-    synonyms: [Faker::Verb.past_participle, Faker::Verb.simple_present, Faker::Verb.ing_form],
-    visible: [false, true].sample
-    )
-    word.save!
-    ww.word = word
-    wl.word = word
-    ww.save!
-    wl.save!
-  end
-  week_count += 1
-end
+#   puts "generating random words for list #{list}"
+#   (5..18).to_a.sample.times do
+#     wl = WordsList.new(list: list)
+#     ww = UserWord.new(user: user)
+#     word = Word.new(
+#     entry: Faker::Creature::Cat.name,
+#     translation: Faker::Creature::Dog.name,
+#     definition: Faker::Quote.famous_last_words,
+#     example: Faker::Quote.most_interesting_man_in_the_world,
+#     nature: Faker::Verb.base,
+#     difficulty: (0..10).to_a.sample,
+#     visible: [false, true].sample
+#     )
+#     word.save!
+#     ww.word = word
+#     wl.word = word
+#     ww.save!
+#     wl.save!
+#   end
+#   week_count += 1
+# end
 
 list = List.new(title: "List of the week", user: user, week: Date.today.cweek)
 list.save!
