@@ -2,7 +2,7 @@
     <% user_word = UserWord.where(user: current_user, word: word).take %>
 
     <ol class="carousel-indicators">
-      <% case user_word.state %>
+      <% case user_word&.state %>
       <% when "nou" %>
         <% if word.meaning.nou.length > 1 %>
           <% word.meaning.nou&.first(3).each_with_index do |x, z|  %>
@@ -33,7 +33,7 @@
     <div class="carousel-inner">
 
     <%= render 'shared/carousel-tabs', word: word, user_word: user_word %>
-      <% case user_word.state %>
+      <% case user_word&.state %>
       <% when "nou" %>
         <% word.meaning.nou&.first(3)&.each_with_index do |meaning, i| %>
           <div class="carousel-item <%= 'active' if i == 0 %>">
