@@ -8,7 +8,7 @@
   </div>
 
   <div class="navbar-icon">
-    <%= link_to lists_path, class: "#{'icon-brand-color' if params['controller'] == 'lists'}" do %>
+    <%= link_to lists_path, class: "#{'icon-brand-color' if params['controller'] == 'lists' && params[:action] != "flashcards" && params[:action] != "flashcard"}" do %>
     <i class="fas fa-list"></i>
     <span class="general-size">Lists</span>
     <% end %>
