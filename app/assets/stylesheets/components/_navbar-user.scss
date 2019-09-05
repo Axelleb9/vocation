@@ -1,6 +1,6 @@
 .navbar-user {
   background: white;
-  height: 65px;
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -48,15 +48,15 @@
 
 .navbar-icon a {
   img {
-    position: absolute;
+    position: relative;
     top: 12px;
   }
   i {
-    position: absolute;
+    position: relative;
     top: 12px;
   }
   span {
     position: absolute;
-    bottom: 5px;
+    top: 48px;
   }
 }

@@ -1,11 +1,12 @@
 .switch-container {
   display: flex;
   justify-content: space-around;
+  margin: 0 5%;
 }
 
 .switch-language {
   text-align: center;
-  width: 90%;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -14,9 +15,6 @@
 }
 
 .fa-exchange-alt {
-  position: absolute;
-  bottom: 4px;
-  right: 163px;
   color: $brand;
 }
 
