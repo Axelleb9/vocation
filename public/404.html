@@ -730,8 +730,9 @@ function drawGame(resized) {
 }
 
 function drawStartScreen() {
-  fillCenteredText("We can't find the page, but you can have some fun!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
-  fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 500, '#FFFFFF', 36);
+  fillCenteredText("We can't find the page,", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
+  fillCenteredText("but you can have some fun!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.3, '#FFFFFF', 36);
+  fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/1.75, 500, '#FFFFFF', 36);
 }
 
 function animate() {

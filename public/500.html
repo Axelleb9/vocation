@@ -728,8 +728,9 @@ function drawGame(resized) {
 }
 
 function drawStartScreen() {
-  fillCenteredText("Oops, something went wrong, but have some fun!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
-  fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 500, '#FFFFFF', 36);
+  fillCenteredText("Oops, something went wrong,", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
+  fillCenteredText("but have some fun!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.3, '#FFFFFF', 36);
+  fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/1.75, 500, '#FFFFFF', 36);
 }
 
 function animate() {
