@@ -62,6 +62,7 @@ class ListsController < ApplicationController
     @total_number = @list.words.count
     @learning = @list.words_lists.where(reviewed: false).count
     @mastered = @word_false.count
+    @list.update(flashcard_done: true) if @word_false.empty?
   end
 
   def good_answer

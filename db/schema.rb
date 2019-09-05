@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_125844) do
+ActiveRecord::Schema.define(version: 2019_09_05_134204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_125844) do
     t.boolean "switch", default: true
     t.integer "week"
     t.boolean "quizz_done", default: false
+    t.boolean "flashcard_done"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
