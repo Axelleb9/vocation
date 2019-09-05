@@ -1,12 +1,12 @@
-<div class="week-box d-flex justify-content-center align-items-center mt-5">
+<div class="week-box d-flex justify-content-center align-items-center" style="margin-top: 30px">
   <div class="card-index-quizzes"data-words='<%= @list_of_the_week.words.count %>' data-difficulty="8" data-type="<%= %w(nouns verbs adjectives adverbs).sample %>" data-id="<%= @list_of_the_week.id %>" data-title="<%= @list_of_the_week.title %>" data-week="yes">
     <i class="fas fa-calendar-week"></i>
     <h6 id="quizz-week-title">Quizz of the week</h6>
   </div>
 </div>
 
-<div class="background-quizz mt-3">
-  <div style="padding-top: 10%;">
+<div class="background-quizz" style="margin-top: 10px;">
+  <div style="padding-top: 5%;">
     <div>
       <% @user_lists.each_slice(3) do |slice| %>
         <div class="d-flex justify-content-between mb-5 quizz-box">
@@ -33,7 +33,7 @@
 </div>
 
 
-<div class="d-flex justify-content-between quizz-details mt-5">
+<div class="d-flex justify-content-between quizz-details mt-3">
   <div style="width:33%;text-align:center;border-right: 1px solid #e8e8e8">
     <p>Words</p>
     <p id="total-word" style="text-align:center;"></p>
