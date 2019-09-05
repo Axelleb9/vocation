@@ -19,7 +19,6 @@ switchCard();
 displayDetails();
 displayResult();
 displayQuizzDetails();
-initAos();
 
 
 $(document).ready(function(){
