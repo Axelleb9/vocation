@@ -1,12 +1,13 @@
 .nav-tabs .nav-link {
-  font-size: 12px;
+  font-size: 14px;
   color: $word-color;
   padding: 5px 10px;
 }
 .nav-tabs .nav-link.active {
   color: $brand;
   background-color: #f4f4f447;
-}
+  font-size: 14px;
+  }
 
 .carousel-indicators {
   margin-bottom: 0;
@@ -32,7 +33,7 @@
 }
 .all-words {
   margin-top: 8px;
-  padding: 12px;
+  padding: 64px 12px;
 }
 
 .linear-filter {
@@ -132,12 +133,14 @@
   background: white;
   padding: 4px 16px 26px;
   word-break: break-word;
-  font-size: 12px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
 
     & #definition {
       margin: 0px !important;
+      font-size: 14px;
+      font-weight: bolder;
     }
 
     & i {
@@ -150,10 +153,12 @@
       color: grey;
       padding: 0px 0px 0px 16px;
       margin-bottom: 8px;
+      font-size: 14px;
     }
     & #synonyms {
-      color: grey;
+      color: black;
       padding: 0px 0px 0px 16px;
+      font-size: 14px;
     }
 }
 

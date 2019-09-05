@@ -1,7 +1,7 @@
 <div id="word-details" class="displayed-content" style="transition: height .8s ease">
-  <div id="definition"><%= meaning %></div>
-  <div id="example"> "<%= word.example[index] %>"</div>
-  <div> Synonyms:</div>
+  <div id="definition" style="font-weight: bold;"><%= meaning %></div>
+  <div></div>
+  <div style="color: black;"> Synonyms:</div>
   <div id="synonyms">
     <% all_terms = [word.reference.synonyms, word.reference.broad_terms, word.reference.related_terms, word.reference.narrow_terms].flatten.compact %>
     <% terms = all_terms[(index * 3)..(index * 3 + 2)] %>
