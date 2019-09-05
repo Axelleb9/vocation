@@ -2,9 +2,13 @@
 
   <div class="top-part">
 
-    <div class="list-title">
-      <p><%= @list.title %></p>
-    </div>
+    
+        <h4 class="text-center flashcard-title">
+          <span></span> 
+          <%= @list.title %>
+          
+          <span></span> 
+        </h4>
 
     <div class="general-progress">
       <p>You have mastered <%= @total_number - @mastered %> words out of <%= @total_number %> words </p>
