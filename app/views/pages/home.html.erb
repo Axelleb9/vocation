@@ -9,7 +9,7 @@
       <div style='width:100%' class='text-center div-signup'>
         <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary text-center", id: "signup-btn" %>
       <% else %>
-      <button class="btn btn-primary" id="letsgo">GO!</button>
+      <%= link_to "GO!", words_path, class: "btn btn-primary", id:"letsgo" %>
       </div>
     <% end %>
     </div>
