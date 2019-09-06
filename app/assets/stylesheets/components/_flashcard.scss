@@ -51,7 +51,7 @@
   width: 96%;
   box-shadow: 4px 4px 4px lightgrey;
   border-radius: 8px;
-  height: 164px;
+  height: 250px;
 }
 
 .flashcard-content {
@@ -75,6 +75,19 @@
 #flashcard-answer {
   font-size: 36px;
   color: $word-color;
+  display: flex;
+  flex-direction: column;
+  height: 76%;
+  width: 100%;
+}
+
+.meaning {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  word-wrap: break-word;
+  text-align: justify;
+  padding: 8px 16px 8px;
 }
 
 #flashcard-button {
@@ -83,7 +96,7 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 30%;
+  height: 24%;
   border-radius: 0px 0px 8px 8px;
   color: $word-color;
 }
@@ -110,28 +123,34 @@
 
 #good-answer {
   border-radius: 4px;
-  border: 1px solid;
+  // border: 1px solid;
   height: 90%;
   width: 30%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: $good;
   a {
-    color: $word-color;
+    font-size: 20px;
+    color: black;
     text-decoration: none;
+    font-weight: 600;
   }
 }
 
 #wrong-answer {
   border-radius: 4px;
-  border: 1px solid;
+  // border: 1px solid;
   height: 90%;
   width: 30%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: $wrong;
   a {
-    color: $word-color;
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
     text-decoration: none;
   }
 }
@@ -142,4 +161,12 @@
     text-decoration: none;
   }
 
+}
+
+.good-progress {
+  background-color: $good !important;
+}
+
+.bad-progress {
+  background-color: $wrong !important;
 }

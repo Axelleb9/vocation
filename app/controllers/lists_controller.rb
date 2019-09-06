@@ -69,7 +69,7 @@ class ListsController < ApplicationController
     word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
     authorize @list
-    word_status = word.words_lists.find_by(list_id: @list.id)
+    word_status = word.words_lists.take
     word_status.reviewed = true
     word_status.save
     redirect_to list_flashcard_path(@list)
@@ -79,7 +79,7 @@ class ListsController < ApplicationController
     word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
     authorize @list
-    word_status = word.words_lists.find_by(list_id: @list.id)
+    word_status = word.words_lists.take
     word_status.reviewed = false
     word_status.save
     redirect_to list_flashcard_path(@list)

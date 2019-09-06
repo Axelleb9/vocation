@@ -1,60 +1,72 @@
 <div class="flashcard-display">
-
   <div class="top-part">
-
-
         <h4 class="text-center flashcard-title">
           <span></span>
           <%= @list.title %>
-
           <span></span>
         </h4>
-
   </div>
   <div class="flashcard-container">
-    <div class="flashcard">
-
-       <% if @word_false.empty? %>
-        <div class="flashcard-content">
-          <div id="flashcard-congrats">
-            <span> You know everything </span>
-          </div>
-        </div>
-          <div id="flashcard-end">
-            <span> <%= link_to "Go back to flashcards", study_flashcards_path %> </span>
-          </div>
-
-        <% else %>
-          <div class="flashcard-content">
-            <div id="flashcard-question">
-              <%= @word.word.entry %>
+    <div class="flashcard card">
+      <div class="content">
+         <% if @word_false.empty? %>
+          <div class="front">
+              <div class="flashcard-content">
+                <div id="flashcard-congrats">
+                  <span> You know everything </span>
+                </div>
+              </div>
+                <div id="flashcard-end">
+                  <span> <%= link_to "Go back to flashcards", study_flashcards_path %> </span>
+                </div>
             </div>
-            <div id="flashcard-answer" class="d-none flip-card">
-              <span><%= @word.word.translation %> </span>
+          <% else %>
+            <div class="front">
+              <div class="flashcard-content">
+                <div id="flashcard-question">
+                  <%= @word.word.entry %>
+                </div>
+              </div>
+              <div id="flashcard-button">
+                <div id="see-meaning">
+                  <a href="#"> Tap to see meaning </a>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div id="flashcard-button">
-            <div id="see-meaning">
-              <a href="#"> Tap to see meaning </a>
-            </div>
-            <div id="wrong-answer" class="d-none flip-card">
-              <span> <%= link_to "I suck", list_wrong_answer_path(word_id: @word.id), method: :patch %> </span>
-            </div>
-            <div id="good-answer" class="d-none">
-            <span> <%= link_to "I knew it!", list_good_answer_path(word_id: @word.id), method: :patch %> </span>
-            </div>
-          </div>
-        <% end %>
+              <div class="back">
+                <div id="flashcard-answer">
+                  <div><%= @word.word.translation %> </div>
+                  <div class="meaning">
+                    <% if !@word.word.meaning.nou.blank? %>
+                      <%= @word.word.meaning.nou.first %>
+                    <% elsif !@word.word.meaning.adj.blank? %>
+                      <%= @word.word.meaning.adj.first %>
+                    <% elsif !@word.word.meaning.vrb.blank? %>
+                      <%= @word.word.meaning.vrb.first %>
+                    <% elsif !@word.word.meaning.adv.blank? %>
+                    <%= @word.word.meaning.adv.first %>
+                    <% end %>
+                  </div>
+                </div>
+                <div id="flashcard-button">
+                  <div id="wrong-answer">
+                    <span> <%= link_to "I suck", list_wrong_answer_path(word_id: @word.id), method: :patch %> </span>
+                  </div>
+                  <div id="good-answer" class="">
+                    <span> <%= link_to "I knew it!", list_good_answer_path(word_id: @word.id), method: :patch %> </span>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+      </div>
     </div>
   </div>
-
     <div class="general-progress">
       <p>You have mastered <%= @total_number - @mastered %> words out of <%= @total_number %> words </p>
       <div class="progress">
-        <div class="progress-bar bg-success" style="width: <%= ((@total_number - @mastered )*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
+        <div class="progress-bar bg-success good-progress" style="width: <%= ((@total_number - @mastered )*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
            </div>
-        <div class="progress-bar bg-danger" style="width: <%= ((@learning)*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
+        <div class="progress-bar bg-danger bad-progress" style="width: <%= ((@learning)*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
            </div>
         </div>
       </div>
