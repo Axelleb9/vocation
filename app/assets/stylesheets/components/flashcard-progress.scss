@@ -1,0 +1,10 @@
+.flashcard-progress {
+  height: 26px;
+  width: 56px;
+  background-color: #ededed;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  border-radius: 15px;
+  p {margin:0;color:$word-color;}
+}
