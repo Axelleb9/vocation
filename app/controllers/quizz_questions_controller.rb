@@ -4,7 +4,7 @@ class QuizzQuestionsController < ApplicationController
   def question
     @list = List.find(params[:list_id])
     @word_list = @list.words_lists.where(quizz_status: nil).sample
-    if !@list.words_lists.where(quizz_status: nil).count == @list.words_lists.count
+    if @list.words_lists.where(quizz_status: nil).count.zero?
       @list.update(quizz_done: true)
       redirect_to list_quizz_done_path(@list)
     else
