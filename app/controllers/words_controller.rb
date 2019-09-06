@@ -11,9 +11,9 @@ class WordsController < ApplicationController
   end
 
   def create
-    word = Word.find_by(entry: params_word[:entry])
+    word = Word.find_by(entry: params_word[:entry].downcase)
     if word.nil?
-      entry = params_word[:entry]
+      entry = params_word[:entry].downcase
       word = Word.new(entry: entry)
       word.save
       FetchTranslationJob.perform_later(entry, current_user.id, word.id)
