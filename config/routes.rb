@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch "quizz_good_answer", to: 'quizz_questions#quizz_good_answer'
     patch "quizz_wrong_answer", to: 'quizz_questions#quizz_wrong_answer'
     patch "quizz_define_result", to: 'quizz_questions#quizz_define_result'
+    get "quizz_done", to: "quizz_questions#quizz_done"
     get "quizz", to: "quizz_questions#question"
 
   end

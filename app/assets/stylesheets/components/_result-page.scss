@@ -1,0 +1,32 @@
+.result-container {
+  padding: 0 20% 0 20%;
+  width: 100%;
+  text-align: center;
+  margin-top: 15%;
+}
+
+.iam-rond {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid $good;
+  text-align: center;
+  margin: 25% 16%;
+  overflow: visible;
+  position: relative;
+  margin-bottom: 39%;
+}
+
+.mark-scored {
+  h1 {margin:0; font-size: 50px; color: $brand; margin-bottom: 6px;}
+  h3 {margin:0; color: $word-color;}
+  margin-top: 14%;
+}
+
+.test-completed {
+  position: absolute;
+  bottom: -42px;
+  width: 205px;
+  font-size: 19px;
+  font-weight: 700;
+}

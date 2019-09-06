@@ -6,7 +6,7 @@ class QuizzQuestionsController < ApplicationController
     @word_list = @list.words_lists.where(quizz_status: nil).sample
     if @word_list.nil?
       @list.update(quizz_done: true)
-      redirect_to words_path
+      redirect_to list_quizz_done_path(@list)
     else
       luck = (3..5).to_a.sample
       case luck
@@ -38,6 +38,12 @@ class QuizzQuestionsController < ApplicationController
         create_quizz_question(@word_list, 5, @quizz_good_answer, @quizz_wrong_answers)
       end
     end
+  end
+
+  def quizz_done
+    top = List.find(params[:list_id]).words_lists.where(quizz_status: true).count
+    down = List.find(params[:list_id]).words_lists.count
+    @percentage = (top.fdiv(down) * 100).ceil
   end
 
   def quizz_define_result
