@@ -55,7 +55,7 @@
   top: 20px;
   left:20px;
   font-size: 20px;
-  color: #090088;
+  color: black;
 }
 .fa-trophy {
   position: absolute;
@@ -69,7 +69,7 @@
   top: 20px;
   left: 20px;
   font-size: 20px;
-  color: #e4007c;
+  color: $brand;
 
 }
 .space-invader {
@@ -208,7 +208,7 @@
 }
 
 .card-missed {
-  background-color: #FD1015;
+  background-color: $wrong;
 }
 
 .card-done {
