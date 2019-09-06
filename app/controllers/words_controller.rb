@@ -8,7 +8,6 @@ class WordsController < ApplicationController
     @lists = current_user.lists
     @new_word = Word.find(params[:new_word_id]) if params[:new_word_id].present?
     @current_word = Word.find(params[:word_id]) if params[:word_id].present?
-
   end
 
   def create

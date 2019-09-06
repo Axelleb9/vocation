@@ -181,6 +181,7 @@ words.each_with_index do |word, index|
     translation: translation,
     difficulty: difficulty,
     example: example,
+    state: set_state(word)
   )
   definition.word = word
   reference.word = word
@@ -264,6 +265,7 @@ words_botanic.each_with_index do |word, index|
     translation: translation,
     difficulty: difficulty,
     example: example,
+    state: set_state(word)
   )
   definition.word = word
   reference.word = word
