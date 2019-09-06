@@ -50,23 +50,24 @@
 
 .got-it {
   background-color: $good !important;
-  color: white;
   height: 65px !important;
   box-shadow: -3px 3px 4px #6ebf5a;
+  h4{font-weight: 700;}
+  span{font-weight: 700;}
 }
 
 .oups {
   height: 65px !important;
   box-shadow: -3px 3px 4px rgba(148, 5, 5, 1);
   background-color: $wrong !important;
-  color: white;
 }
 
 
 .show-valid-answer {
   background-color: rgba(171,230,204, 0.6) !important;
-  color: $good !important;
   border: 1px solid rgba(1, 208, 65, 0.5);
+  h4{font-weight: 700;}
+  span{font-weight: 700;}
 }
 
 .cross-wrong-answer {
