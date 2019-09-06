@@ -807,7 +807,7 @@ window.onload = function() {
   <script>
     let keydownEvent = new Event('keydown');
     keydownEvent.keyCode = 13;
-    document.addEventListener('click', (event) => {
+    document.addEventListener('touch', (event) => {
       console.log(keydownEvent);
       event.currentTarget.dispatchEvent(keydownEvent);
     });
