@@ -42,13 +42,20 @@
   font-size: 29px;
   color: white;
 
+  a {
+    font-family: $headers-font;
+  }
+
 }
+
 
 .logo-title h3 {
   font-family: 'Roboto';
   color: white;
   font-size: 22px;
   margin-right: 50px;
+  position: relative;
+  top: 2px;
   }
 
 .nav-item {
