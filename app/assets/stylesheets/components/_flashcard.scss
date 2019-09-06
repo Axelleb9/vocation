@@ -162,3 +162,11 @@
   }
 
 }
+
+.good-progress {
+  background-color: $good !important;
+}
+
+.bad-progress {
+  background-color: $wrong !important;
+}

@@ -64,9 +64,9 @@
     <div class="general-progress">
       <p>You have mastered <%= @total_number - @mastered %> words out of <%= @total_number %> words </p>
       <div class="progress">
-        <div class="progress-bar bg-success" style="width: <%= ((@total_number - @mastered )*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
+        <div class="progress-bar bg-success good-progress" style="width: <%= ((@total_number - @mastered )*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
            </div>
-        <div class="progress-bar bg-danger" style="width: <%= ((@learning)*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
+        <div class="progress-bar bg-danger bad-progress" style="width: <%= ((@learning)*100).fdiv(@total_number) %>%"role="progressbar" aria-valuemax="100" aria-valuemin="0">
            </div>
         </div>
       </div>
